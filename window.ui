@@ -16,28 +16,15 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>IMPORT - EXPORT TEIS</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnAceptar">
+   <widget class="QLabel" name="lblClientes">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>290</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Aceptar</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTitulo">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>190</y>
-      <width>211</width>
+      <x>360</x>
+      <y>130</y>
+      <width>271</width>
       <height>51</height>
      </rect>
     </property>
@@ -53,7 +40,7 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -107,7 +94,7 @@
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -125,7 +112,7 @@
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -180,6 +167,15 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -190,7 +186,7 @@
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -244,7 +240,7 @@
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -262,7 +258,7 @@
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>0</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -322,12 +318,21 @@
          </color>
         </brush>
        </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>170</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
       </inactive>
       <disabled>
        <colorrole role="WindowText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>85</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -381,7 +386,7 @@
        <colorrole role="Text">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>85</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -399,7 +404,7 @@
        <colorrole role="ButtonText">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>85</red>
+          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -459,34 +464,91 @@
          </color>
         </brush>
        </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>170</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
       </disabled>
      </palette>
     </property>
-    <property name="text">
-     <string>MI PRIMERA VENTANA</string>
+    <property name="styleSheet">
+     <string notr="true">font: 22pt &quot;Palatino Linotype&quot;;
+color: rgb(170, 0, 0);
+</string>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="txtDatos">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>250</y>
-      <width>221</width>
-      <height>20</height>
-     </rect>
+    <property name="text">
+     <string>XESTIÓN CLIENTES</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>290</y>
-      <width>75</width>
+      <x>500</x>
+      <y>250</y>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Salir</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAceptar">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>250</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Aceptar</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtDatos">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>220</y>
+      <width>259</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDNI">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>200</y>
+      <width>31</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>DNI:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblValidoDNI">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>220</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -496,7 +558,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
@@ -536,6 +598,9 @@
   <action name="actionSalir">
    <property name="text">
     <string>Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
    </property>
   </action>
  </widget>
