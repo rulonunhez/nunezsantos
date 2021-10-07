@@ -1,4 +1,5 @@
 # This is a sample Python script.
+import clients
 import events
 from window import *
 from windowaviso import *
@@ -12,6 +13,8 @@ class DialogAviso(QtWidgets.QDialog):
         super(DialogAviso, self).__init__()
         var.dlgaviso = Ui_windowaviso()
         var.dlgaviso.setupUi(self)
+        var.dlgaviso.btnBoxAviso.accepted.connect(self.accept)
+        var.dlgaviso.btnBoxAviso.rejected.connect(self.reject)
 
 class Main (QtWidgets.QMainWindow):
     def __init__(self):
@@ -22,6 +25,7 @@ class Main (QtWidgets.QMainWindow):
         # var.ui.btnAceptar.clicked.connect(events.Eventos.Salir)
         var.ui.pushButton.clicked.connect(events.Eventos.Salir)
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
+        var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
