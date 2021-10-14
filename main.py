@@ -7,6 +7,17 @@ import sys, var, events
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+class DialogCalendar(QtWidgets.QDialog):
+    def __init__(self):
+        super(DialogCalendar, self).__init__()
+        var.dlgcalendar = Ui_windowcal()
+        var.dlgcalendar.setupUi(self)
+        diaactual = datetime.now().day
+        mesactual = datetime.now().month
+        anoactual = datetime.now().year
+        var.dlgcalendar.Calendar.setSelectedDate((QtCore.QDate(anoactual,mesactual,diaactual)))
+        var.dlgcalendar.Calendar.clicked.connect(clients.Clientes.cargarFecha)
+
 class DialogAviso(QtWidgets.QDialog):
     def __init__(self):
 
@@ -23,6 +34,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.setupUi(self)
 
         # Eventos de botones
+        var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         var.ui.pushButton.clicked.connect(events.Eventos.Salir)
         var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.selSexo)
         var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
@@ -32,6 +44,14 @@ class Main (QtWidgets.QMainWindow):
 
         # Eventos caja de texto
         var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
+
+        # Eventos de Combo Box
+        clients.Clientes.cargaProv(self)
+        var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
+        clients.Clientes.cargaMun(self)
+
+        # Events de Calendar
+        var.ui.calendarFechaAlta.selectedDate(clients.Clientes.selFechaAlta())
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

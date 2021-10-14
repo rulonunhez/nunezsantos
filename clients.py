@@ -53,3 +53,41 @@ class Clientes():
                 print('Has seleccionado transferencia bancaria')
         except Exception as error:
             print('Error en módulo selPago')
+
+    def cargaProv(self):
+        try:
+            var.ui.cmbProv.clear()
+            prov = ['A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
+            for i in prov:
+                var.ui.cmbProv.addItem(i)
+        except Exception as error:
+            print('Eror en módulo cargaProv, ', error)
+
+    def selProv(prov):
+        try:
+            print('Has seleccionado la provincia de', prov)
+            return prov
+        except Exception as error:
+            print('Error en módulo selProv, ', error)
+
+    def cargaMun(self):
+        try:
+            var.ui.cmbMun.clear()
+            mun = ['A', 'B', 'C', 'D']
+            for i in mun:
+                var.ui.cmbMun.addItem(i)
+        except Exception as error:
+            print('Eror en módulo cargaProv, ', error)
+
+    def selMun(mun):
+        try:
+            print('Has seleccionado el municipio de', mun)
+            return mun
+        except Exception as error:
+            print('Error en módulo selProv, ', error)
+
+    def selFechaAlta(fecha):
+        try:
+            print('La fecha seleccionada es', fecha)
+        except Exception as error:
+            print('Error en módulo selFechaAlta', error)

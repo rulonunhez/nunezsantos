@@ -45,7 +45,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>img/Warning.png</pixmap>
+    <pixmap resource="img/warning.qrc">:/warningprefix/Warning.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -68,6 +68,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="img/warning.qrc"/>
+ </resources>
  <connections/>
 </ui>
