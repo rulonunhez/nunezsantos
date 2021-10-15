@@ -3,7 +3,9 @@ import clients
 import events
 from window import *
 from windowaviso import *
+from windowcal import *
 import sys, var, events
+from datetime import *
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
@@ -44,18 +46,19 @@ class Main (QtWidgets.QMainWindow):
 
         # Eventos caja de texto
         var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
+        var.ui.txtNome.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
+        var.ui.txtApel.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
+        var.ui.txtDir.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
 
         # Eventos de Combo Box
         clients.Clientes.cargaProv(self)
         var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
         clients.Clientes.cargaMun(self)
 
-        # Events de Calendar
-        var.ui.calendarFechaAlta.selectedDate(clients.Clientes.selFechaAlta())
-
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
     var.dlgaviso = DialogAviso()
+    var.dlgcalendar = DialogCalendar()
     window.show()
     sys.exit(app.exec())

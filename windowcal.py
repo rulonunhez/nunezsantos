@@ -14,7 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_windowcal(object):
     def setupUi(self, windowcal):
         windowcal.setObjectName("windowcal")
+        windowcal.setWindowModality(QtCore.Qt.WindowModal)
         windowcal.resize(313, 187)
+        windowcal.setModal(True)
         self.Calendar = QtWidgets.QCalendarWidget(windowcal)
         self.Calendar.setGeometry(QtCore.QRect(0, 0, 312, 183))
         self.Calendar.setObjectName("Calendar")

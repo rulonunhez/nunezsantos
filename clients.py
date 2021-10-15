@@ -2,6 +2,7 @@ from window import *
 import var
 
 class Clientes():
+
     def validarDni():
         try:
             dni = var.ui.txtDni.text()
@@ -91,3 +92,20 @@ class Clientes():
             print('La fecha seleccionada es', fecha)
         except Exception as error:
             print('Error en módulo selFechaAlta', error)
+
+    def cargarFecha(qDate):
+        try:
+            data = ('{0}/{1}/{2}'.format(qDate.day(),qDate.month(),qDate.year()))
+            var.ui.txtFechaAlta.setText(str(data))
+            var.dlgcalendar.hide()
+
+        except Exception as error:
+            print('Error en módulo cargarFecha ',error)
+
+    def cambiarAMayuscula():
+        texto = var.ui.txtNome.text()
+        var.ui.txtNome.setText(texto.title())
+        texto = var.ui.txtApel.text()
+        var.ui.txtApel.setText(texto.title())
+        texto = var.ui.txtDir.text()
+        var.ui.txtDir.setText(texto.title())
