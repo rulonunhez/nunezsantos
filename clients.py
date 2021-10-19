@@ -58,7 +58,7 @@ class Clientes():
     def cargaProv(self):
         try:
             var.ui.cmbProv.clear()
-            prov = ['A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
+            prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
             for i in prov:
                 var.ui.cmbProv.addItem(i)
         except Exception as error:
@@ -74,7 +74,7 @@ class Clientes():
     def cargaMun(self):
         try:
             var.ui.cmbMun.clear()
-            mun = ['A', 'B', 'C', 'D']
+            mun = ['', 'A', 'B', 'C', 'D']
             for i in mun:
                 var.ui.cmbMun.addItem(i)
         except Exception as error:
@@ -109,3 +109,22 @@ class Clientes():
         var.ui.txtApel.setText(texto.title())
         texto = var.ui.txtDir.text()
         var.ui.txtDir.setText(texto.title())
+
+    def guardaCli(self):
+        try:
+            # Preparamos el registro
+            newCli = []
+            client = [var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta]
+            for i in client:
+                newCli.append(i.text())
+
+            # Cargamos en la tabla
+            row = 0
+            column = 0
+            var.ui.tabClientes.insertRow(row)
+            for campo in newCli:
+                cell = QtWidgets.QTableWidgetItem(campo)
+                var.ui.tabClientes.setItem(row, column, cell)
+                column += 1
+        except Exception as error:
+            print('Error en módulo guardar clientes ', error)
