@@ -1,11 +1,12 @@
 from window import *
-import var
+import var, dnivalido
 
 class Clientes():
 
     def validarDni():
         try:
             dni = var.ui.txtDni.text()
+            dnivalido = False
             var.ui.txtDni.setText(dni.upper())
             table = 'TRWAGMYFPDXBNJZSQVHLCKE'
             dig_ext = 'XYZ'
@@ -21,6 +22,8 @@ class Clientes():
                     var.ui.lblValidoDNI.setStyleSheet('QLabel {color: green;}')
                     var.ui.lblValidoDNI.setText('V')
                     var.ui.txtDni.setStyleSheet('background-color: lime;')
+                    dnivalido = True
+
                 else:
                     var.ui.lblValidoDNI.setStyleSheet('QLabel {color: red;}')
                     var.ui.lblValidoDNI.setText('F')
@@ -113,18 +116,35 @@ class Clientes():
     def guardaCli(self):
         try:
             # Preparamos el registro
-            newCli = []
-            client = [var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta]
+            newCli = [] # para la base de datos
+            tabCli = [] # para tablewidget
+            client = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta] # para la TableView
             for i in client:
-                newCli.append(i.text())
+                tabCli.append(i.text())
+
+            pagos = []
+            if var.ui.chkCargoCuenta.isChecked:
+                pagos.append('Cargo cuenta')
+            if var.ui.chkEfectivo.isChecked:
+                pagos.append('Efectivo')
+            if var.ui.chkTransfer.isChecked:
+                pagos.append('Transferencia')
+            if var.ui.chkTarjeta.isChecked:
+                pagos.append('Tarjeta')
+
+            pagos = set(pagos)
+            tabCli.append('; '.join(pagos))
 
             # Cargamos en la tabla
-            row = 0
-            column = 0
-            var.ui.tabClientes.insertRow(row)
-            for campo in newCli:
-                cell = QtWidgets.QTableWidgetItem(campo)
-                var.ui.tabClientes.setItem(row, column, cell)
-                column += 1
+            if dnivalido:
+                row = 0
+                column = 0
+                var.ui.tabClientes.insertRow(row)
+
+                for campo in tabCli:
+                    cell = QtWidgets.QTableWidgetItem(str(campo))
+                    var.ui.tabClientes.setItem(row, column, cell)
+                    column += 1
+
         except Exception as error:
             print('Error en módulo guardar clientes ', error)

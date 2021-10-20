@@ -847,6 +847,11 @@ color: rgb(170, 0, 0);
     </property>
     <column>
      <property name="text">
+      <string>DNI</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
       <string>Apellidos</string>
      </property>
     </column>
