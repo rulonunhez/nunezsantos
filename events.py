@@ -50,5 +50,7 @@ class Eventos():
             var.ui.chkEfectivo.setChecked(False)
             var.ui.chkCargoCuenta.setChecked(False)
             var.ui.chkTransfer.setChecked(False)
+            var.ui.txtDni.setStyleSheet('QLabel {color: white;}')
+
         except Exception as error:
             print('Error en módulo limpiar el formulario')

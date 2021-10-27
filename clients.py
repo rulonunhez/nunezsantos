@@ -1,5 +1,6 @@
+import conexion
 from window import *
-import var, dnivalido
+import var
 
 class Clientes():
 
@@ -33,9 +34,11 @@ class Clientes():
                 var.ui.lblValidoDNI.setText('F')
                 var.ui.txtDni.setStyleSheet('background-color: pink;')
 
+            return dnivalido
         except Exception as error:
             print('Error en módulo validarDni')
 
+    '''
     def selSexo(self):
         try:
             if var.ui.rbtFem.isChecked():
@@ -57,6 +60,7 @@ class Clientes():
                 print('Has seleccionado transferencia bancaria')
         except Exception as error:
             print('Error en módulo selPago')
+    '''
 
     def cargaProv(self):
         try:
@@ -67,12 +71,14 @@ class Clientes():
         except Exception as error:
             print('Eror en módulo cargaProv, ', error)
 
+    '''
     def selProv(prov):
         try:
             print('Has seleccionado la provincia de', prov)
             return prov
         except Exception as error:
             print('Error en módulo selProv, ', error)
+    '''
 
     def cargaMun(self):
         try:
@@ -116,27 +122,47 @@ class Clientes():
     def guardaCli(self):
         try:
             # Preparamos el registro
+            dniValido = Clientes.validarDni()
+
+
             newCli = [] # para la base de datos
+            cliente = [var.ui.txtDni, var.ui.txtFechaAlta, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
             tabCli = [] # para tablewidget
             client = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta] # para la TableView
             for i in client:
                 tabCli.append(i.text())
+            for i in cliente:
+                newCli.append(i.text())
+
+            newCli.append(var.ui.cmbProv.currentText())
+            newCli.append(var.ui.cmbMun.currentText())
+
+            if var.ui.rbtHom.isChecked():
+                newCli.append('Hombre')
+            elif var.ui.rbtFem.isChecked():
+                newCli.append('Mujer')
 
             pagos = []
-            if var.ui.chkCargoCuenta.isChecked:
+
+            if var.ui.chkCargoCuenta.isChecked():
                 pagos.append('Cargo cuenta')
-            if var.ui.chkEfectivo.isChecked:
+            if var.ui.chkEfectivo.isChecked():
                 pagos.append('Efectivo')
-            if var.ui.chkTransfer.isChecked:
+            if var.ui.chkTransfer.isChecked():
                 pagos.append('Transferencia')
-            if var.ui.chkTarjeta.isChecked:
+            if var.ui.chkTarjeta.isChecked():
                 pagos.append('Tarjeta')
 
             pagos = set(pagos)
             tabCli.append('; '.join(pagos))
+            newCli.append('; '.join(pagos))
 
-            # Cargamos en la tabla
-            if dnivalido:
+            print(newCli)
+            conexion.Conexion.altaCli(newCli)
+
+
+                # Cargamos en la tabla
+            if dniValido:
                 row = 0
                 column = 0
                 var.ui.tabClientes.insertRow(row)
@@ -146,5 +172,38 @@ class Clientes():
                     var.ui.tabClientes.setItem(row, column, cell)
                     column += 1
 
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('DNI no válido. Introduzca otro')
+                msg.exec()
+
+
         except Exception as error:
-            print('Error en módulo guardar clientes ', error)
+            print('Error en módulo guardar clientes', error)
+
+
+    def cargaCli(self):
+        try:
+            fila = var.ui.tabClientes.selectedItems()
+            datos = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta]
+            if fila:
+                row = [dato.text() for dato in fila]
+            for i, dato in enumerate(datos):
+                dato.setText(row[i])
+
+            if 'Efectivo' in row[4]:
+                var.ui.chkEfectivo.setChecked(True)
+            if 'Transferencia' in row[4]:
+                var.ui.chkTransfer.setChecked(True)
+            if 'Tarjeta' in row[4]:
+                var.ui.chkTarjeta.setChecked(True)
+            if 'Cargo cuenta' in row[4]:
+                var.ui.chkCargoCuenta.setChecked(True)
+
+        except Exception as error:
+            print('Error en módulo cargar cliente ', error)
+
+    # Módulos gestión base datos cliente
+

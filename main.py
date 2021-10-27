@@ -1,5 +1,6 @@
 # This is a sample Python script.
 import clients
+import conexion
 import events
 from window import *
 from windowaviso import *
@@ -38,8 +39,8 @@ class Main (QtWidgets.QMainWindow):
         # Eventos de botones
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         var.ui.pushButton.clicked.connect(events.Eventos.Salir)
-        var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.selSexo)
-        var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
+        # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.selSexo)
+        # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
         var.ui.btnRestablecer.clicked.connect(events.Eventos.limpiaForm)
 
@@ -54,11 +55,16 @@ class Main (QtWidgets.QMainWindow):
 
         # Eventos de Combo Box
         clients.Clientes.cargaProv(self)
-        var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
+        # var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
         clients.Clientes.cargaMun(self)
 
         # Eventos QTableWidget
         events.Eventos.resizeTablaCli(self)
+        var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
+        var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+
+        # Base de datos
+        conexion.Conexion.db_connect(var.filedb)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
