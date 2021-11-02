@@ -1,6 +1,8 @@
 import conexion
 from window import *
 import var
+from PyQt5 import QtSql
+
 
 class Clientes():
 
@@ -104,12 +106,12 @@ class Clientes():
 
     def cargarFecha(qDate):
         try:
-            data = ('{0}/{1}/{2}'.format(qDate.day(),qDate.month(),qDate.year()))
+            data = ('{0}/{1}/{2}'.format(qDate.day(), qDate.month(), qDate.year()))
             var.ui.txtFechaAlta.setText(str(data))
             var.dlgcalendar.hide()
 
         except Exception as error:
-            print('Error en módulo cargarFecha ',error)
+            print('Error en módulo cargarFecha ', error)
 
     def cambiarAMayuscula():
         texto = var.ui.txtNome.text()
@@ -124,11 +126,10 @@ class Clientes():
             # Preparamos el registro
             dniValido = Clientes.validarDni()
 
-
-            newCli = [] # para la base de datos
+            newCli = []  # para la base de datos
             cliente = [var.ui.txtDni, var.ui.txtFechaAlta, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
-            tabCli = [] # para tablewidget
-            client = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta] # para la TableView
+            tabCli = []  # para tablewidget
+            client = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta]  # para la TableView
             for i in client:
                 tabCli.append(i.text())
             for i in cliente:
@@ -160,8 +161,7 @@ class Clientes():
             print(newCli)
             conexion.Conexion.altaCli(newCli)
 
-
-                # Cargamos en la tabla
+            # Cargamos en la tabla
             if dniValido:
                 row = 0
                 column = 0
@@ -183,15 +183,17 @@ class Clientes():
         except Exception as error:
             print('Error en módulo guardar clientes', error)
 
-
     def cargaCli(self):
         try:
             fila = var.ui.tabClientes.selectedItems()
             datos = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta]
+
             if fila:
                 row = [dato.text() for dato in fila]
             for i, dato in enumerate(datos):
                 dato.setText(row[i])
+
+            dni = var.ui.txtDni.text
 
             if 'Efectivo' in row[4]:
                 var.ui.chkEfectivo.setChecked(True)
@@ -201,6 +203,8 @@ class Clientes():
                 var.ui.chkTarjeta.setChecked(True)
             if 'Cargo cuenta' in row[4]:
                 var.ui.chkCargoCuenta.setChecked(True)
+
+            conexion.Conexion.cargaCli2(dni)
 
         except Exception as error:
             print('Error en módulo cargar cliente ', error)

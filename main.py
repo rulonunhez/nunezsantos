@@ -69,7 +69,12 @@ class Main (QtWidgets.QMainWindow):
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     window = Main()
+    desktop = QtWidgets.QApplication.desktop()
+    x = (desktop.width() - window.width()) // 2
+    y = (desktop.height() - window.height()) // 2
+    window.move(x, y)
     var.dlgaviso = DialogAviso()
     var.dlgcalendar = DialogCalendar()
+    conexion.Conexion.cargaTabCli()
     window.show()
     sys.exit(app.exec())

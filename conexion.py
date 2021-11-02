@@ -1,5 +1,8 @@
 from PyQt5 import QtSql, QtWidgets
 
+import var
+
+
 class Conexion():
     def db_connect(filename):
         try:
@@ -19,7 +22,7 @@ class Conexion():
     def altaCli(newCli):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('INSERT INTO clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) VALUES (:dni, :alta, :apellidos, :nombre, :direccion'
+            query.prepare('insert into clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) values (:dni, :alta, :apellidos, :nombre, :direccion'
                           ', :provincia, :municipio, :sexo, :pago)')
             query.bindValue(':dni', str(newCli[0]))
             query.bindValue(':alta', str(newCli[1]))
@@ -42,9 +45,58 @@ class Conexion():
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
                 msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText('Error dando de alta el cliente')
+                msg.setText(query.lastError().text())
                 msg.exec()
 
 
         except Exception as error:
             print('Error en módulo alta cliente', error)
+
+    def cargaTabCli():
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT dni, apellidos, nombre, alta, pago FROM clientes')
+            if query.exec_():
+                while query.next():
+                    dni = query.value(0)
+                    apellidos = query.value(1)
+                    nombre = query.value(2)
+                    alta = query.value(3)
+                    pago = query.value(4)
+                    var.ui.tabClientes.setRowCount(index+1) #creamos la fila y luego cargamos datos
+                    var.ui.tabClientes.setItem(index, 0, QtWidgets.QTableWidgetItem(dni))
+                    var.ui.tabClientes.setItem(index, 1, QtWidgets.QTableWidgetItem(apellidos))
+                    var.ui.tabClientes.setItem(index, 2, QtWidgets.QTableWidgetItem(nombre))
+                    var.ui.tabClientes.setItem(index, 3, QtWidgets.QTableWidgetItem(alta))
+                    var.ui.tabClientes.setItem(index, 4, QtWidgets.QTableWidgetItem(pago))
+                    index += 1
+        except Exception as error:
+            print('Error en módulo cargar tabla clientes', error)
+
+    def cargaCli2(dni):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT direccion, provincia, municipio, sexo FROM clientes WHERE dni = :dni')
+            query.bindValue(':dni', dni)
+            print(dni)
+            if query.exec_():
+                direccion = query.value(0)
+                provincia = query.value(1)
+                sexo = query.value(3)
+                municipio = query.value(2)
+
+                print(direccion)
+                var.ui.txtDir.setText(direccion)
+                var.ui.cmbProv.set(provincia)
+                var.ui.cmbMun.set(municipio)
+
+            '''
+            if sexo = 'Hombre':
+                var.ui.rbtHom.isChecked()
+            elif sexo = 'Mujer':
+                var.ui.rbtFem.isChecked()
+            '''
+
+        except Exception as error:
+            print('Error en módulo cargar cliente dos ', error)
