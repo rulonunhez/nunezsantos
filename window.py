@@ -301,6 +301,7 @@ class Ui_MainWindow(object):
         self.tabClientes.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.tabClientes.setHorizontalHeaderItem(4, item)
+        self.tabClientes.verticalHeader().setDefaultSectionSize(40)
         self.btnRestablecer = QtWidgets.QPushButton(self.tabClientes_2)
         self.btnRestablecer.setGeometry(QtCore.QRect(830, 730, 51, 41))
         self.btnRestablecer.setText("")

@@ -30,10 +30,10 @@ class Conexion():
             query.bindValue(':nombre', str(newCli[3]))
             query.bindValue(':direccion', str(newCli[4]))
             query.bindValue(':provincia,', str(newCli[5]))
+            print(newCli[5])
             query.bindValue(':municipio', str(newCli[6]))
             query.bindValue(':sexo', str(newCli[7]))
             query.bindValue(':pago', str(newCli[8]))
-            print(newCli)
             if query.exec_():
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
@@ -56,7 +56,7 @@ class Conexion():
         try:
             index = 0
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT dni, apellidos, nombre, alta, pago FROM clientes')
+            query.prepare('SELECT dni, apellidos, nombre, alta, pago FROM clientes ORDER BY apellidos, nombre')
             if query.exec_():
                 while query.next():
                     dni = query.value(0)
@@ -76,27 +76,38 @@ class Conexion():
 
     def cargaCli2(dni):
         try:
+            record = []
             query = QtSql.QSqlQuery()
             query.prepare('SELECT direccion, provincia, municipio, sexo FROM clientes WHERE dni = :dni')
             query.bindValue(':dni', dni)
-            print(dni)
             if query.exec_():
-                direccion = query.value(0)
-                provincia = query.value(1)
-                sexo = query.value(3)
-                municipio = query.value(2)
-
-                print(direccion)
-                var.ui.txtDir.setText(direccion)
-                var.ui.cmbProv.set(provincia)
-                var.ui.cmbMun.set(municipio)
-
-            '''
-            if sexo = 'Hombre':
-                var.ui.rbtHom.isChecked()
-            elif sexo = 'Mujer':
-                var.ui.rbtFem.isChecked()
-            '''
+                while query.next():
+                    for i in range(4):
+                        record.append(query.value(i))
+            return record
 
         except Exception as error:
             print('Error en módulo cargar cliente dos ', error)
+
+    def bajaCli(dni):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('DELETE FROM clientes WHERE dni = :dni')
+            query.bindValue(':dni', str(dni))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Cliente dado de baja')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+
+        except Exception as error:
+            print('Error baja ciente en conexion', error)

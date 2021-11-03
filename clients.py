@@ -1,4 +1,5 @@
 import conexion
+import events
 from window import *
 import var
 from PyQt5 import QtSql
@@ -159,18 +160,11 @@ class Clientes():
             newCli.append('; '.join(pagos))
 
             print(newCli)
-            conexion.Conexion.altaCli(newCli)
 
             # Cargamos en la tabla
             if dniValido:
-                row = 0
-                column = 0
-                var.ui.tabClientes.insertRow(row)
-
-                for campo in tabCli:
-                    cell = QtWidgets.QTableWidgetItem(str(campo))
-                    var.ui.tabClientes.setItem(row, column, cell)
-                    column += 1
+                conexion.Conexion.altaCli(newCli) #graba en la tabla de la bbdd
+                conexion.Conexion.cargaTabCli() #recarga la tabla
 
             else:
                 msg = QtWidgets.QMessageBox()
@@ -185,6 +179,7 @@ class Clientes():
 
     def cargaCli(self):
         try:
+            events.Eventos.limpiaForm(self)
             fila = var.ui.tabClientes.selectedItems()
             datos = [var.ui.txtDni, var.ui.txtApel, var.ui.txtNome, var.ui.txtFechaAlta]
 
@@ -204,10 +199,24 @@ class Clientes():
             if 'Cargo cuenta' in row[4]:
                 var.ui.chkCargoCuenta.setChecked(True)
 
-            conexion.Conexion.cargaCli2(dni)
+            registro = conexion.Conexion.cargaCli2(row[0])
+            var.ui.txtDir.setText(str(registro[0]))
+            var.ui.cmbProv.setCurrentText(str(registro[1]))
+            var.ui.cmbMun.setCurrentText(str(registro[2]))
+            if str(registro[3]) == 'Hombre':
+                var.ui.rbtHom.setChecked(True)
+            if str(registro[3]) == 'Mujer':
+                var.ui.rbtFem.setChecked(True)
 
         except Exception as error:
             print('Error en módulo cargar cliente ', error)
 
-    # Módulos gestión base datos cliente
+    def bajaCli(self):
+        try:
+            dni = var.ui.txtDni.text()
+            conexion.Conexion.bajaCli(dni)
+            conexion.Conexion.cargaTabCli()
+        except Exception as error:
+            print('Error en baja cliente', error)
 
+    # Módulos gestión base datos cliente

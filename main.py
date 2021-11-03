@@ -43,6 +43,7 @@ class Main (QtWidgets.QMainWindow):
         # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
         var.ui.btnRestablecer.clicked.connect(events.Eventos.limpiaForm)
+        var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
 
         # Eventos barra de menú
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
@@ -65,6 +66,7 @@ class Main (QtWidgets.QMainWindow):
 
         # Base de datos
         conexion.Conexion.db_connect(var.filedb)
+        conexion.Conexion.cargaTabCli()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
@@ -75,6 +77,5 @@ if __name__ == '__main__':
     window.move(x, y)
     var.dlgaviso = DialogAviso()
     var.dlgcalendar = DialogCalendar()
-    conexion.Conexion.cargaTabCli()
     window.show()
     sys.exit(app.exec())

@@ -763,6 +763,9 @@ color: rgb(170, 0, 0);
         <height>500</height>
        </rect>
       </property>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>40</number>
+      </attribute>
       <column>
        <property name="text">
         <string>DNI</string>
