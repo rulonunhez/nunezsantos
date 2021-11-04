@@ -136,10 +136,17 @@ class Conexion():
         try:
             provincias = Conexion.cargarProv(self)
             municipios = []
+            repite = True
             prov = var.ui.cmbProv.currentText()
+            for i in provincias & repite == True:
+                nombre = provincias.values(i)
+                dni = provincias.keys(i)
+                if nombre == prov:
+                    repite = False
 
             query = QtSql.QSqlQuery()
             query.prepare('SELECT municipio FROM municipios where id_provincia = :id')
+            query.bindValue(':id', dni)
             if query.exec_():
                 while query.next():
                     municipios.append(query.value(0))
