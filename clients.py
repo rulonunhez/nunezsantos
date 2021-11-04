@@ -55,11 +55,11 @@ class Clientes():
     def cargaMun(self):
         try:
             var.ui.cmbMun.clear()
-            mun = conexion.Conexion.cargarMun()
+            mun = conexion.Conexion.cargarMun(self)
             for i in mun:
                 var.ui.cmbMun.addItem(i)
         except Exception as error:
-            print('Eror en módulo cargaProv, ', error)
+            print('Eror en módulo cargaMun, ', error)
 
     def selMun(mun):
         try:

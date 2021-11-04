@@ -59,7 +59,7 @@ class Main (QtWidgets.QMainWindow):
 
 
         # var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
-        clients.Clientes.cargaMun(self)
+
 
         # Eventos QTableWidget
         events.Eventos.resizeTablaCli(self)
@@ -72,6 +72,7 @@ class Main (QtWidgets.QMainWindow):
 
         # Eventos de Combo Box
         clients.Clientes.cargaProv(self)
+        clients.Clientes.cargaMun(self)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

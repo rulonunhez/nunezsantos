@@ -140,7 +140,9 @@ class Conexion():
             prov = var.ui.cmbProv.currentText()
             for i in provincias & repite == True:
                 nombre = provincias.values(i)
+                print(nombre)
                 dni = provincias.keys(i)
+                print(dni)
                 if nombre == prov:
                     repite = False
 
@@ -154,4 +156,4 @@ class Conexion():
             return municipios
 
         except Exception as error:
-            print('Error cargar provincias en conexion', error)
+            print('Error cargar municipios en conexion', error)
