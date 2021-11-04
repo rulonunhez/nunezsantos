@@ -54,8 +54,8 @@ class Main (QtWidgets.QMainWindow):
         var.ui.txtApel.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
 
-        # Eventos de Combo Box
-        clients.Clientes.cargaProv(self)
+
+
         # var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
         clients.Clientes.cargaMun(self)
 
@@ -67,6 +67,9 @@ class Main (QtWidgets.QMainWindow):
         # Base de datos
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargaTabCli()
+
+        # Eventos de Combo Box
+        clients.Clientes.cargaProv(self)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

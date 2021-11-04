@@ -41,47 +41,16 @@ class Clientes():
         except Exception as error:
             print('Error en módulo validarDni')
 
-    '''
-    def selSexo(self):
-        try:
-            if var.ui.rbtFem.isChecked():
-                print('Marcaste sexo femenino')
-            if var.ui.rbtHom.isChecked():
-                print('Marcaste sexo masculino')
-        except Exception as error:
-            print('Error en módulo selSexo')
-
-    def selPago(self):
-        try:
-            if var.ui.chkEfectivo.isChecked():
-                print('Has seleccionado efectivo')
-            if var.ui.chkTarjeta.isChecked():
-                print('Has seleccionado tarjeta')
-            if var.ui.chkCargoCuenta.isChecked():
-                print('Has seleccionado cargo en cuenta')
-            if var.ui.chkTransfer.isChecked():
-                print('Has seleccionado transferencia bancaria')
-        except Exception as error:
-            print('Error en módulo selPago')
-    '''
-
     def cargaProv(self):
         try:
+            provincias = conexion.Conexion.cargarProv(self)
+            nombres = provincias.values()
             var.ui.cmbProv.clear()
-            prov = ['', 'A Coruña', 'Lugo', 'Ourense', 'Pontevedra']
-            for i in prov:
+            for i in nombres:
                 var.ui.cmbProv.addItem(i)
+
         except Exception as error:
             print('Eror en módulo cargaProv, ', error)
-
-    '''
-    def selProv(prov):
-        try:
-            print('Has seleccionado la provincia de', prov)
-            return prov
-        except Exception as error:
-            print('Error en módulo selProv, ', error)
-    '''
 
     def cargaMun(self):
         try:

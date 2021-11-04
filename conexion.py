@@ -111,3 +111,40 @@ class Conexion():
 
         except Exception as error:
             print('Error baja ciente en conexion', error)
+
+    def cargarProv(self):
+        try:
+            provinciaId = []
+            provinciaNombre = []
+            provincias = {}
+
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT id, provincia FROM provincias')
+            if query.exec_():
+                while query.next():
+                    provinciaId.append(query.value(0))
+                    provinciaNombre.append(query.value(1))
+
+            provincias = dict(zip(provinciaId, provinciaNombre))
+
+            return provincias
+
+        except Exception as error:
+            print('Error cargar provincias en conexion', error)
+
+    def cargarMun(self):
+        try:
+            provincias = Conexion.cargarProv(self)
+            municipios = []
+            prov = var.ui.cmbProv.currentText()
+
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT municipio FROM municipios where id_provincia = :id')
+            if query.exec_():
+                while query.next():
+                    municipios.append(query.value(0))
+
+            return municipios
+
+        except Exception as error:
+            print('Error cargar provincias en conexion', error)
