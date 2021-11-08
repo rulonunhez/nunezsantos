@@ -38,6 +38,15 @@ class Main (QtWidgets.QMainWindow):
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
 
+        # Base de datos
+        conexion.Conexion.db_connect(var.filedb)
+        conexion.Conexion.cargaTabCli()
+
+        # Eventos de Combo Box
+        clients.Clientes.cargaProv(self)
+        clients.Clientes.cargaMun(self)
+        var.ui.cmbProv.activated[str].connect(clients.Clientes.cargaMun)
+
         # Eventos de botones
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         var.ui.pushButton.clicked.connect(events.Eventos.Salir)
@@ -45,6 +54,7 @@ class Main (QtWidgets.QMainWindow):
         # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
         var.ui.btnRestablecer.clicked.connect(events.Eventos.limpiaForm)
+        var.ui.btnRestablecer.clicked.connect(clients.Clientes.cargaMun)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
 
         # Eventos barra de menú
@@ -56,23 +66,14 @@ class Main (QtWidgets.QMainWindow):
         var.ui.txtApel.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
 
-
-
-        # var.ui.cmbProv.activated[str].connect(clients.Clientes.selProv)
-
-
         # Eventos QTableWidget
         events.Eventos.resizeTablaCli(self)
         var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
-        # Base de datos
-        conexion.Conexion.db_connect(var.filedb)
-        conexion.Conexion.cargaTabCli()
 
-        # Eventos de Combo Box
-        clients.Clientes.cargaProv(self)
-        clients.Clientes.cargaMun(self)
+
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

@@ -54,8 +54,8 @@ class Clientes():
 
     def cargaMun(self):
         try:
-            var.ui.cmbMun.clear()
             mun = conexion.Conexion.cargarMun(self)
+            var.ui.cmbMun.clear()
             for i in mun:
                 var.ui.cmbMun.addItem(i)
         except Exception as error:

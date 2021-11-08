@@ -22,8 +22,7 @@ class Conexion():
     def altaCli(newCli):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('insert into clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) values (:dni, :alta, :apellidos, :nombre, :direccion'
-                          ', :provincia, :municipio, :sexo, :pago)')
+            query.prepare('insert into clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) values (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)')
             query.bindValue(':dni', str(newCli[0]))
             query.bindValue(':alta', str(newCli[1]))
             query.bindValue(':apellidos', str(newCli[2]))
@@ -135,20 +134,20 @@ class Conexion():
     def cargarMun(self):
         try:
             provincias = Conexion.cargarProv(self)
-            municipios = []
-            repite = True
+            print(provincias)
             prov = var.ui.cmbProv.currentText()
-            for i in provincias & repite == True:
-                nombre = provincias.values(i)
-                print(nombre)
-                dni = provincias.keys(i)
-                print(dni)
-                if nombre == prov:
-                    repite = False
+            print(prov)
+            municipios = []
+            i = 0
+            id = ""
+
+            for dato in provincias:
+                if (provincias.get(dato) == prov):
+                    id = dato
 
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT municipio FROM municipios where id_provincia = :id')
-            query.bindValue(':id', dni)
+            query.prepare('SELECT municipio FROM municipios where provincia_id = :id')
+            query.bindValue(':id', id)
             if query.exec_():
                 while query.next():
                     municipios.append(query.value(0))
