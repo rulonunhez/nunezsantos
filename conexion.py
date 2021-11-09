@@ -28,11 +28,12 @@ class Conexion():
             query.bindValue(':apellidos', str(newCli[2]))
             query.bindValue(':nombre', str(newCli[3]))
             query.bindValue(':direccion', str(newCli[4]))
-            query.bindValue(':provincia,', str(newCli[5]))
+            query.bindValue(':provincia', str(newCli[5]))
             print(newCli[5])
             query.bindValue(':municipio', str(newCli[6]))
             query.bindValue(':sexo', str(newCli[7]))
             query.bindValue(':pago', str(newCli[8]))
+            print(str(query))
             if query.exec_():
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
@@ -156,3 +157,36 @@ class Conexion():
 
         except Exception as error:
             print('Error cargar municipios en conexion', error)
+
+    def modifCli(modcliente):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                'update clientes set (alta = :alta, apellidos = :apellidos, nombre = :nombre, direccion = :direccion, '
+                'provincia = :provincia, municipio = :munipio, sexo = :sexo, pago = :pago) where dni = :dni')
+            query.bindValue(':dni', str(modcliente[0]))
+            query.bindValue(':alta', str(modcliente[1]))
+            query.bindValue(':apellidos', str(modcliente[2]))
+            query.bindValue(':nombre', str(modcliente[3]))
+            query.bindValue(':direccion', str(modcliente[4]))
+            query.bindValue(':provincia', str(modcliente[5]))
+            query.bindValue(':municipio', str(modcliente[6]))
+            query.bindValue(':sexo', str(modcliente[7]))
+            query.bindValue(':pago', str(modcliente[8]))
+            print(modcliente)
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Cliente modificado')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print('Error en modificar cliente en conexión', error)

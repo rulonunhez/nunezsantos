@@ -5,8 +5,9 @@ import events
 from window import *
 from windowaviso import *
 from windowcal import *
-import sys, var, events
+import sys, var, events, locale
 from datetime import *
+locale.setlocale(locale.LC_ALL, 'es-ES')
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -45,7 +46,7 @@ class Main (QtWidgets.QMainWindow):
         # Eventos de Combo Box
         clients.Clientes.cargaProv(self)
         clients.Clientes.cargaMun(self)
-        var.ui.cmbProv.activated[str].connect(clients.Clientes.cargaMun)
+        var.ui.cmbProv.currentTextChanged[str].connect(clients.Clientes.cargaMun)
 
         # Eventos de botones
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
@@ -56,6 +57,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnRestablecer.clicked.connect(events.Eventos.limpiaForm)
         var.ui.btnRestablecer.clicked.connect(clients.Clientes.cargaMun)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
+        var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
         # Eventos barra de menú
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
@@ -71,9 +73,9 @@ class Main (QtWidgets.QMainWindow):
         var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
-
-
-
+        var.ui.statusbar.addPermanentWidget(var.ui.lblFecha, 1)
+        day = datetime.now()
+        var.ui.lblFecha.setText(day.strftime('%A, %d de %B de %Y'))
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

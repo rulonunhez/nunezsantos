@@ -105,8 +105,8 @@ class Clientes():
             for i in cliente:
                 newCli.append(i.text())
 
-            newCli.append(var.ui.cmbProv.currentText())
-            newCli.append(var.ui.cmbMun.currentText())
+            newCli.append(str(var.ui.cmbProv.currentText()))
+            newCli.append(str(var.ui.cmbMun.currentText()))
 
             if var.ui.rbtHom.isChecked():
                 newCli.append('Hombre')
@@ -127,8 +127,6 @@ class Clientes():
             pagos = set(pagos)
             tabCli.append('; '.join(pagos))
             newCli.append('; '.join(pagos))
-
-            print(newCli)
 
             # Cargamos en la tabla
             if dniValido:
@@ -180,6 +178,36 @@ class Clientes():
         except Exception as error:
             print('Error en módulo cargar cliente ', error)
 
+    def modifCli(self):
+        try:
+            modcliente = []
+            cliente = [var.ui.txtDni, var.ui.txtFechaAlta, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
+            for i in cliente:
+                modcliente.append(i.text())
+            modcliente.append(var.ui.cmbProv.currentText())
+            modcliente.append(var.ui.cmbMun.currentText())
+            if var.ui.rbtHom.isChecked():
+                modcliente.append('Hombre')
+            elif var.ui.rbtFem.isChecked():
+                modcliente.append('Mujer')
+            pagos = []
+            if var.ui.chkCargoCuenta.isChecked():
+                pagos.append('Cargo cuenta')
+            if var.ui.chkEfectivo.isChecked():
+                pagos.append('Efectivo')
+            if var.ui.chkTransfer.isChecked():
+                pagos.append('Transferencia')
+            if var.ui.chkTarjeta.isChecked():
+                pagos.append('Tarjeta')
+            pagos = set(pagos)
+            modcliente.append('; '.join(pagos))
+
+            conexion.Conexion.modifCli(modcliente)
+            conexion.Conexion.cargaTabCli()
+
+        except Exception as error:
+            print('Error en modificación de cliente', error)
+
     def bajaCli(self):
         try:
             dni = var.ui.txtDni.text()
@@ -187,5 +215,7 @@ class Clientes():
             conexion.Conexion.cargaTabCli()
         except Exception as error:
             print('Error en baja cliente', error)
+
+
 
     # Módulos gestión base datos cliente
