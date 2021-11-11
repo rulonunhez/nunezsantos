@@ -135,11 +135,8 @@ class Conexion():
     def cargarMun(self):
         try:
             provincias = Conexion.cargarProv(self)
-            print(provincias)
             prov = var.ui.cmbProv.currentText()
-            print(prov)
             municipios = []
-            i = 0
             id = ""
 
             for dato in provincias:
@@ -173,7 +170,6 @@ class Conexion():
             query.bindValue(':municipio', str(modcliente[6]))
             query.bindValue(':sexo', str(modcliente[7]))
             query.bindValue(':pago', str(modcliente[8]))
-            print(modcliente)
 
             if query.exec_():
                 msg = QtWidgets.QMessageBox()

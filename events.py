@@ -3,8 +3,14 @@
 Fichero de eventos generales
 
 '''
-import var, sys
+import os.path
+import zipfile
+
+import conexion
+import var, sys, shutil
 from windowaviso import *
+from datetime import date, datetime
+from zipfile import ZipFile
 
 class Eventos():
     def Salir(self):
@@ -53,4 +59,43 @@ class Eventos():
             var.ui.txtDni.setStyleSheet('QLabel {color: white;}')
 
         except Exception as error:
-            print('Error en módulo limpiar el formulario')
+            print('Error en módulo limpiar el formulario,', error)
+
+    def Abrir(self):
+        try:
+            var.dlgabrir.show()
+        except Exception as error:
+            print('Error al abrir ciadro dialogo,', error)
+
+    def crearBackup(self):
+        try:
+            fecha = datetime.today().strftime('%Y,%m,%d,%H,%M,%S')
+            var.copia = (str(fecha) + '_backup.zip')
+            option = QtWidgets.QFileDialog.Options()
+            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Guardar Copia', var.copia, '.zip', options = option)
+            if var.dlgabrir.Accepted and filename != '':
+                fichzip = zipfile.ZipFile(var.copia, 'w')
+                fichzip.write(var.filedb, os.path.basename(var.filedb), zipfile.ZIP_DEFLATED)
+                fichzip.close()
+                shutil.move(str(var.copia), str(directorio))
+
+        except Exception as error:
+            print('Error en crear backup', error)
+
+    def recuperarBackup(self):
+        try:
+            dirpro = os.getcwd()
+            print(dirpro)
+            option = QtWidgets.QFileDialog.Options()
+            filename = var.dlgabrir.getSaveFileName(None, 'Restaurar Copia', var.copia, '.zip', options=option)
+            if var.dlgabrir.Accepted and filename != '':
+                file = filename[0]
+                with zipfile.ZipFile(str(file), 'r') as bbdd:
+                    bbdd.extractall()
+                bbdd.close()
+                shutil.move('bbdd.sqlite', str(dirpro))
+            conexion.Conexion.db_connect(var.filedb)
+            conexion.Conexion.cargarProv()
+
+        except Exception as error:
+            print('Error en crear backup', error)

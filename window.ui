@@ -1014,19 +1014,21 @@ color: rgb(170, 0, 0);
     <property name="title">
      <string>Archivo</string>
     </property>
-    <widget class="QMenu" name="menuAbrir">
-     <property name="title">
-      <string>Abrir</string>
-     </property>
-     <addaction name="actionFichero"/>
-    </widget>
-    <addaction name="menuAbrir"/>
+    <addaction name="actionAbrir"/>
     <addaction name="actionGuadar"/>
     <addaction name="actionGuardar_Como"/>
     <addaction name="separator"/>
     <addaction name="actionSalir"/>
    </widget>
+   <widget class="QMenu" name="menuHerramientas">
+    <property name="title">
+     <string>Herramientas</string>
+    </property>
+    <addaction name="actionCrear_Backup"/>
+    <addaction name="actionRecuperar_Backup"/>
+   </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuHerramientas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionGuadar">
@@ -1050,6 +1052,21 @@ color: rgb(170, 0, 0);
    </property>
    <property name="shortcut">
     <string>Alt+S</string>
+   </property>
+  </action>
+  <action name="actionAbrir">
+   <property name="text">
+    <string>Abrir</string>
+   </property>
+  </action>
+  <action name="actionCrear_Backup">
+   <property name="text">
+    <string>Crear Backup</string>
+   </property>
+  </action>
+  <action name="actionRecuperar_Backup">
+   <property name="text">
+    <string>Recuperar Backup</string>
    </property>
   </action>
  </widget>

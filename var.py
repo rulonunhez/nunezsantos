@@ -8,5 +8,7 @@ global ui
 global dlgaviso
 global dlgcalendar
 global dnivalido
+global dlgabrir
+global copia
 
 filedb = 'bbdd.sqlite'

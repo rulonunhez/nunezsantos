@@ -12,6 +12,9 @@ locale.setlocale(locale.LC_ALL, 'es-ES')
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+class FileDialogAbrir(QtWidgets.QFileDialog):
+    def __init__(self):
+        super(FileDialogAbrir, self).__init__()
 
 class DialogCalendar(QtWidgets.QDialog):
     def __init__(self):
@@ -59,8 +62,10 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
-        # Eventos barra de menú
+        # Eventos barra de menú y herramientas
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
+        var.ui.actionAbrir.triggered.connect(events.Eventos.Abrir)
+        var.ui.actionCrear_Backup.triggered.connect(events.Eventos.crearBackup)
 
         # Eventos caja de texto
         var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
@@ -86,5 +91,6 @@ if __name__ == '__main__':
     window.move(x, y)
     var.dlgaviso = DialogAviso()
     var.dlgcalendar = DialogCalendar()
+    var.dlgabrir = FileDialogAbrir()
     window.show()
     sys.exit(app.exec())

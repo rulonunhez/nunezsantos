@@ -61,13 +61,6 @@ class Clientes():
         except Exception as error:
             print('Eror en módulo cargaMun, ', error)
 
-    def selMun(mun):
-        try:
-            print('Has seleccionado el municipio de', mun)
-            return mun
-        except Exception as error:
-            print('Error en módulo selProv, ', error)
-
     def selFechaAlta(fecha):
         try:
             print('La fecha seleccionada es', fecha)
