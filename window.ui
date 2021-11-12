@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>866</height>
+    <height>899</height>
    </rect>
   </property>
   <property name="font">
@@ -1015,6 +1015,8 @@ color: rgb(170, 0, 0);
      <string>Archivo</string>
     </property>
     <addaction name="actionAbrir"/>
+    <addaction name="actionImprimir"/>
+    <addaction name="separator"/>
     <addaction name="actionGuadar"/>
     <addaction name="actionGuardar_Como"/>
     <addaction name="separator"/>
@@ -1031,6 +1033,22 @@ color: rgb(170, 0, 0);
    <addaction name="menuHerramientas"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionbarAbrirDirectorio"/>
+   <addaction name="actionbarCrearBackup"/>
+   <addaction name="actionbarRestaurarBackup"/>
+   <addaction name="actionbarSalir"/>
+   <addaction name="actionbarImpresora"/>
+  </widget>
   <action name="actionGuadar">
    <property name="text">
     <string>Guadar</string>
@@ -1067,6 +1085,71 @@ color: rgb(170, 0, 0);
   <action name="actionRecuperar_Backup">
    <property name="text">
     <string>Recuperar Backup</string>
+   </property>
+  </action>
+  <action name="actionbarAbrirDirectorio">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../../Downloads/unnamed.jpg</normaloff>../../Downloads/unnamed.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>barAbrirDirectorio</string>
+   </property>
+  </action>
+  <action name="actionbarCrearBackup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/crear.jpg</normaloff>img/crear.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>CrearBackup</string>
+   </property>
+  </action>
+  <action name="actionbarRestaurarBackup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/restaurarBackup.png</normaloff>img/restaurarBackup.png</iconset>
+   </property>
+   <property name="text">
+    <string>RestaurarBackup</string>
+   </property>
+  </action>
+  <action name="actionbarSalir">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionbarImpresora">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>img/impresora.png</normaloff>img/impresora.png</iconset>
+   </property>
+   <property name="text">
+    <string>Impresora</string>
+   </property>
+  </action>
+  <action name="actionImprimir">
+   <property name="text">
+    <string>Imprimir</string>
    </property>
   </action>
  </widget>
