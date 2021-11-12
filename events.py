@@ -112,7 +112,7 @@ class Eventos():
 
     def imprimir(self):
         try:
-            printDialog = QtPrintSupport.QPrintDialog(self)
+            printDialog = QtPrintSupport.QPrintDialog()
             if printDialog.exec():
                 printDialog.show()
         except Exception as error:
