@@ -576,14 +576,18 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnCalendar">
       <property name="geometry">
        <rect>
-        <x>760</x>
+        <x>800</x>
         <y>30</y>
-        <width>81</width>
+        <width>41</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -806,7 +810,7 @@ color: rgb(170, 0, 0);
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../../.designer/backup/img/Recarga.png</normaloff>../../.designer/backup/img/Recarga.png</iconset>
+        <normaloff>img/Recarga.png</normaloff>img/Recarga.png</iconset>
       </property>
      </widget>
      <widget class="Line" name="line">
@@ -825,7 +829,7 @@ color: rgb(170, 0, 0);
      <widget class="QLineEdit" name="txtFechaAlta">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>640</x>
         <y>30</y>
         <width>151</width>
         <height>20</height>
@@ -871,7 +875,7 @@ color: rgb(170, 0, 0);
      <widget class="QLabel" name="lblFechaAlta">
       <property name="geometry">
        <rect>
-        <x>520</x>
+        <x>560</x>
         <y>30</y>
         <width>81</width>
         <height>16</height>
@@ -1015,10 +1019,13 @@ color: rgb(170, 0, 0);
      <string>Archivo</string>
     </property>
     <addaction name="actionAbrir"/>
-    <addaction name="actionImprimir"/>
+    <addaction name="separator"/>
+    <addaction name="actionImportar_Datos"/>
+    <addaction name="actionExportar_Datos"/>
     <addaction name="separator"/>
     <addaction name="actionGuadar"/>
     <addaction name="actionGuardar_Como"/>
+    <addaction name="actionImprimir"/>
     <addaction name="separator"/>
     <addaction name="actionSalir"/>
    </widget>
@@ -1046,8 +1053,8 @@ color: rgb(170, 0, 0);
    <addaction name="actionbarAbrirDirectorio"/>
    <addaction name="actionbarCrearBackup"/>
    <addaction name="actionbarRestaurarBackup"/>
-   <addaction name="actionbarSalir"/>
    <addaction name="actionbarImpresora"/>
+   <addaction name="actionbarSalir"/>
   </widget>
   <action name="actionGuadar">
    <property name="text">
@@ -1117,7 +1124,7 @@ color: rgb(170, 0, 0);
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>img/restaurarBackup.png</normaloff>img/restaurarBackup.png</iconset>
+     <normaloff>img/crearbackup.jpg</normaloff>img/crearbackup.jpg</iconset>
    </property>
    <property name="text">
     <string>RestaurarBackup</string>
@@ -1152,15 +1159,25 @@ color: rgb(170, 0, 0);
     <string>Imprimir</string>
    </property>
   </action>
+  <action name="actionImportar_Datos">
+   <property name="text">
+    <string>Importar Datos</string>
+   </property>
+  </action>
+  <action name="actionExportar_Datos">
+   <property name="text">
+    <string>Exportar Datos</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

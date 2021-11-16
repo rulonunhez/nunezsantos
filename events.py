@@ -16,7 +16,9 @@ import var, sys, shutil
 from windowaviso import *
 from datetime import date, datetime
 from zipfile import ZipFile
-from PyQt5 import QtPrintSupport
+from PyQt5 import QtPrintSupport, QtSql
+import xlrd
+
 
 class Eventos():
     def Salir(self):
@@ -33,15 +35,15 @@ class Eventos():
         try:
             var.dlgcalendar.show()
         except Exception as error:
-            print('Error al abrir el calendario, ',error)
+            print('Error al abrir el calendario, ', error)
 
     def resizeTablaCli(self):
         try:
             header = var.ui.tabClientes.horizontalHeader()
             for i in range(5):
-               header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
-               if i == 0 or i == 3:
-                   header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
+                if i == 0 or i == 3:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
 
         except Exception as error:
             print('Eror en módulo redimensionar tabla clientes')
@@ -78,7 +80,8 @@ class Eventos():
             fecha = datetime.today().strftime('%Y,%m,%d,%H,%M,%S')
             var.copia = (str(fecha) + '_backup.zip')
             option = QtWidgets.QFileDialog.Options()
-            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Guardar Copia', var.copia, '.zip', options = option)
+            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Guardar Copia', var.copia, '.zip',
+                                                                options=option)
             if var.dlgabrir.Accepted and filename != '':
                 fichzip = zipfile.ZipFile(var.copia, 'w')
                 fichzip.write(var.filedb, os.path.basename(var.filedb), zipfile.ZIP_DEFLATED)
@@ -117,6 +120,36 @@ class Eventos():
                 printDialog.show()
         except Exception as error:
             print('Error en impresión', error)
+
+    def cargarExcel(self):
+        try:
+            documento = xlrd.open_workbook("DATOSCLIENTES.xls")
+            clientes = documento.sheet_by_index(0)
+            nFilas = clientes.nrows
+            nColumnas = clientes.ncols
+            print(nFilas)
+            print(nColumnas)
+            for i in nFilas:
+                dni = clientes.cell_value(i, 0)
+                apellidos = clientes.cell_value(i, 1)
+                nome = clientes.cell_value(i, 2)
+                direccion = clientes.cell_value(i, 3)
+                provincia = clientes.cell_value(i, 4)
+                sexo = clientes.cell_value(i, 5)
+                query = QtSql.QSqlQuery()
+                query.prepare(
+                    'insert into clientes (dni, apellidos, nombre, direccion, provincia, sexo) values (:dni, :apellidos, :nombre, :direccion, :provincia, :sexo)')
+                query.bindValue(':dni', dni)
+                query.bindValue(':apellidos', apellidos)
+                query.bindValue(':nombre', nome)
+                query.bindValue(':direccion', direccion)
+                query.bindValue(':provincia', provincia)
+                query.bindValue(':sexo', sexo)
+                query.exec()
+                conexion.Conexion.cargaTabCli()
+
+        except Exception as error:
+            print('Error en cargar el excel', error)
 
     # def copiaDrive(self):
     #     """Shows basic usage of the Drive v3 API.

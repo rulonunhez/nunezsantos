@@ -68,6 +68,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.actionCrear_Backup.triggered.connect(events.Eventos.crearBackup)
         var.ui.actionRecuperar_Backup.triggered.connect(events.Eventos.recuperarBackup)
         var.ui.actionImprimir.triggered.connect(events.Eventos.imprimir)
+        var.ui.actionImportar_Datos.triggered.connect(events.Eventos.cargarExcel)
 
         # Eventos caja de texto
         var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
