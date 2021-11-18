@@ -23,7 +23,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>-10</y>
+      <y>0</y>
       <width>271</width>
       <height>51</height>
      </rect>
@@ -506,7 +506,7 @@ color: rgb(170, 0, 0);
        <rect>
         <x>100</x>
         <y>150</y>
-        <width>741</width>
+        <width>751</width>
         <height>21</height>
        </rect>
       </property>
@@ -564,7 +564,7 @@ color: rgb(170, 0, 0);
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>190</y>
+        <y>240</y>
         <width>81</width>
         <height>23</height>
        </rect>
@@ -603,7 +603,7 @@ color: rgb(170, 0, 0);
       <property name="geometry">
        <rect>
         <x>550</x>
-        <y>190</y>
+        <y>240</y>
         <width>81</width>
         <height>23</height>
        </rect>
@@ -645,55 +645,6 @@ color: rgb(170, 0, 0);
           </sizepolicy>
          </property>
         </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>60</width>
-           <height>15</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="lblProv">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>2</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Provincia:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="cmbProv">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="lblMun">
-         <property name="text">
-          <string>Municipio:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="cmbMun"/>
        </item>
       </layout>
      </widget>
@@ -762,9 +713,9 @@ color: rgb(170, 0, 0);
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>220</y>
+        <y>270</y>
         <width>800</width>
-        <height>500</height>
+        <height>451</height>
        </rect>
       </property>
       <attribute name="verticalHeaderDefaultSectionSize">
@@ -817,7 +768,7 @@ color: rgb(170, 0, 0);
       <property name="geometry">
        <rect>
         <x>100</x>
-        <y>170</y>
+        <y>220</y>
         <width>761</width>
         <height>20</height>
        </rect>
@@ -885,50 +836,11 @@ color: rgb(170, 0, 0);
        <string>Fecha alta:</string>
       </property>
      </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_4">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>120</y>
-        <width>211</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QLabel" name="lblSexo">
-         <property name="text">
-          <string>Sexo:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="rbtFem">
-         <property name="text">
-          <string>Mujer</string>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">rbtGroupSex</string>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="rbtHom">
-         <property name="text">
-          <string>Hombre</string>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">rbtGroupSex</string>
-         </attribute>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QPushButton" name="btnModifCli">
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>190</y>
+        <y>240</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -941,7 +853,7 @@ color: rgb(170, 0, 0);
       <property name="geometry">
        <rect>
         <x>470</x>
-        <y>190</y>
+        <y>240</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -964,6 +876,154 @@ color: rgb(170, 0, 0);
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>120</y>
+        <width>541</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="lblProv">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>2</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Provincia:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cmbProv">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>50</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="lblMun">
+         <property name="text">
+          <string>Municipio:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cmbMun"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>180</y>
+        <width>160</width>
+        <height>42</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QRadioButton" name="rbtFem">
+         <property name="text">
+          <string>Mujer</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">rbtGroupSex</string>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="rbtHom">
+         <property name="text">
+          <string>Hombre</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">rbtGroupSex</string>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="lblSexo">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>180</y>
+        <width>209</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sexo:</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinEnvio">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>180</y>
+        <width>42</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>3</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>180</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Forma de envío:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblEnvio">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>180</y>
+        <width>341</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Recogida cliente</string>
       </property>
      </widget>
     </widget>
@@ -1173,11 +1233,11 @@ color: rgb(170, 0, 0);
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

@@ -11,6 +11,8 @@ import zipfile
 # from google_auth_oauthlib.flow import InstalledAppFlow
 # from google.auth.transport.requests import Request
 # from google.oauth2.credentials import Credentials
+import xlwt as xlwt
+
 import conexion
 import var, sys, shutil
 from windowaviso import *
@@ -129,7 +131,8 @@ class Eventos():
             nColumnas = clientes.ncols
             print(nFilas)
             print(nColumnas)
-            for i in nFilas:
+            i = 1
+            while i <= nFilas:
                 dni = clientes.cell_value(i, 0)
                 apellidos = clientes.cell_value(i, 1)
                 nome = clientes.cell_value(i, 2)
@@ -146,10 +149,47 @@ class Eventos():
                 query.bindValue(':provincia', provincia)
                 query.bindValue(':sexo', sexo)
                 query.exec()
+                i += 1
                 conexion.Conexion.cargaTabCli()
 
         except Exception as error:
             print('Error en cargar el excel', error)
+
+    def exportExcel(self):
+        try:
+            fecha = datetime.today()
+            fecha = fecha.strftime('%Y.%m.%d.%H.%M.%S')
+            var.copia = (str(fecha) + '_dataExport.xls')
+            option = QtWidgets.QFileDialog.Options()
+            directorio, filename = var.dlgabrir.getSaveFileName(None, 'Exportar datos', var.copia, '(*.xls);;All files (*.*)',
+                                                                options=option)
+            wb = xlwt.Workbook()
+            # add_sheet is used to create sheet.
+            sheet1 = wb.add_sheet('Hoja 1')
+
+            # Cabeceras
+            sheet1.write(0, 0, 'DNI')
+            sheet1.write(0, 1, 'APELIDOS')
+            sheet1.write(0, 2, 'NOME')
+            sheet1.write(0, 3, 'DIRECCION')
+            sheet1.write(0, 4, 'PROVINCIA')
+            sheet1.write(0, 5, 'SEXO')
+            f = 1
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT *  FROM clientes')
+            if query.exec_():
+                while query.next():
+                    sheet1.write(f, 0, query.value(0))
+                    sheet1.write(f, 1, query.value(2))
+                    sheet1.write(f, 2, query.value(3))
+                    sheet1.write(f, 3, query.value(4))
+                    sheet1.write(f, 4, query.value(5))
+                    sheet1.write(f, 5, query.value(7))
+                    f += 1
+            wb.save(directorio)
+
+        except Exception as error:
+            print('Error en conexion para exportar excel ', error)
 
     # def copiaDrive(self):
     #     """Shows basic usage of the Drive v3 API.

@@ -29,7 +29,6 @@ class Conexion():
             query.bindValue(':nombre', str(newCli[3]))
             query.bindValue(':direccion', str(newCli[4]))
             query.bindValue(':provincia', str(newCli[5]))
-            print(newCli[5])
             query.bindValue(':municipio', str(newCli[6]))
             query.bindValue(':sexo', str(newCli[7]))
             query.bindValue(':pago', str(newCli[8]))
@@ -159,8 +158,8 @@ class Conexion():
         try:
             query = QtSql.QSqlQuery()
             query.prepare(
-                'update clientes set (alta = :alta, apellidos = :apellidos, nombre = :nombre, direccion = :direccion, '
-                'provincia = :provincia, municipio = :munipio, sexo = :sexo, pago = :pago) where dni = :dni')
+                'update clientes set alta = :alta, apellidos = :apellidos, nombre = :nombre, direccion = :direccion, '
+                'provincia = :provincia, municipio = :municipio, sexo = :sexo, pago = :pago where dni = :dni')
             query.bindValue(':dni', str(modcliente[0]))
             query.bindValue(':alta', str(modcliente[1]))
             query.bindValue(':apellidos', str(modcliente[2]))

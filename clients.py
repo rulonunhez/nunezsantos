@@ -209,6 +209,20 @@ class Clientes():
         except Exception as error:
             print('Error en baja cliente', error)
 
-
+    def cargarSpin(self):
+        try:
+            var.ui.spinEnvio.setMinimum(0)
+            var.ui.spinEnvio.setMaximum(3)
+            valor = var.ui.spinEnvio.value()
+            if valor == 0:
+                var.ui.lblEnvio.setText('Recogida cliente')
+            elif valor == 1:
+                var.ui.lblEnvio.setText('Envío express')
+            elif valor == 2:
+                var.ui.lblEnvio.setText('Envío normal')
+            elif valor == 3:
+                var.ui.lblEnvio.setText('a')
+        except Exception as error:
+            print('Error en cargar spin', error)
 
     # Módulos gestión base datos cliente
