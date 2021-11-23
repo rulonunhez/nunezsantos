@@ -121,6 +121,15 @@ class Clientes():
             tabCli.append('; '.join(pagos))
             newCli.append('; '.join(pagos))
 
+            if var.ui.spinEnvio.value() == 0:
+                newCli.append(0)
+            elif var.ui.spinEnvio.value() == 1:
+                newCli.append(1)
+            elif var.ui.spinEnvio.value() == 2:
+                newCli.append(2)
+            elif var.ui.spinEnvio.value() == 3:
+                newCli.append(3)
+
             # Cargamos en la tabla
             if dniValido:
                 conexion.Conexion.altaCli(newCli) #graba en la tabla de la bbdd
@@ -168,6 +177,15 @@ class Clientes():
             if str(registro[3]) == 'Mujer':
                 var.ui.rbtFem.setChecked(True)
 
+            if registro[4] == 0:
+                var.ui.spinEnvio.setValue(0)
+            if registro[4] == 1:
+                var.ui.spinEnvio.setValue(1)
+            if registro[4] == 2:
+                var.ui.spinEnvio.setValue(2)
+            if registro[4] == 3:
+                var.ui.spinEnvio.setValue(3)
+
         except Exception as error:
             print('Error en módulo cargar cliente ', error)
 
@@ -195,6 +213,15 @@ class Clientes():
             pagos = set(pagos)
             modcliente.append('; '.join(pagos))
 
+            if var.ui.spinEnvio.value() == 0:
+                modcliente.append(0)
+            elif var.ui.spinEnvio.value() == 1:
+                modcliente.append(1)
+            elif var.ui.spinEnvio.value() == 2:
+                modcliente.append(2)
+            elif var.ui.spinEnvio.value() == 3:
+                modcliente.append(3)
+
             conexion.Conexion.modifCli(modcliente)
             conexion.Conexion.cargaTabCli()
 
@@ -221,7 +248,7 @@ class Clientes():
             elif valor == 2:
                 var.ui.lblEnvio.setText('Envío normal')
             elif valor == 3:
-                var.ui.lblEnvio.setText('a')
+                var.ui.lblEnvio.setText('Envío internacional')
         except Exception as error:
             print('Error en cargar spin', error)
 

@@ -62,6 +62,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
+
         # Eventos barra de menú y herramientas
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
         var.ui.actionAbrir.triggered.connect(events.Eventos.Abrir)

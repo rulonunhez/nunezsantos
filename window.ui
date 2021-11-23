@@ -976,7 +976,7 @@ color: rgb(170, 0, 0);
        <rect>
         <x>100</x>
         <y>180</y>
-        <width>209</width>
+        <width>41</width>
         <height>19</height>
        </rect>
       </property>
@@ -1024,6 +1024,19 @@ color: rgb(170, 0, 0);
       </property>
       <property name="text">
        <string>Recogida cliente</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBuscar">
+      <property name="geometry">
+       <rect>
+        <x>650</x>
+        <y>240</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
       </property>
      </widget>
     </widget>
@@ -1233,11 +1246,11 @@ color: rgb(170, 0, 0);
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

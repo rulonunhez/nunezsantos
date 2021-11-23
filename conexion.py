@@ -22,7 +22,7 @@ class Conexion():
     def altaCli(newCli):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('insert into clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago) values (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago)')
+            query.prepare('insert into clientes (dni, alta, apellidos, nombre, direccion, provincia, municipio, sexo, pago, envio) values (:dni, :alta, :apellidos, :nombre, :direccion, :provincia, :municipio, :sexo, :pago, :envio)')
             query.bindValue(':dni', str(newCli[0]))
             query.bindValue(':alta', str(newCli[1]))
             query.bindValue(':apellidos', str(newCli[2]))
@@ -32,7 +32,7 @@ class Conexion():
             query.bindValue(':municipio', str(newCli[6]))
             query.bindValue(':sexo', str(newCli[7]))
             query.bindValue(':pago', str(newCli[8]))
-            print(str(query))
+            query.bindValue(':envio', newCli[9])
             if query.exec_():
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
@@ -77,11 +77,11 @@ class Conexion():
         try:
             record = []
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT direccion, provincia, municipio, sexo FROM clientes WHERE dni = :dni')
+            query.prepare('SELECT direccion, provincia, municipio, sexo, envio  FROM clientes WHERE dni = :dni')
             query.bindValue(':dni', dni)
             if query.exec_():
                 while query.next():
-                    for i in range(4):
+                    for i in range(5):
                         record.append(query.value(i))
             return record
 
@@ -159,7 +159,7 @@ class Conexion():
             query = QtSql.QSqlQuery()
             query.prepare(
                 'update clientes set alta = :alta, apellidos = :apellidos, nombre = :nombre, direccion = :direccion, '
-                'provincia = :provincia, municipio = :municipio, sexo = :sexo, pago = :pago where dni = :dni')
+                'provincia = :provincia, municipio = :municipio, sexo = :sexo, pago = :pago, envio = :envio where dni = :dni')
             query.bindValue(':dni', str(modcliente[0]))
             query.bindValue(':alta', str(modcliente[1]))
             query.bindValue(':apellidos', str(modcliente[2]))
@@ -169,6 +169,7 @@ class Conexion():
             query.bindValue(':municipio', str(modcliente[6]))
             query.bindValue(':sexo', str(modcliente[7]))
             query.bindValue(':pago', str(modcliente[8]))
+            query.bindValue(':envio', modcliente[9])
 
             if query.exec_():
                 msg = QtWidgets.QMessageBox()

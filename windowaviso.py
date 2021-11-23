@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_windowaviso(object):
     def setupUi(self, windowaviso):
         windowaviso.setObjectName("windowaviso")
-        windowaviso.setWindowModality(QtCore.Qt.WindowModal)
+        windowaviso.setWindowModality(QtCore.Qt.NonModal)
         windowaviso.resize(360, 200)
         windowaviso.setModal(True)
         self.btnBoxAviso = QtWidgets.QDialogButtonBox(windowaviso)
