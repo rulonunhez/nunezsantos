@@ -10,5 +10,6 @@ global dlgcalendar
 global dnivalido
 global dlgabrir
 global copia
+global cv
 
 filedb = 'bbdd.sqlite'

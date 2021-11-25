@@ -134,6 +134,7 @@ class Clientes():
             if dniValido:
                 conexion.Conexion.altaCli(newCli) #graba en la tabla de la bbdd
                 conexion.Conexion.cargaTabCli() #recarga la tabla
+                events.Eventos.limpiaForm(self) #limpia el formulario
 
             else:
                 msg = QtWidgets.QMessageBox()
@@ -224,6 +225,7 @@ class Clientes():
 
             conexion.Conexion.modifCli(modcliente)
             conexion.Conexion.cargaTabCli()
+            events.Eventos.limpiaForm(self)
 
         except Exception as error:
             print('Error en modificación de cliente', error)
@@ -233,6 +235,7 @@ class Clientes():
             dni = var.ui.txtDni.text()
             conexion.Conexion.bajaCli(dni)
             conexion.Conexion.cargaTabCli()
+            events.Eventos.limpiaForm(self)
         except Exception as error:
             print('Error en baja cliente', error)
 

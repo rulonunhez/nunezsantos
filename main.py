@@ -1,7 +1,9 @@
 # This is a sample Python script.
+import articulos
 import clients
 import conexion
 import events
+import informes
 from window import *
 from windowaviso import *
 from windowcal import *
@@ -45,23 +47,31 @@ class Main (QtWidgets.QMainWindow):
         # Base de datos
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargaTabCli()
+        conexion.Conexion.cargaTabArt(self)
 
         # Eventos de Combo Box
         clients.Clientes.cargaProv(self)
         clients.Clientes.cargaMun(self)
         var.ui.cmbProv.currentTextChanged[str].connect(clients.Clientes.cargaMun)
 
-        # Eventos de botones
+        # Eventos de botones sobre clientes
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         var.ui.pushButton.clicked.connect(events.Eventos.Salir)
         # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.selSexo)
         # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)
         var.ui.btnRestablecer.clicked.connect(events.Eventos.limpiaForm)
-        var.ui.btnRestablecer.clicked.connect(clients.Clientes.cargaMun)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
 
+        # Eventos de botones sobre articulos
+        var.ui.btnGrabaArticulo.clicked.connect(articulos.Articulos.guardaArt)
+        var.ui.btnBajaArticulo.clicked.connect(articulos.Articulos.bajaArt)
+        var.ui.btnModifArticulo.clicked.connect(articulos.Articulos.modifArt)
+        var.ui.btnSalir.clicked.connect(events.Eventos.Salir)
+        var.ui.btnRestablecer_2.clicked.connect(events.Eventos.limpiaFormArt)
+        var.ui.btnRestablecer_2.clicked.connect(conexion.Conexion.cargaTabArt)
+        var.ui.btnBuscarArt.clicked.connect(articulos.Articulos.buscarArt)
 
         # Eventos barra de menú y herramientas
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
@@ -71,17 +81,24 @@ class Main (QtWidgets.QMainWindow):
         var.ui.actionImprimir.triggered.connect(events.Eventos.imprimir)
         var.ui.actionImportar_Datos.triggered.connect(events.Eventos.cargarExcel)
         var.ui.actionExportar_Datos.triggered.connect(events.Eventos.exportExcel)
+        var.ui.actionListado_Clientes.triggered.connect(informes.Informes.listadoClientes)
 
-        # Eventos caja de texto
+        # Eventos caja de texto en clientes
         var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
         var.ui.txtNome.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
         var.ui.txtApel.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
 
+        # Eventos caja de texto en articulos
+        # var.ui.txtNombreArt.editingFinished.connect(articulos.Articulos.cambiarAMayus)
+
         # Eventos QTableWidget
         events.Eventos.resizeTablaCli(self)
+        events.Eventos.resizeTabArts(self)
         var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tabArts.clicked.connect(articulos.Articulos.cargaArticulo)
+        var.ui.tabArts.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         var.ui.statusbar.addPermanentWidget(var.ui.lblFecha, 1)
         day = datetime.now()

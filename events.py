@@ -51,6 +51,15 @@ class Eventos():
         except Exception as error:
             print('Eror en módulo redimensionar tabla clientes')
 
+    def resizeTabArts(self):
+        try:
+            header = var.ui.tabArts.horizontalHeader()
+            for i in range(3):
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
+
+        except Exception as error:
+            print('Eror en módulo redimensionar tabla clientes')
+
     def limpiaForm(self):
         var.ui.txtDni
         try:
@@ -69,6 +78,15 @@ class Eventos():
             var.ui.chkTransfer.setChecked(False)
             var.ui.spinEnvio.setValue(0)
             var.ui.txtDni.setStyleSheet('QLabel {color: white;}')
+
+        except Exception as error:
+            print('Error en módulo limpiar el formulario,', error)
+
+    def limpiaFormArt(self):
+        try:
+            cajas = [var.ui.lblResulCodigo, var.ui.txtNombreArt, var.ui.txtPrecioArt]
+            for i in cajas:
+                i.setText("")
 
         except Exception as error:
             print('Error en módulo limpiar el formulario,', error)

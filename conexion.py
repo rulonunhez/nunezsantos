@@ -186,3 +186,111 @@ class Conexion():
                 msg.exec()
         except Exception as error:
             print('Error en modificar cliente en conexión', error)
+
+    def altaArt(newArt):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('insert into articulos (nombre, precio) values (:nombre, :precio)')
+            query.bindValue(':nombre', str(newArt[0]))
+            query.bindValue(':precio', str(newArt[1]))
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Articulo dado de alta')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+
+        except Exception as error:
+            print('Error en módulo alta articulos', error)
+
+    def cargaTabArt(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT codigo, nombre, precio FROM articulos')
+            if query.exec_():
+                while query.next():
+                    codigo = str(query.value(0))
+                    nombre = str(query.value(1))
+                    precio = str(round(query.value(2), 2))
+                    var.ui.tabArts.setRowCount(index+1) #creamos la fila y luego cargamos datos
+                    var.ui.tabArts.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
+                    var.ui.tabArts.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
+                    var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
+                    index += 1
+        except Exception as error:
+            print('Error en módulo cargar tabla clientes', error)
+
+    def bajaArticulo(codigo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('DELETE FROM articulos WHERE codigo = :codigo')
+            query.bindValue(':codigo', str(codigo))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Cliente dado de baja')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+
+        except Exception as error:
+            print('Error baja articulo en conexion', error)
+
+    def modifArticulo(articulo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('update articulos set nombre = :nombre, precio = :precio where codigo = :codigo')
+            query.bindValue(':codigo', str(articulo[0]))
+            query.bindValue(':nombre', str(articulo[1]))
+            query.bindValue(':precio', str(articulo[2]))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Cliente modificado')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as error:
+            print('Error en modificar articulo en conexión', error)
+
+    def buscarArticulo(articulo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('select codigo, nombre, precio from articulos where nombre = :nombre')
+            query.bindValue(':nombre', str(articulo))
+            index = 0
+            if query.exec_():
+                while query.next():
+                    codigo = str(query.value(0))
+                    nombre = str(query.value(1))
+                    precio = str(round(query.value(2), 2))
+                    var.ui.tabArts.setRowCount(index+1) #creamos la fila y luego cargamos datos
+                    var.ui.tabArts.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
+                    var.ui.tabArts.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
+                    var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
+                    index += 1
+
+        except Exception as error:
+            print('Error en bucar articulo en conexion', error)
