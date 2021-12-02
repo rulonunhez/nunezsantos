@@ -56,7 +56,6 @@ class Main (QtWidgets.QMainWindow):
 
         # Eventos de botones sobre clientes
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
-        var.ui.pushButton.clicked.connect(events.Eventos.Salir)
         # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.selSexo)
         # var.ui.chkGroupPago.buttonClicked.connect(clients.Clientes.selPago)
         var.ui.btnGrabaCli.clicked.connect(clients.Clientes.guardaCli)

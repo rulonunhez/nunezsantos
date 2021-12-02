@@ -563,7 +563,7 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnGrabaCli">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>360</x>
         <y>240</y>
         <width>81</width>
         <height>23</height>
@@ -597,19 +597,6 @@ color: rgb(170, 0, 0);
       </property>
       <property name="flat">
        <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>240</y>
-        <width>81</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Salir</string>
       </property>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget_3">
@@ -839,7 +826,7 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnModifCli">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>450</x>
         <y>240</y>
         <width>75</width>
         <height>23</height>
@@ -852,7 +839,7 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnBajaCli">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>530</x>
         <y>240</y>
         <width>75</width>
         <height>23</height>
@@ -1183,9 +1170,9 @@ color: rgb(170, 0, 0);
      <widget class="QWidget" name="horizontalLayoutWidget_7">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>60</y>
-        <width>591</width>
+        <x>180</x>
+        <y>110</y>
+        <width>561</width>
         <height>22</height>
        </rect>
       </property>
@@ -1217,21 +1204,22 @@ color: rgb(170, 0, 0);
          </property>
         </widget>
        </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_8">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>100</y>
-        <width>591</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_8">
-       <property name="spacing">
-        <number>0</number>
-       </property>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>30</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QLabel" name="lblPrecioArt">
          <property name="styleSheet">
@@ -1254,6 +1242,15 @@ color: rgb(170, 0, 0);
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="maxLength">
+          <number>32538</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -1261,9 +1258,9 @@ color: rgb(170, 0, 0);
      <widget class="QWidget" name="horizontalLayoutWidget_9">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>140</y>
-        <width>591</width>
+        <x>180</x>
+        <y>70</y>
+        <width>211</width>
         <height>21</height>
        </rect>
       </property>
@@ -1288,6 +1285,9 @@ color: rgb(170, 0, 0);
         <widget class="QLabel" name="lblResulCodigo">
          <property name="text">
           <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -1482,11 +1482,11 @@ color: rgb(170, 0, 0);
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

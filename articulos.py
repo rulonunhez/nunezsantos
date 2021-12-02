@@ -1,15 +1,13 @@
 from PyQt5 import QtWidgets
 
-
 import conexion
 import events
 import var
 
-
 class Articulos():
     def guardaArt(self):
         try:
-            newArt = [var.ui.txtNombreArt.text(), var.ui.txtPrecioArt.text()]
+            newArt = [var.ui.txtNombreArt.text().title(), var.ui.txtPrecioArt.text()]
             conexion.Conexion.altaArt(newArt) # Graba el articulo en la bbdd
             conexion.Conexion.cargaTabArt(self) # Recarga la tabla
             events.Eventos.limpiaFormArt(self) # Limpia el formulario
