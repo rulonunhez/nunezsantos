@@ -3,6 +3,7 @@ import articulos
 import clients
 import conexion
 import events
+import facturas
 import informes
 from window import *
 from windowaviso import *
@@ -71,6 +72,11 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnRestablecer_2.clicked.connect(events.Eventos.limpiaFormArt)
         var.ui.btnRestablecer_2.clicked.connect(conexion.Conexion.cargaTabArt)
         var.ui.btnBuscarArt.clicked.connect(articulos.Articulos.buscarArt)
+
+        # Eventos de botones sobre facturación
+        var.ui.btnBuscaCliFac.clicked.connect(facturas.Facturas.buscaCli)
+        var.ui.btnFechaFac.clicked.connect(events.Eventos.abrircal)
+        var.ui.btnFacturar.clicked.connect(facturas.Facturas.altaFac)
 
         # Eventos barra de menú y herramientas
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)

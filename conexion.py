@@ -226,7 +226,7 @@ class Conexion():
                     var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
                     index += 1
         except Exception as error:
-            print('Error en módulo cargar tabla clientes', error)
+            print('Error en módulo cargar tabla articulos', error)
 
     def bajaArticulo(codigo):
         try:
@@ -238,7 +238,7 @@ class Conexion():
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
                 msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText('Cliente dado de baja')
+                msg.setText('Artículo dado de baja')
                 msg.exec()
 
             else:
@@ -294,3 +294,45 @@ class Conexion():
 
         except Exception as error:
             print('Error en bucar articulo en conexion', error)
+
+    # Métodos facturación
+
+    def buscaCliFac(dni):
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare('select nombre, apellidos from clientes where dni = :dni')
+            query.bindValue(':dni', str(dni))
+            if query.exec_():
+                while query.next():
+                    print(query.value(0))
+                    print(query.value(1))
+                    registro.append(query.value(0))
+                    registro.append(query.value(1))
+
+            return registro
+        except Exception as error:
+            print('Error en buscar cliente en conexion', error)
+
+    def facturar(registro):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('insert into facturas (dni, fechafac) values (:dni, :fechafac)')
+            query.bindValue(':dni', str(registro[0]))
+            query.bindValue(':fechafac', str(registro[1]))
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Factura dada de alta')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+
+        except Exception as error:
+            print('Error en facturar en conexion', error)
