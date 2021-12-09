@@ -158,6 +158,8 @@ class Clientes():
 
             if fila:
                 row = [dato.text() for dato in fila]
+                var.ui.txtDniFac.setText(row[0])
+                var.ui.txtClienteFac.setText(row[1] + ', ' + row[2])
             for i, dato in enumerate(datos):
                 dato.setText(row[i])
 

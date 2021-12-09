@@ -336,3 +336,20 @@ class Conexion():
 
         except Exception as error:
             print('Error en facturar en conexion', error)
+
+    def cargaTabFacturas(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare('select codfac, fechafac from facturas order by fechafac desc')
+            if query.exec_():
+                while query.next():
+                    codigo = str(query.value(0))
+                    fechafac = str(query.value(1))
+                    var.ui.tabFacturas.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
+                    var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
+                    var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+                    index += 1
+
+        except Exception as error:
+            print('Error en cargar la tabla de facturas', error)

@@ -239,6 +239,14 @@ class Eventos():
         except Exception as error:
             print('Error en conexion para exportar excel ', error)
 
+    def cambiaGestion(self):
+        if var.ui.tabPrograma.currentIndex() == 0:
+            var.ui.lblClientes.setText("XESTIÓN CLIENTES")
+        elif var.ui.tabPrograma.currentIndex() == 1:
+            var.ui.txtFechaFac.setText("FACTURACIÓN")
+        elif var.ui.tabPrograma.currentIndex() == 2:
+            var.ui.txtFechaFac.setText("XESTIÓN ARTÍCULOS")
+
 # def copiaDrive(self):
 #     """Shows basic usage of the Drive v3 API.
 #         Prints the names and ids of the first 10 files the user has access to.

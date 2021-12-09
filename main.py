@@ -49,6 +49,9 @@ class Main (QtWidgets.QMainWindow):
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargaTabCli()
         conexion.Conexion.cargaTabArt(self)
+        conexion.Conexion.cargaTabFacturas(self)
+
+        # var.ui.tabPrograma.currentIndex().connect(events.Eventos.cambiaGestion)
 
         # Eventos de Combo Box
         clients.Clientes.cargaProv(self)
@@ -104,6 +107,8 @@ class Main (QtWidgets.QMainWindow):
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabArts.clicked.connect(articulos.Articulos.cargaArticulo)
         var.ui.tabArts.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        var.ui.tabFacturas.clicked.connect(facturas.Facturas.cargaFac)
+        var.ui.tabFacturas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
 
         var.ui.statusbar.addPermanentWidget(var.ui.lblFecha, 1)
         day = datetime.now()

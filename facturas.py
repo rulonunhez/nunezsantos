@@ -18,5 +18,20 @@ class Facturas():
         try:
             registro = [var.ui.txtDniFac.text(), var.ui.txtFechaFac.text()]
             conexion.Conexion.facturar(registro)
+            conexion.Conexion.cargaTabFacturas(self)
         except Exception as error:
             print('Error en facturar', error)
+
+    def cargaFac(self):
+        try:
+            # events.Eventos.limpiaFormArt(self)
+            fila = var.ui.tabFacturas.selectedItems()
+
+            if fila:
+                row = [dato.text() for dato in fila]
+
+            var.ui.txtCodFac.setText(row[0])
+            var.ui.txtFechaFac.setText(row[1])
+
+        except Exception as error:
+            print('Error en módulo cargar factura', error)
