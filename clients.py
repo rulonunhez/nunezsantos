@@ -260,4 +260,44 @@ class Clientes():
         except Exception as error:
             print('Error en cargar spin', error)
 
+    def buscarDni(self):
+        try:
+            dni = str(var.ui.txtDni.text())
+            datos = conexion.Conexion.consultaDni(dni)
+            var.ui.txtFechaAlta.setText(datos[0])
+            var.ui.txtNome.setText(datos[1])
+            var.ui.txtApel.setText(datos[2])
+            var.ui.txtDir.setText(datos[3])
+
+            var.ui.cmbProv.setCurrentText(str(datos[4]))
+            var.ui.cmbMun.setCurrentText(str(datos[5]))
+
+            if str(datos[6]) == 'Hombre':
+                var.ui.rbtHom.setChecked(True)
+            if str(datos[6]) == 'Mujer':
+                var.ui.rbtFem.setChecked(True)
+
+            if 'Efectivo' in datos[7]:
+                var.ui.chkEfectivo.setChecked(True)
+            if 'Transferencia' in datos[7]:
+                var.ui.chkTransfer.setChecked(True)
+            if 'Tarjeta' in datos[7]:
+                var.ui.chkTarjeta.setChecked(True)
+            if 'Cargo cuenta' in datos[7]:
+                var.ui.chkCargoCuenta.setChecked(True)
+
+
+
+            if datos[8] == 0:
+                var.ui.spinEnvio.setValue(0)
+            elif datos[8] == 1:
+                var.ui.spinEnvio.setValue(1)
+            elif datos[8] == 2:
+                var.ui.spinEnvio.setValue(2)
+            elif datos[8] == 3:
+                var.ui.spinEnvio.setValue(3)
+
+        except Exception as error:
+            print('Error en la busqueda del dni', error)
+
     # Módulos gestión base datos cliente

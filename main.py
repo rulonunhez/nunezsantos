@@ -93,6 +93,7 @@ class Main (QtWidgets.QMainWindow):
 
         # Eventos caja de texto en clientes
         var.ui.txtDni.editingFinished.connect(clients.Clientes.validarDni)
+        var.ui.txtDni.editingFinished.connect(clients.Clientes.buscarDni)
         var.ui.txtNome.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
         var.ui.txtApel.editingFinished.connect(clients.Clientes.cambiarAMayuscula)
         var.ui.txtDir.editingFinished.connect(clients.Clientes.cambiarAMayuscula)

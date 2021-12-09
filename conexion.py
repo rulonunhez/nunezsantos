@@ -1,5 +1,6 @@
 from PyQt5 import QtSql, QtWidgets
 
+import clients
 import var
 
 
@@ -187,6 +188,21 @@ class Conexion():
         except Exception as error:
             print('Error en modificar cliente en conexión', error)
 
+    def consultaDni(dni):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT alta, nombre, apellidos, direccion, provincia, municipio, sexo, pago, envio'
+                          ' FROM clientes where dni = :dni')
+            datos = []
+            query.bindValue(':dni', dni)
+            if query.exec_():
+                for i in range(9):
+                    datos.append(str(query.value(i)))
+            return datos
+
+        except Exception as error:
+            print('Error en la consulta a la base de datos', error)
+
     def altaArt(newArt):
         try:
             query = QtSql.QSqlQuery()
@@ -305,8 +321,6 @@ class Conexion():
             query.bindValue(':dni', str(dni))
             if query.exec_():
                 while query.next():
-                    print(query.value(0))
-                    print(query.value(1))
                     registro.append(query.value(0))
                     registro.append(query.value(1))
 
@@ -353,3 +367,27 @@ class Conexion():
 
         except Exception as error:
             print('Error en cargar la tabla de facturas', error)
+
+    def cargaFactura(codigo):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('select dni from facturas where codfac = :codfac')
+            query.bindValue(':codfac', codigo)
+            if query.exec_():
+                while query.next():
+                    dni = str(query.value(0))
+            query2 = QtSql.QSqlQuery()
+            query2.prepare('select nombre, apellidos from clientes where dni = :dni')
+            query2.bindValue(':dni', dni)
+            if query2.exec_():
+                while query2.next():
+                    nombre = str(query2.value(0))
+                    apellidos = str(query2.value(1))
+            registro = [dni, nombre, apellidos]
+            return registro
+
+        except Exception as error:
+            print('Error en cargar factura', error)
+
+
+
