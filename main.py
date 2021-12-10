@@ -66,6 +66,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnRestablecer.clicked.connect(events.Eventos.limpiaForm)
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
+        var.ui.btnPDFCli.clicked.connect(informes.Informes.listadoClientes)
 
         # Eventos de botones sobre articulos
         var.ui.btnGrabaArticulo.clicked.connect(articulos.Articulos.guardaArt)

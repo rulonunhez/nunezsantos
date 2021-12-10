@@ -22,9 +22,9 @@
    <widget class="QLabel" name="lblClientes">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>330</x>
       <y>0</y>
-      <width>271</width>
+      <width>321</width>
       <height>51</height>
      </rect>
     </property>
@@ -482,7 +482,7 @@ color: rgb(170, 0, 0);
 </string>
     </property>
     <property name="text">
-     <string>XESTIÓN CLIENTES</string>
+     <string>IMPORT-EXPORT VIGO</string>
     </property>
    </widget>
    <widget class="QTabWidget" name="tabPrograma">
@@ -1013,6 +1013,52 @@ color: rgb(170, 0, 0);
        <string>Recogida cliente</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="btnReportCli">
+      <property name="geometry">
+       <rect>
+        <x>800</x>
+        <y>190</y>
+        <width>51</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/impresora.png</normaloff>img/impresora.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>36</width>
+        <height>36</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnPDFCli">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>190</y>
+        <width>51</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/ojo.png</normaloff>img/ojo.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>59</width>
+        <height>24</height>
+       </size>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabFacturacion">
      <attribute name="title">
@@ -1068,7 +1114,7 @@ color: rgb(170, 0, 0);
            </size>
           </property>
           <property name="autoFillBackground">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color:rgb(255, 255, 255)</string>
