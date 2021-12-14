@@ -98,3 +98,59 @@ class Informes:
 
         except Exception as error:
             print('Error en el pie del informe clientes', error)
+
+    def listadoArticulos(self):
+        try:
+            var.cv = canvas.Canvas('informes/listadoArticulos.pdf')
+            Informes.cabecera(self)
+            rootPath = '.\\informes'
+            var.cv.setTitle('Listado Articulos')
+            var.cv.setAuthor('Rulas')
+            textoTitulo = 'LISTADO ARTICULOS'
+            Informes.pie(textoTitulo)
+            var.cv.setFont('Helvetica-Bold', 9)
+            var.cv.drawString(250, 690, textoTitulo)
+            var.cv.line(40, 685, 530, 685)
+            items = ['Codigo', 'Nombre', 'Precio']
+            var.cv.drawString(65, 675, items[0])
+            var.cv.drawString(210, 675, items[1])
+            var.cv.drawString(400, 675, items[2])
+            var.cv.line(40, 670, 530, 670)
+            var.cv.setFont('Helvetica', 8)
+            query = QtSql.QSqlQuery()
+            query.prepare('select codigo, nombre, precio from articulos')
+            if query.exec_():
+                i = 80
+                j = 660
+                while query.next():
+                    if j <= 40:
+                        var.cv.drawString(440, 30, 'Página siguiente...')
+                        var.cv.showPage()
+                        Informes.cabecera(self)
+                        var.cv.setFont('Helvetica-Bold', 9)
+                        var.cv.drawString(250, 690, textoTitulo)
+                        var.cv.line(40, 685, 530, 685)
+                        items = ['Codigo', 'Nombre', 'Precio']
+                        var.cv.drawString(65, 675, items[0])
+                        var.cv.drawString(210, 675, items[1])
+                        var.cv.drawString(400, 675, items[2])
+                        var.cv.line(40, 670, 530, 670)
+                        var.cv.setFont('Helvetica', 8)
+                        Informes.pie(textoTitulo)
+                        i = 80
+                        j = 660
+                    var.cv.setFont('Helvetica', 8)
+                    var.cv.drawString(i, j, str(query.value(0)))
+                    var.cv.drawString(i + 120, j, str(query.value(1)))
+                    var.cv.drawString(i + 300, j, str(round(query.value(2), 2)))
+                    j -= 20
+
+            var.cv.save()
+            cont = 0
+            for file in os.listdir(rootPath):
+                if file.endswith('.pdf'):
+                    os.startfile('%s/%s' % (rootPath, file))
+                cont += 1
+
+        except Exception as error:
+            print('Error en listado de articulos para informe', error)

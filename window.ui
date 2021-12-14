@@ -1473,13 +1473,6 @@ color: rgb(170, 0, 0);
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="btnSalir">
-         <property name="text">
-          <string>Salir</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget_7">
@@ -1607,6 +1600,29 @@ color: rgb(170, 0, 0);
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="btnPDFArts">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>60</y>
+        <width>51</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/ojo.png</normaloff>img/ojo.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>59</width>
+        <height>24</height>
+       </size>
+      </property>
      </widget>
     </widget>
    </widget>

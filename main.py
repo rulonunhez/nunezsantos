@@ -72,10 +72,10 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnGrabaArticulo.clicked.connect(articulos.Articulos.guardaArt)
         var.ui.btnBajaArticulo.clicked.connect(articulos.Articulos.bajaArt)
         var.ui.btnModifArticulo.clicked.connect(articulos.Articulos.modifArt)
-        var.ui.btnSalir.clicked.connect(events.Eventos.Salir)
         var.ui.btnRestablecer_2.clicked.connect(events.Eventos.limpiaFormArt)
         var.ui.btnRestablecer_2.clicked.connect(conexion.Conexion.cargaTabArt)
         var.ui.btnBuscarArt.clicked.connect(articulos.Articulos.buscarArt)
+        var.ui.btnPDFArts.clicked.connect(informes.Informes.listadoArticulos)
 
         # Eventos de botones sobre facturación
         var.ui.btnBuscaCliFac.clicked.connect(facturas.Facturas.buscaCli)

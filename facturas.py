@@ -13,22 +13,25 @@ class Facturas():
             dni = var.ui.txtDniFac.text().upper()
             var.ui.txtDniFac.setText(dni)
             registro = conexion.Conexion.buscaCliFac(dni)
-            mensaje = str(registro[1]) + ', ' + str(registro[0])
-            var.ui.txtClienteFac.setText(mensaje)
+            if registro:
+                mensaje = str(registro[1]) + ', ' + str(registro[0])
+                var.ui.txtClienteFac.setText(mensaje)
+            else:
+                if dni:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle('Aviso')
+                    msg.setIcon(QtWidgets.QMessageBox.Information)
+                    msg.setText('No existe ningún cliente con ese DNI asociado')
+                    msg.exec()
+                else:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle('Aviso')
+                    msg.setIcon(QtWidgets.QMessageBox.Information)
+                    msg.setText('Debe escribir un DNI previamente para buscar un cliente')
+                    msg.exec()
 
         except Exception as error:
-            if dni:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText('No existe ningun cliente con ese DNI asociado')
-                msg.exec()
-            else:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText('Debe escribir un DNI previamente para buscar')
-                msg.exec()
+            print('Error en buscar cliente en facturas')
 
     def altaFac(self):
         try:
