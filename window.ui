@@ -1328,10 +1328,13 @@ color: rgb(170, 0, 0);
        <rect>
         <x>20</x>
         <y>160</y>
-        <width>331</width>
+        <width>201</width>
         <height>591</height>
        </rect>
       </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
       <attribute name="verticalHeaderDefaultSectionSize">
        <number>40</number>
       </attribute>
@@ -1343,6 +1346,11 @@ color: rgb(170, 0, 0);
       <column>
        <property name="text">
         <string>Fecha Factura</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string/>
        </property>
       </column>
      </widget>
@@ -1813,11 +1821,11 @@ color: rgb(170, 0, 0);
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

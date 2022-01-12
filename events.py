@@ -62,6 +62,15 @@ class Eventos():
         except Exception as error:
             print('Eror en módulo redimensionar tabla clientes')
 
+    def resizeTabFacturas(self):
+        try:
+            header = var.ui.tabFacturas.horizontalHeader()
+            for i in range(3):
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+
+        except Exception as error:
+            print('Eror en módulo redimensionar tabla clientes')
+
     def limpiaForm(self):
         var.ui.txtDni
         try:

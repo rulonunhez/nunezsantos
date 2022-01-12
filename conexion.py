@@ -1,4 +1,4 @@
-from PyQt5 import QtSql, QtWidgets
+from PyQt5 import QtSql, QtWidgets, QtGui, QtCore
 
 import clients
 import var
@@ -240,6 +240,8 @@ class Conexion():
                     var.ui.tabArts.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
                     var.ui.tabArts.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
                     var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
+                    var.ui.tabArts.item(index, 2).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabArts.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index += 1
         except Exception as error:
             print('Error en módulo cargar tabla articulos', error)
@@ -351,22 +353,22 @@ class Conexion():
         except Exception as error:
             print('Error en facturar en conexion', error)
 
-    def cargaTabFacturas(self):
-        try:
-            index = 0
-            query = QtSql.QSqlQuery()
-            query.prepare('select codfac, fechafac from facturas order by fechafac desc')
-            if query.exec_():
-                while query.next():
-                    codigo = str(query.value(0))
-                    fechafac = str(query.value(1))
-                    var.ui.tabFacturas.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
-                    var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
-                    var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
-                    index += 1
-
-        except Exception as error:
-            print('Error en cargar la tabla de facturas', error)
+    # def cargaTabFacturas(self):
+    #     try:
+    #         index = 0
+    #         query = QtSql.QSqlQuery()
+    #         query.prepare('select codfac, fechafac from facturas order by fechafac desc')
+    #         if query.exec_():
+    #             while query.next():
+    #                 codigo = str(query.value(0))
+    #                 fechafac = str(query.value(1))
+    #                 var.ui.tabFacturas.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
+    #                 var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
+    #                 var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+    #                 index += 1
+    #
+    #     except Exception as error:
+    #         print('Error en cargar la tabla de facturas', error)
 
     def cargaFactura(codigo):
         try:
@@ -388,6 +390,62 @@ class Conexion():
 
         except Exception as error:
             print('Error en cargar factura', error)
+
+    def cargaTabFacturas(self):
+        try:
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare('select codfac, fechafac from facturas')
+            if query.exec_():
+                while query.next():
+                    codigo = query.value(0)
+                    fechafac = query.value(1)
+                    var.btnfacdel = QtWidgets.QPushButton()
+                    icopapelera = QtGui.QPixmap("img/papelera.png")
+                    var.btnfacdel.setFixedSize(24, 24)
+                    var.btnfacdel.setIcon(QtGui.QIcon(icopapelera))
+                    var.ui.tabFacturas.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
+                    var.ui.tabFacturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(codigo)))
+                    var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
+                    cell_widget = QtWidgets.QWidget()
+                    lay_out = QtWidgets.QHBoxLayout(cell_widget)
+                    lay_out.addWidget(var.btnfacdel)
+                    var.btnfacdel.clicked.connect(Conexion.bajaFac)
+                    lay_out.setAlignment(QtCore.Qt.AlignVCenter)
+                    var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
+                    var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
+                    var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
+                    index = index + 1
+
+
+        except Exception as error:
+            print('Error en carga listado facturas ', error)
+
+    def bajaFac(self):
+        try:
+            query = QtSql.QSqlQuery()
+            codigo = var.ui.txtCodFac.text()
+            query.prepare('DELETE FROM facturas WHERE codfac = :codigo')
+            query.bindValue(':codigo', str(codigo))
+
+            if query.exec_():
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText('Factura dada de baja')
+                msg.exec()
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.setText(query.lastError().text())
+                msg.exec()
+
+            Conexion.cargaTabFacturas(self)
+
+        except Exception as error:
+            print('Error baja articulo en conexion', error)
 
 
 
