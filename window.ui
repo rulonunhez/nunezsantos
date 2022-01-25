@@ -172,15 +172,6 @@
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>170</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
       </active>
       <inactive>
        <colorrole role="WindowText">
@@ -313,15 +304,6 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -464,15 +446,6 @@
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>170</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
       </disabled>
      </palette>
     </property>
@@ -495,7 +468,7 @@ color: rgb(170, 0, 0);
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabClientes_2">
      <attribute name="title">
@@ -588,6 +561,12 @@ color: rgb(170, 0, 0);
       <property name="icon">
        <iconset>
         <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>16</height>
+       </size>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -1013,7 +992,7 @@ color: rgb(170, 0, 0);
        <string>Recogida cliente</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnReportCli">
+     <widget class="QPushButton" name="btnImprimirCli">
       <property name="geometry">
        <rect>
         <x>800</x>
@@ -1354,6 +1333,87 @@ color: rgb(170, 0, 0);
        </property>
       </column>
      </widget>
+     <widget class="QTableWidget" name="tabVentas">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>190</y>
+        <width>721</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>40</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Código</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Producto</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Precio</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Cantidad</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Total de venta</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>516</x>
+        <y>160</y>
+        <width>91</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 180)</string>
+      </property>
+      <property name="text">
+       <string>VENTAS</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabArticulos">
      <attribute name="title">
@@ -1471,13 +1531,6 @@ color: rgb(170, 0, 0);
         <widget class="QPushButton" name="btnBajaArticulo">
          <property name="text">
           <string>Eliminar</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnBuscarArt">
-         <property name="text">
-          <string>Buscar</string>
          </property>
         </widget>
        </item>
@@ -1599,6 +1652,12 @@ color: rgb(170, 0, 0);
        </item>
        <item>
         <widget class="QLabel" name="lblResulCodigo">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(255, 255, 180)</string>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -1629,6 +1688,29 @@ color: rgb(170, 0, 0);
        <size>
         <width>59</width>
         <height>24</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnBuscarArt">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>60</y>
+        <width>51</width>
+        <height>36</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>img/buscar.png</normaloff>img/buscar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
        </size>
       </property>
      </widget>
@@ -1743,7 +1825,7 @@ color: rgb(170, 0, 0);
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../Downloads/unnamed.jpg</normaloff>../../Downloads/unnamed.jpg</iconset>
+     <normaloff>img/abrir_directorio.png</normaloff>img/abrir_directorio.png</iconset>
    </property>
    <property name="text">
     <string>barAbrirDirectorio</string>

@@ -53,11 +53,6 @@ class Main (QtWidgets.QMainWindow):
 
         # var.ui.tabPrograma.currentIndex().connect(events.Eventos.cambiaGestion)
 
-        # Eventos de Combo Box
-        clients.Clientes.cargaProv(self)
-        clients.Clientes.cargaMun(self)
-        var.ui.cmbProv.currentTextChanged[str].connect(clients.Clientes.cargaMun)
-
         # Eventos de botones sobre clientes
         var.ui.btnCalendar.clicked.connect(events.Eventos.abrircal)
         # var.ui.rbtGroupSex.buttonClicked.connect(clients.Clientes.selSexo)
@@ -67,6 +62,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnBajaCli.clicked.connect(clients.Clientes.bajaCli)
         var.ui.btnModifCli.clicked.connect(clients.Clientes.modifCli)
         var.ui.btnPDFCli.clicked.connect(informes.Informes.listadoClientes)
+        var.ui.btnImprimirCli.clicked.connect(events.Eventos.imprimir)
 
         # Eventos de botones sobre articulos
         var.ui.btnGrabaArticulo.clicked.connect(articulos.Articulos.guardaArt)
@@ -106,13 +102,15 @@ class Main (QtWidgets.QMainWindow):
         events.Eventos.resizeTablaCli(self)
         events.Eventos.resizeTabArts(self)
         events.Eventos.resizeTabFacturas(self)
+        events.Eventos.resizeTabVentas(self)
         var.ui.tabClientes.clicked.connect(clients.Clientes.cargaCli)
         var.ui.tabClientes.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabArts.clicked.connect(articulos.Articulos.cargaArticulo)
         var.ui.tabArts.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
         var.ui.tabFacturas.clicked.connect(facturas.Facturas.cargaFac)
         var.ui.tabFacturas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
-
+        var.ui.tabVentas.setSelectionBehavior(QtWidgets.QTableWidget.SelectRows)
+        facturas.Facturas.cargarLineaVenta(0)
         var.ui.statusbar.addPermanentWidget(var.ui.lblFecha, 1)
         day = datetime.now()
         var.ui.lblFecha.setText(day.strftime('%A, %d de %B de %Y'))
@@ -126,6 +124,15 @@ class Main (QtWidgets.QMainWindow):
 
         # Control del spinBox
         var.ui.spinEnvio.textChanged[str].connect(clients.Clientes.cargarSpin)
+
+        # Eventos de Combo Box
+        clients.Clientes.cargaProv(self)
+        clients.Clientes.cargaMun(self)
+        var.ui.cmbProv.currentTextChanged[str].connect(clients.Clientes.cargaMun)
+        # var.cmbProducto.currentIndexChanged.connect(facturas.Facturas.procesoVenta)
+
+        # Cajas de texto en facturas
+        var.txtCantidad.editingFinished.connect(facturas.Facturas.totalLineaVenta)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

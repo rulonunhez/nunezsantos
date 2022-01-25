@@ -11,5 +11,7 @@ global dnivalido
 global dlgabrir
 global copia
 global cv
+global btnfacdel
+global cmbproducto
 
 filedb = 'bbdd.sqlite'

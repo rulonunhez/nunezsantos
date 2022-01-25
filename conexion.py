@@ -1,6 +1,7 @@
 from PyQt5 import QtSql, QtWidgets, QtGui, QtCore
 
 import clients
+import facturas
 import var
 
 
@@ -393,6 +394,7 @@ class Conexion():
 
     def cargaTabFacturas(self):
         try:
+            var.ui.tabFacturas.clear()
             index = 0
             query = QtSql.QSqlQuery()
             query.prepare('select codfac, fechafac from facturas')
@@ -447,5 +449,95 @@ class Conexion():
         except Exception as error:
             print('Error baja articulo en conexion', error)
 
+    def cargarCmbproducto():
+        try:
+            var.cmbProducto.clear()
+            query = QtSql.QSqlQuery()
+            var.cmbProducto.addItem('')
+            query.prepare('select nombre from articulos order by nombre')
+            if query.exec_():
+                while query.next():
+                    var.cmbProducto.addItem(str(query.value(0)))
 
+        except Exception as error:
+            print ('Error en cargar cmbproducto', error)
 
+    def obtenerCodPrecio(articulo):
+        try:
+            dato = []
+            query = QtSql.QSqlQuery()
+            query.prepare('select codigo, precio from articulos where nombre = :nombre')
+            query.bindValue(':nombre', str(articulo))
+            if query.exec_():
+                while query.next():
+                    dato.append(int(query.value(0)))
+                    dato.append(query.value(1))
+            return dato
+        except Exception as error:
+            print ('Error en obtener codigo y precio de un articulo', error)
+
+    def cargarVenta(venta):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('insert into ventas (codfac, codarticulo, precio, cantidad) values (:codfac, :codarticulo, :precio, :cantidad)')
+            query.bindValue(':codfac', int(venta[0]))
+            query.bindValue(':codarticulo', int(venta[1]))
+            query.bindValue(':precio', float(venta[3]))
+            query.bindValue(':cantidad', float(venta[2]))
+            query.exec()
+
+        except Exception as error:
+            print('Error en cargar venta', error)
+
+    def buscaCodFac(self):
+        try:
+            dato = 0
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                'select codfac from facturas order by codfac desc limit 1')
+            if query.exec_():
+                while query.next():
+                    dato = query.value(0)
+            return dato
+        except Exception as error:
+            print('Error en busca codigo de factura', error)
+
+    def cargarLineasVenta(codfac):
+        try:
+            var.ui.tabVentas.clearContents()
+            index = 0
+            query = QtSql.QSqlQuery()
+            query.prepare('select codven, codarticulo, precio, cantidad from ventas where codfac = :codfac')
+            query.bindValue(':codfac', int(codfac))
+
+            if query.exec_():
+                while query.next():
+                    codventa = query.value(0)
+                    precio = query.value(2)
+                    cantidad = query.value(3)
+                    codArticulo = query.value(1)
+                    articulo = Conexion.consultarArticulo(codArticulo)
+                    var.ui.tabVentas.setRowCount(index + 1)
+                    var.ui.tabVentas.setItem(index,0, QtWidgets.QTableWidgetItem(str(codventa)))
+                    var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio)))
+                    var.ui.tabVentas.setItem(index, 3, QtWidgets.QTableWidgetItem(str(cantidad)))
+                    var.ui.tabVentas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(articulo)))
+                    var.ui.tabVentas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
+                    index = index + 1
+            facturas.Facturas.cargarLineaVenta(index)
+
+        except Exception as error:
+            print('error cargar las lineas de factura', error)
+
+    def consultarArticulo(articulo):
+        try:
+            nombre = ''
+            query = QtSql.QSqlQuery()
+            query.prepare('select nombre from articulos where codigo = :codart')
+            query.bindValue(':codart', int(articulo))
+            if query.exec_():
+                while query.next():
+                    nombre = query.value(0)
+            return nombre
+        except Exception as error:
+            print('Error en busqueda del nombre del articulo', error)
