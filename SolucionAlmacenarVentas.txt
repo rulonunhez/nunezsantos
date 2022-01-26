@@ -1,0 +1,68 @@
+Partimos de la base de que el método de cargarLineasVenta funciona bien con la implementación de que se añada una
+linea editable que también se conectará con la base de datos al finalizar la edición en la caja de texto de Cantidad.
+
+	# Método que carga una línea de venta vacía editable para añadir una venta a la base de datos
+	def cargarLineaVenta(index):
+        try:
+            var.cmbProducto = QtWidgets.QComboBox()
+            var.cmbProducto.setFixedSize(100,25)
+            conexion.Conexion.cargarCmbproducto()
+            var.txtCantidad = QtWidgets.QLineEdit()
+            var.txtCantidad.setFixedSize(70,25)
+            var.txtCantidad.setAlignment(QtCore.Qt.AlignCenter)
+            var.ui.tabVentas.setRowCount(int(index) + 1)
+            var.ui.tabVentas.setCellWidget(int(index), 1, var.cmbProducto)
+            var.ui.tabVentas.setCellWidget(int(index), 3, var.txtCantidad)
+			# Estas llamadas las hacíamos desde el fichero main
+			# La primera llama al método que cargará el precio dependiendo del producto seleccionado
+            var.cmbProducto.currentIndexChanged.connect(Facturas.procesoVenta)
+			# Al finalizar la edición llama al método que calcula el total de venta y que guarda en la base de datos la venta
+            var.txtCantidad.editingFinished.connect(Facturas.totalLineaVenta)
+
+        except Exception as error:
+            print('Error en cargar linea venta', error)
+			
+	# Método que calcula el total de venta y envía los datos a otro método que almacenará la venta en la base de datos
+	def totalLineaVenta(self = None):
+        try:
+            venta = []
+            producto = var.cmbProducto.currentText()
+            row = var.ui.tabVentas.currentRow()
+            precio = var.ui.tabVentas.item(row, 2).text()
+            cantidad = round(float(var.txtCantidad.text().replace(',', '.')), 2)
+            total = round(float(precio) * cantidad, 2)
+            var.ui.tabVentas.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total)))
+            var.ui.tabVentas.item(row, 4).setTextAlignment(QtCore.Qt.AlignRight)
+            # lblCodFac puede estar definido como lblNumFac en el QtDesigner
+			codfac = var.ui.lblCodFac.text()
+            # Llamar a método de obtener cod y precio de articulo según el nombre del combo box y recuperar el codigo para añadir una venta
+            datosProducto = conexion.Conexion.obtenerCodPrecio(producto)
+            codpro = datosProducto[0]
+            venta.append(int(codfac))
+            venta.append(int(codpro))
+            venta.append(float(cantidad))
+            venta.append(float(precio))
+			# Llamada al metodo que almacena la venta en la base de datos
+            conexion.Conexion.cargarVenta(venta)
+
+        except Exception as error:
+            print ('Error en el cálculo del total de venta', error)
+			
+	# Metodo que almacena la venta en la base de datos
+	def cargarVenta(venta):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('insert into ventas (codfac, codpro, precio, cantidad) values (:codfac, :codpro, :precio, :cantidad)')
+            query.bindValue(':codfac', int(venta[0]))
+            query.bindValue(':codpro', int(venta[1]))
+            query.bindValue(':cantidad', float(venta[2]))	
+			query.bindValue(':precio', float(venta[3]))
+            query.exec()
+
+			# Este añadido recarga la tabla de ventas
+            Conexion.cargarLineasVenta(int(venta[0]))
+
+        except Exception as error:
+            print('Error en cargar venta', error)
+			
+Encuentro un problema al almacenar una venta. El combo box de los productos se redimensiona y sale de la fila asignada.

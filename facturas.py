@@ -66,7 +66,6 @@ class Facturas():
 
     def cargarLineaVenta(index):
         try:
-            # index = var.ui.tabVentas.currentRow() + 1
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.setFixedSize(100,25)
             conexion.Conexion.cargarCmbproducto()
@@ -87,9 +86,7 @@ class Facturas():
             row = var.ui.tabVentas.currentRow()
             articulo = var.cmbProducto.currentText()
             dato = conexion.Conexion.obtenerCodPrecio(articulo)
-            # codigo = dato[0]
             precio = round(dato[1], 2)
-            # var.ui.tabVentas.setItem(row, 0, QtWidgets.QTableWidgetItem(str(codigo)))
             var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(str(precio)))
             var.ui.tabVentas.item(row, 2).setTextAlignment(QtCore.Qt.AlignCenter)
 
@@ -106,20 +103,13 @@ class Facturas():
             total = round(float(precio) * cantidad, 2)
             var.ui.tabVentas.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total)))
             var.ui.tabVentas.item(row, 4).setTextAlignment(QtCore.Qt.AlignRight)
-            # print(precio, producto, cantidad, total, codfac)
             codfac = var.ui.txtCodFac.text()
-            print(precio, producto, cantidad, total, codfac)
-            # NoneType
-            # codpro = var.ui.tabVentas.item(row, 0).text()
-            # LLamar a método de obtener cod y precio de articulo según el nombre del combo box y recuperar el codigo para añadir una venta
             datosProducto = conexion.Conexion.obtenerCodPrecio(producto)
             codpro = datosProducto[0]
-            # print(codpro)
             venta.append(int(codfac))
             venta.append(int(codpro))
             venta.append(float(cantidad))
             venta.append(float(precio))
-            print(venta)
             conexion.Conexion.cargarVenta(venta)
 
         except Exception as error:
