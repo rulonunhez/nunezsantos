@@ -77,6 +77,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnBuscaCliFac.clicked.connect(facturas.Facturas.buscaCli)
         var.ui.btnFechaFac.clicked.connect(events.Eventos.abrircal)
         var.ui.btnFacturar.clicked.connect(facturas.Facturas.altaFac)
+        var.ui.btnPDFFac.clicked.connect(informes.Informes.listadoFacturas)
 
         # Eventos barra de menú y herramientas
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
@@ -129,7 +130,7 @@ class Main (QtWidgets.QMainWindow):
         clients.Clientes.cargaProv(self)
         clients.Clientes.cargaMun(self)
         var.ui.cmbProv.currentTextChanged[str].connect(clients.Clientes.cargaMun)
-        # var.cmbProducto.currentIndexChanged.connect(facturas.Facturas.procesoVenta)
+        var.cmbProducto.currentIndexChanged.connect(facturas.Facturas.procesoVenta)
 
         # Cajas de texto en facturas
         var.txtCantidad.editingFinished.connect(facturas.Facturas.totalLineaVenta)

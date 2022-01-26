@@ -486,6 +486,8 @@ class Conexion():
             query.bindValue(':cantidad', float(venta[2]))
             query.exec()
 
+            Conexion.cargarLineasVenta(int(venta[0]))
+
         except Exception as error:
             print('Error en cargar venta', error)
 
@@ -504,6 +506,7 @@ class Conexion():
 
     def cargarLineasVenta(codfac):
         try:
+            suma = 0
             var.ui.tabVentas.clearContents()
             index = 0
             query = QtSql.QSqlQuery()
@@ -516,15 +519,24 @@ class Conexion():
                     precio = query.value(2)
                     cantidad = query.value(3)
                     codArticulo = query.value(1)
+                    total = round(cantidad * precio, 2)
+                    suma += total
                     articulo = Conexion.consultarArticulo(codArticulo)
                     var.ui.tabVentas.setRowCount(index + 1)
                     var.ui.tabVentas.setItem(index,0, QtWidgets.QTableWidgetItem(str(codventa)))
                     var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio)))
                     var.ui.tabVentas.setItem(index, 3, QtWidgets.QTableWidgetItem(str(cantidad)))
                     var.ui.tabVentas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(articulo)))
+                    var.ui.tabVentas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(total)))
                     var.ui.tabVentas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index = index + 1
-            facturas.Facturas.cargarLineaVenta(index)
+
+            iva = suma * 0.21
+            total = suma + iva
+            var.ui.lblSubtotal.setText(str(round(suma, 2)) + '€')
+            var.ui.lblTotal.setText(str(round(total, 2)) + '€')
+            var.ui.lblIva.setText(str(round(iva, 2)) + '€')
+            facturas.Facturas.cargarLineaVenta(int(index))
 
         except Exception as error:
             print('error cargar las lineas de factura', error)

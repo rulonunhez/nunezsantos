@@ -11,6 +11,7 @@ global dnivalido
 global dlgabrir
 global copia
 global cv
+global cf
 global btnfacdel
 global cmbproducto
 

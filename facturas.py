@@ -67,23 +67,18 @@ class Facturas():
     def cargarLineaVenta(index):
         try:
             # index = var.ui.tabVentas.currentRow() + 1
-            # index = 3
-            print(index)
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.setFixedSize(100,25)
             conexion.Conexion.cargarCmbproducto()
             var.txtCantidad = QtWidgets.QLineEdit()
             var.txtCantidad.setFixedSize(70,25)
             var.txtCantidad.setAlignment(QtCore.Qt.AlignCenter)
-            var.ui.tabVentas.setRowCount(index + 1)
+            var.ui.tabVentas.setRowCount(int(index) + 1)
             var.ui.tabVentas.setCellWidget(int(index), 1, var.cmbProducto)
             var.ui.tabVentas.setCellWidget(int(index), 3, var.txtCantidad)
             var.cmbProducto.currentIndexChanged.connect(Facturas.procesoVenta)
-            if var.txtCantidad.text() != "" and var.txtCantidad.text() is not None:
-                print('a')
-            # var.txtCantidad.editingFinished.connect(Facturas.totalLineaVenta(var.cmbProducto.currentText()))
-            # else:
-                Facturas.totalLineaVenta(var.cmbProducto.currentText())
+            var.txtCantidad.editingFinished.connect(Facturas.totalLineaVenta)
+
         except Exception as error:
             print('Error en cargar linea venta', error)
 
@@ -101,22 +96,25 @@ class Facturas():
         except Exception as error:
             print ('Error en proceso venta ', error)
 
-    def totalLineaVenta(producto):
+    def totalLineaVenta(self = None):
         try:
             venta = []
+            producto = var.cmbProducto.currentText()
             row = var.ui.tabVentas.currentRow()
             precio = var.ui.tabVentas.item(row, 2).text()
             cantidad = round(float(var.txtCantidad.text().replace(',', '.')), 2)
             total = round(float(precio) * cantidad, 2)
             var.ui.tabVentas.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total)))
             var.ui.tabVentas.item(row, 4).setTextAlignment(QtCore.Qt.AlignRight)
+            # print(precio, producto, cantidad, total, codfac)
             codfac = var.ui.txtCodFac.text()
+            print(precio, producto, cantidad, total, codfac)
             # NoneType
             # codpro = var.ui.tabVentas.item(row, 0).text()
             # LLamar a método de obtener cod y precio de articulo según el nombre del combo box y recuperar el codigo para añadir una venta
             datosProducto = conexion.Conexion.obtenerCodPrecio(producto)
             codpro = datosProducto[0]
-            print(codpro)
+            # print(codpro)
             venta.append(int(codfac))
             venta.append(int(codpro))
             venta.append(float(cantidad))
