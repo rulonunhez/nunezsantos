@@ -157,7 +157,7 @@ class Informes:
 
     def listadoFacturas(self):
         try:
-            var.cv = canvas.Canvas('informes/factura.pdf')
+            var.cv = canvas.Canvas('informes/listadoFacturas.pdf')
             var.cv.setTitle('Factura')
             var.cv.setAuthor('Departamento de Administración')
             rootPath = '.\\informes'
@@ -184,11 +184,11 @@ class Informes:
                 j = 655
                 while query.next():
                     codventa = query.value(0)
-                    precio = str(round(query.value(1), 2)) + ' €'
-                    cantidad = str(round(query.value(2), 2))
+                    precio = str('{:.2f}'.format(round(query.value(1), 2))) + ' €'
+                    cantidad = str('{:.2f}'.format(round(query.value(2), 2)))
                     articulo = conexion.Conexion.consultarArticulo(str(query.value(3)))
                     suma = suma + (round(query.value(1), 2) * round(query.value(2), 2))
-                    total = str(round(query.value(1) * query.value(2), 2)).replace(',', '.') + ' €'
+                    total = str('{:.2f}'.format(round(query.value(1) * query.value(2), 2))).replace(',', '.') + ' €'
                     var.cv.setFont('Helvetica', size=8)
                     var.cv.drawCentredString(i + 20, j, str(codventa))
                     var.cv.drawString(i + 100, j, str(articulo))

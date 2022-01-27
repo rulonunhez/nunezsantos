@@ -1,0 +1,35 @@
+<record model="ir.ui.view" id="informacion_form_view">
+      <field name="name">informacion.form</field>
+      <field name="model">odoo_basico.informacion</field>
+      <field name="arch" type="xml">
+        <form string="Formulario Información">
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+            <notebook>
+              <page string="Datos Texto">
+                <group>
+                  <field name="description"/>
+                  <field name="autorizado"/>
+                  <field name="sexo_traducido"/>
+                </group>
+              </page>
+              <page string="Datos Numéricos">
+                <group>
+                  <field name="alto_en_cms"/>
+                  <field name="literal" readonly="1"/>
+                  <field name="longo_en_cms"/>
+                  <field name="ancho_en_cms"/>
+                </group>
+                <group>
+                  <field name="volume"/>
+                  <field name="peso_en_kg"/>
+                  <field name="densidade"/>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>

@@ -1,0 +1,41 @@
+ def factura(self):
+        try:
+            var.cf = canvas.Canvas('informes/factura.pdf')
+            var.cf.setTitle('Factura')
+            var.cf.setAuthor('Departamento de Administración')
+            rootPath = '.\\informes'
+            var.cv.setFont('Helvetica-Bold', size=12)
+            textotitulo = 'FACTURA'
+            Informes.cabecera(self)
+            Informes.pie(textotitulo)
+            codfac = var.ui.lblNumfac.text()
+            var.cv.drawString(255, 690, textotitulo + ':' + str(codfac))
+            var.cv.line(40, 685, 530, 685)
+            items = ['Venta', 'Artículo', 'Precio', 'Cantidad', 'Total']
+            var.cv.drawString(60, 675, items[0])
+            var.cv.drawString(150, 675, items[1])
+            var.cv.drawString(250, 675, items[2])
+            var.cv.drawString(350, 675, items[3])
+            var.cv.drawString(450, 675, items[4])
+            var.cv.line(40, 670, 530, 670)
+            suma = 0.0
+            query = QtSql.QSqlQuery()
+            query.prepare('select codventa,precio,cantidad, codpro from ventas where codfac = :codfac')
+            query.bindValue(':codfac', int(codfac))
+            if query.exec_():
+                while query.next():
+                    codventa = query.value(0)
+                    precio = str(round(query.value(1), 2)) + ' €'
+                    cantidad = str(round(query.value(2), 2))
+                    articulo = conexion.Conexion.buscaArt(str(query.value(3)))
+                    suma = suma + (round(query.value(1), 2) * round(query.value(2), 2))
+                    total = str(round(query.value(1) * query.value(2), 2)).replace(',', '.') + ' €'
+
+            var.cv.save()
+            cont = 0
+            for file in os.listdir(rootPath):
+                if file.endswith('factura.pdf'):
+                    os.startfile('%s/%s' % (rootPath, file))
+                cont = cont + 1
+        except Exception as error:
+            print('Error en informes productos, ', error)

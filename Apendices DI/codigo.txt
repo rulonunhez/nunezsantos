@@ -1,0 +1,76 @@
+# clients.py
+
+    def modifiCli(self):
+        try:
+            modcliente = []
+            cliente = [var.ui.txtDni, var.ui.txtAltaCli, var.ui.txtApellidos, var.ui.txtNombre, var.ui.txtDir]
+            # codigo para cargar la tabla
+            for i in cliente:
+                modcliente.append(i.text())
+            modcliente.append(var.ui.cmbProv.currentText())
+            modcliente.append(var.ui.cmbMuni.currentText())
+            if var.ui.rbtHom.isChecked():
+                modcliente.append('Hombre')
+            elif var.ui.rbtFem.isChecked():
+                modcliente.append('Mujer')
+            else:
+                modcliente.append(' ')
+            pagos = []
+            if var.ui.chkCargoCuenta.isChecked():
+                pagos.append('Cargo Cuenta')
+
+            if var.ui.chkEfectivo.isChecked():
+                pagos.append('Efectivo')
+
+            if var.ui.chkTarjeta.isChecked():
+                pagos.append('Tarjeta')
+
+            if var.ui.chkTransfer.isChecked():
+                pagos.append('Transferencia')
+
+            pagos = set(pagos)
+            modcliente.append('; '.join(pagos))
+            conexion.Conexion.modificarCli(modcliente)
+            conexion.Conexion.cargarTabCli(self)
+
+        except Exception as e:
+            print("error modificando cliente"+e)
+# conexion
+
+    def modificarCli(modcliente):
+        try:
+            msg = QtWidgets.QMessageBox()
+            dni = modcliente[0]
+            if dni == "":
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText("No hay ningún cliente")
+                msg.exec()
+                return
+            query = QtSql.QSqlQuery()
+            query.prepare('update clientes set alta=:alta,apellidos=:apellidos,nombre=:nombre, '
+            'direccion=:direccion,provincia=:provincia,municipio=:municipio, '
+                          'sexo=:sexo,pago=:pago where dni = :dni')
+            #print(modcliente)
+            query.bindValue(':alta', str(modcliente[1]))
+            query.bindValue(':apellidos', str(modcliente[2]))
+            query.bindValue(':nombre', str(modcliente[3]))
+            query.bindValue(':direccion', str(modcliente[4]))
+            query.bindValue(':provincia', str(modcliente[5]))
+            query.bindValue(':municipio', str(modcliente[6]))
+            query.bindValue(':sexo', str(modcliente[7]))
+            query.bindValue(':pago', str(modcliente[8]))
+            query.bindValue(':dni', str(modcliente[0]))
+            msg = QtWidgets.QMessageBox()
+            if query.exec_():
+                msg.setText('Cliente modificado con dni ' + modcliente[0])
+                msg.setWindowTitle('Modificacion Correcta')
+                msg.setIcon(QtWidgets.QMessageBox.Information)
+                msg.exec()
+            else:
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText(query.lastError().text())
+                msg.exec()
+        except Exception as e:
+            print(e)

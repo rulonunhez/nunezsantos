@@ -1,0 +1,35 @@
+# Parte del main
+var.ui.cmbProv.currentIndexChanged.connect(clients.Clientes.cargaMuni)
+
+# Parte clientes
+    def cargaMuni(self):
+        try:
+            var.ui.cmbMuni.clear()
+            mun = conexion.Conexion.cargaMuniCon(self)
+            for i in mun:
+                var.ui.cmbMuni.addItem(i)
+        except Exception as error:
+            print('Error en el módulo cargar municipio, ', error)
+
+# Parte conexión
+    def cargaMuniCon(self):
+        try:
+            # busco el código de la provincia
+            var.ui.cmbMuni.clear()
+            prov = var.ui.cmbProv.currentText()
+            query = QtSql.QSqlQuery()
+            query.prepare('select id from provincias where provincia = :prov')
+            query.bindValue(':prov', str(prov))
+            if query.exec_():
+                while query.next():
+                    id = query.value(0)
+            # cargo los municipios con ese código
+            query1 = QtSql.QSqlQuery()
+            query1.prepare('select municipio from municipios where provincia_id = :id')
+            query1.bindValue(':id', int(id))
+            if query1.exec_():
+                var.ui.cmbMuni.addItem('')
+                while query1.next():
+                    var.ui.cmbMuni.addItem(query1.value(0))
+        except Exception as error:
+            print('Error en la selección de municipio', error)
