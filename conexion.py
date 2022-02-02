@@ -553,3 +553,24 @@ class Conexion():
             return nombre
         except Exception as error:
             print('Error en busqueda del nombre del articulo', error)
+
+    def borraVenta(self):
+        try:
+            row = var.ui.tabVentas.currentRow()
+            codventa = var.ui.tabVentas.item(row, 0).text()
+            query = QtSql.QSqlQuery()
+            query.prepare('delete from ventas where codven = :codven')
+            query.bindValue(':codven', int(codventa))
+            if query.exec_():
+                msg1 = QtWidgets.QMessageBox()
+                msg1.setWindowTitle('Aviso')
+                msg1.setIcon(QtWidgets.QMessageBox.Information)
+                msg1.setText('Venta eliminada')
+                msg1.exec()
+                codfac = var.ui.txtCodFac.text()
+                Conexion.cargarLineasVenta(codfac)
+        except Exception as error:
+            print('Error en dar de baja una venta', error)
+
+
+

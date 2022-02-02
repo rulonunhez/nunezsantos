@@ -64,7 +64,7 @@ class Informes:
             var.cv.save()
             cont = 0
             for file in os.listdir(rootPath):
-                if file.endswith('.pdf'):
+                if file.endswith('listadoClientes.pdf'):
                     os.startfile('%s/%s' % (rootPath, file))
                 cont += 1
 
@@ -148,7 +148,7 @@ class Informes:
             var.cv.save()
             cont = 0
             for file in os.listdir(rootPath):
-                if file.endswith('.pdf'):
+                if file.endswith('listadoArticulos.pdf'):
                     os.startfile('%s/%s' % (rootPath, file))
                 cont += 1
 
@@ -196,11 +196,18 @@ class Informes:
                     var.cv.drawString(i + 350, j, str(cantidad))
                     var.cv.drawString(i + 440, j, str(total))
                     j = j - 20
+                var.cv.setFont('Helvetica', size=8)
+                subTotal = var.ui.lblSubtotal.text()
+                iva = var.ui.lblIva.text()
+                final = var.ui.lblTotal.text()
+                var.cv.drawString(i + 410, j - 20, "Sub Total: " + subTotal)
+                var.cv.drawString(i + 410, j - 40, "IVA: " + iva)
+                var.cv.drawString(i + 410, j - 60, "Total: " + final)
 
             var.cv.save()
             cont = 0
             for file in os.listdir(rootPath):
-                if file.endswith('factura.pdf'):
+                if file.endswith('listadoFacturas.pdf'):
                     os.startfile('%s/%s' % (rootPath, file))
                 cont = cont + 1
         except Exception as error:

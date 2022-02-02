@@ -78,6 +78,8 @@ class Main (QtWidgets.QMainWindow):
         var.ui.btnFechaFac.clicked.connect(events.Eventos.abrircal)
         var.ui.btnFacturar.clicked.connect(facturas.Facturas.altaFac)
         var.ui.btnPDFFac.clicked.connect(informes.Informes.listadoFacturas)
+        var.ui.btnBorraVenta.clicked.connect(conexion.Conexion.borraVenta)
+        var.ui.btnLimpiarFac.clicked.connect(events.Eventos.limpiaFormFac)
 
         # Eventos barra de menú y herramientas
         var.ui.actionSalir.triggered.connect(events.Eventos.Salir)
