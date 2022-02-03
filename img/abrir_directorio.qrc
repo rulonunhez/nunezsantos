@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>abrir_directorio.png</file>
+  </qresource>
+</RCC>

@@ -207,13 +207,13 @@ class Ui_MainWindow(object):
         self.chkGroupPago.addButton(self.chkTransfer)
         self.horizontalLayout_5.addWidget(self.chkTransfer)
         self.btnGrabaCli = QtWidgets.QPushButton(self.tabClientes_2)
-        self.btnGrabaCli.setGeometry(QtCore.QRect(360, 240, 81, 23))
+        self.btnGrabaCli.setGeometry(QtCore.QRect(350, 240, 81, 23))
         self.btnGrabaCli.setObjectName("btnGrabaCli")
         self.btnCalendar = QtWidgets.QPushButton(self.tabClientes_2)
         self.btnCalendar.setGeometry(QtCore.QRect(800, 30, 41, 23))
         self.btnCalendar.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("img/calendar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/newPrefix/calendar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnCalendar.setIcon(icon)
         self.btnCalendar.setIconSize(QtCore.QSize(30, 16))
         self.btnCalendar.setAutoDefault(False)
@@ -283,8 +283,9 @@ class Ui_MainWindow(object):
         self.btnRestablecer.setGeometry(QtCore.QRect(830, 710, 51, 41))
         self.btnRestablecer.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("img/Recarga.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/newPrefix/Recarga.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnRestablecer.setIcon(icon1)
+        self.btnRestablecer.setIconSize(QtCore.QSize(39, 33))
         self.btnRestablecer.setObjectName("btnRestablecer")
         self.line = QtWidgets.QFrame(self.tabClientes_2)
         self.line.setGeometry(QtCore.QRect(100, 220, 761, 20))
@@ -390,7 +391,7 @@ class Ui_MainWindow(object):
         self.btnImprimirCli.setGeometry(QtCore.QRect(800, 190, 51, 36))
         self.btnImprimirCli.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("img/impresora.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/newPrefix/impresora.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnImprimirCli.setIcon(icon2)
         self.btnImprimirCli.setIconSize(QtCore.QSize(36, 36))
         self.btnImprimirCli.setObjectName("btnImprimirCli")
@@ -398,7 +399,7 @@ class Ui_MainWindow(object):
         self.btnPDFCli.setGeometry(QtCore.QRect(740, 190, 51, 36))
         self.btnPDFCli.setText("")
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("img/ojo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/newPrefix/ojo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnPDFCli.setIcon(icon3)
         self.btnPDFCli.setIconSize(QtCore.QSize(59, 24))
         self.btnPDFCli.setObjectName("btnPDFCli")
@@ -434,7 +435,7 @@ class Ui_MainWindow(object):
         self.btnBuscaCliFac.setMaximumSize(QtCore.QSize(30, 30))
         self.btnBuscaCliFac.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("img/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/newPrefix/buscar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnBuscaCliFac.setIcon(icon4)
         self.btnBuscaCliFac.setIconSize(QtCore.QSize(25, 25))
         self.btnBuscaCliFac.setObjectName("btnBuscaCliFac")
@@ -733,25 +734,25 @@ class Ui_MainWindow(object):
         self.actionbarAbrirDirectorio = QtWidgets.QAction(MainWindow)
         self.actionbarAbrirDirectorio.setCheckable(True)
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("img/abrir_directorio.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/newPrefix/abrir_directorio.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionbarAbrirDirectorio.setIcon(icon5)
         self.actionbarAbrirDirectorio.setObjectName("actionbarAbrirDirectorio")
         self.actionbarCrearBackup = QtWidgets.QAction(MainWindow)
         self.actionbarCrearBackup.setCheckable(True)
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("img/crear.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(":/newPrefix/crear.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionbarCrearBackup.setIcon(icon6)
         self.actionbarCrearBackup.setObjectName("actionbarCrearBackup")
         self.actionbarRestaurarBackup = QtWidgets.QAction(MainWindow)
         self.actionbarRestaurarBackup.setCheckable(True)
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("img/crearbackup.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(":/newPrefix/crearbackup.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionbarRestaurarBackup.setIcon(icon7)
         self.actionbarRestaurarBackup.setObjectName("actionbarRestaurarBackup")
         self.actionbarSalir = QtWidgets.QAction(MainWindow)
         self.actionbarSalir.setCheckable(True)
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("img/salir.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(":/newPrefix/salir.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionbarSalir.setIcon(icon8)
         self.actionbarSalir.setObjectName("actionbarSalir")
         self.actionbarImpresora = QtWidgets.QAction(MainWindow)
@@ -790,7 +791,7 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionbarSalir)
 
         self.retranslateUi(MainWindow)
-        self.tabPrograma.setCurrentIndex(1)
+        self.tabPrograma.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -894,3 +895,13 @@ class Ui_MainWindow(object):
         self.actionImportar_Datos.setText(_translate("MainWindow", "Importar Datos"))
         self.actionExportar_Datos.setText(_translate("MainWindow", "Exportar Datos"))
         self.actionListado_Clientes.setText(_translate("MainWindow", "Listado Clientes"))
+
+import img.Recarga
+import img.abrir_directorio
+import img.buscar
+import img.calendar
+import img.crear
+import img.crearbackup
+import img.impresora
+import img.ojo
+import img.salir

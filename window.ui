@@ -495,7 +495,7 @@ color: rgb(170, 0, 0);
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabClientes_2">
      <attribute name="title">
@@ -563,7 +563,7 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnGrabaCli">
       <property name="geometry">
        <rect>
-        <x>360</x>
+        <x>350</x>
         <y>240</y>
         <width>81</width>
         <height>23</height>
@@ -586,8 +586,8 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+       <iconset resource="img/calendar.qrc">
+        <normaloff>:/newPrefix/calendar.png</normaloff>:/newPrefix/calendar.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -753,8 +753,14 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/Recarga.png</normaloff>img/Recarga.png</iconset>
+       <iconset resource="img/Recarga.qrc">
+        <normaloff>:/newPrefix/Recarga.png</normaloff>:/newPrefix/Recarga.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>39</width>
+        <height>33</height>
+       </size>
       </property>
      </widget>
      <widget class="Line" name="line">
@@ -1032,8 +1038,8 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/impresora.png</normaloff>img/impresora.png</iconset>
+       <iconset resource="img/impresora.qrc">
+        <normaloff>:/newPrefix/impresora.png</normaloff>:/newPrefix/impresora.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -1055,8 +1061,8 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/ojo.png</normaloff>img/ojo.png</iconset>
+       <iconset resource="img/ojo.qrc">
+        <normaloff>:/newPrefix/ojo.png</normaloff>:/newPrefix/ojo.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -1155,8 +1161,8 @@ color: rgb(170, 0, 0);
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/buscar.png</normaloff>img/buscar.png</iconset>
+           <iconset resource="img/buscar.qrc">
+            <normaloff>:/newPrefix/buscar.png</normaloff>:/newPrefix/buscar.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1201,8 +1207,8 @@ color: rgb(170, 0, 0);
            <string/>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>img/calendar.png</normaloff>img/calendar.png</iconset>
+           <iconset resource="img/calendar.qrc">
+            <normaloff>:/newPrefix/calendar.png</normaloff>:/newPrefix/calendar.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1607,8 +1613,8 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/Recarga.png</normaloff>img/Recarga.png</iconset>
+       <iconset resource="img/Recarga.qrc">
+        <normaloff>:/newPrefix/Recarga.png</normaloff>:/newPrefix/Recarga.png</iconset>
       </property>
      </widget>
      <widget class="Line" name="line_2">
@@ -1843,8 +1849,8 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/ojo.png</normaloff>img/ojo.png</iconset>
+       <iconset resource="img/ojo.qrc">
+        <normaloff>:/newPrefix/ojo.png</normaloff>:/newPrefix/ojo.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -1866,8 +1872,8 @@ color: rgb(170, 0, 0);
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>img/buscar.png</normaloff>img/buscar.png</iconset>
+       <iconset resource="img/buscar.qrc">
+        <normaloff>:/newPrefix/buscar.png</normaloff>:/newPrefix/buscar.png</iconset>
       </property>
       <property name="iconSize">
        <size>
@@ -1986,8 +1992,8 @@ color: rgb(170, 0, 0);
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/abrir_directorio.png</normaloff>img/abrir_directorio.png</iconset>
+    <iconset resource="img/abrir_directorio.qrc">
+     <normaloff>:/newPrefix/abrir_directorio.png</normaloff>:/newPrefix/abrir_directorio.png</iconset>
    </property>
    <property name="text">
     <string>barAbrirDirectorio</string>
@@ -1998,8 +2004,8 @@ color: rgb(170, 0, 0);
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/crear.jpg</normaloff>img/crear.jpg</iconset>
+    <iconset resource="img/crear.qrc">
+     <normaloff>:/newPrefix/crear.jpg</normaloff>:/newPrefix/crear.jpg</iconset>
    </property>
    <property name="text">
     <string>CrearBackup</string>
@@ -2010,8 +2016,8 @@ color: rgb(170, 0, 0);
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/crearbackup.jpg</normaloff>img/crearbackup.jpg</iconset>
+    <iconset resource="img/crearbackup.qrc">
+     <normaloff>:/newPrefix/crearbackup.jpg</normaloff>:/newPrefix/crearbackup.jpg</iconset>
    </property>
    <property name="text">
     <string>RestaurarBackup</string>
@@ -2022,8 +2028,8 @@ color: rgb(170, 0, 0);
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
+    <iconset resource="img/salir.qrc">
+     <normaloff>:/newPrefix/salir.png</normaloff>:/newPrefix/salir.png</iconset>
    </property>
    <property name="text">
     <string>Salir</string>
@@ -2034,8 +2040,8 @@ color: rgb(170, 0, 0);
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>img/impresora.png</normaloff>img/impresora.png</iconset>
+    <iconset resource="img/impresora.qrc">
+     <normaloff>:/newPrefix/impresora.png</normaloff>:/newPrefix/impresora.png</iconset>
    </property>
    <property name="text">
     <string>Impresora</string>
@@ -2062,14 +2068,24 @@ color: rgb(170, 0, 0);
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="img/Recarga.qrc"/>
+  <include location="img/salir.qrc"/>
+  <include location="img/crearbackup.qrc"/>
+  <include location="img/crear.qrc"/>
+  <include location="img/abrir_directorio.qrc"/>
+  <include location="img/buscar.qrc"/>
+  <include location="img/calendar.qrc"/>
+  <include location="img/ojo.qrc"/>
+  <include location="img/impresora.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
-  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>

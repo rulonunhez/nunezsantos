@@ -537,6 +537,7 @@ class Conexion():
             var.ui.lblTotal.setText(str(round(total, 2)) + '€')
             var.ui.lblIva.setText(str(round(iva, 2)) + '€')
             facturas.Facturas.cargarLineaVenta(int(index))
+            var.ui.tabVentas.scrollToBottom()
 
         except Exception as error:
             print('error cargar las lineas de factura', error)
