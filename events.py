@@ -113,7 +113,7 @@ class Eventos():
         except Exception as error:
             print('Error en módulo limpiar el formulario,', error)
 
-    def limpiaFormFac(self):
+    def limpiaFormFac(self = None):
         try:
             cajas = [var.ui.txtDniFac, var.ui.txtClienteFac, var.ui.txtCodFac, var.ui.txtFechaFac]
             for i in cajas:

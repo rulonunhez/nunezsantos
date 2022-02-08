@@ -1,6 +1,7 @@
 from PyQt5 import QtSql, QtWidgets, QtGui, QtCore
 
 import clients
+import events
 import facturas
 import var
 
@@ -427,6 +428,7 @@ class Conexion():
         try:
             query = QtSql.QSqlQuery()
             codigo = var.ui.txtCodFac.text()
+            Conexion.borrarVentasFac(codigo)
             query.prepare('DELETE FROM facturas WHERE codfac = :codigo')
             query.bindValue(':codigo', str(codigo))
 
@@ -447,7 +449,7 @@ class Conexion():
             Conexion.cargaTabFacturas(self)
 
         except Exception as error:
-            print('Error baja articulo en conexion', error)
+            print('Error baja factura en conexion', error)
 
     def cargarCmbproducto():
         try:
@@ -572,6 +574,19 @@ class Conexion():
                 Conexion.cargarLineasVenta(codfac)
         except Exception as error:
             print('Error en dar de baja una venta', error)
+
+    def borrarVentasFac(codfac):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare('delete from ventas where codfac = :codfac')
+            query.bindValue(':codfac', int(codfac))
+            query.exec()
+            events.Eventos.limpiaFormFac()
+
+        except Exception as error:
+            print('Error en dar de baja las ventas', error)
+
+
 
 
 
