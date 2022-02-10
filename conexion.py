@@ -4,9 +4,61 @@ import clients
 import events
 import facturas
 import var
-
+import sqlite3, shutil, os, csv
 
 class Conexion():
+    def create_db(filename):
+        try:
+            con = sqlite3.connect(database = filename)
+            cur = con.cursor()
+            cur.execute('CREATE TABLE IF NOT EXISTS clientes (dni	TEXT NOT NULL, alta	TEXT, apellidos	TEXT NOT NULL, nombre	TEXT NOT NULL, '
+                        'direccion	TEXT NOT NULL, provincia	TEXT NOT NULL, municipio	TEXT, sexo	TEXT NOT NULL, pago	TEXT, envio	INTEGER,'
+                        'PRIMARY KEY(dni))')
+            con.commit()
+            cur.execute('CREATE TABLE IF NOT EXISTS articulos (codigo	INTEGER NOT NULL, nombre TEXT, precio	REAL, '
+                        'PRIMARY KEY(codigo AUTOINCREMENT))')
+            con.commit()
+            cur.execute('CREATE TABLE IF NOT EXISTS facturas (codfac	INTEGER NOT NULL, fechafac	TEXT NOT NULL, dni	TEXT NOT NULL, '
+                        'PRIMARY KEY(codfac AUTOINCREMENT), FOREIGN KEY(dni) REFERENCES clientes(dni))')
+            con.commit()
+            cur.execute('CREATE TABLE IF NOT EXISTS municipios (provincia_id	INTEGER NOT NULL, municipio	TEXT NOT NULL, '
+                        'id	INTEGER NOT NULL, PRIMARY KEY(id))')
+            con.commit()
+            cur.execute('CREATE TABLE IF NOT EXISTS provincias (id	INTEGER NOT NULL, provincia	TEXT NOT NULL, '
+                        'PRIMARY KEY(id))')
+            con.commit()
+            cur.execute('CREATE TABLE IF NOT EXISTS ventas (codven	INTEGER NOT NULL, codfac	INTEGER NOT NULL, '
+                        'codarticulo	INTEGER NOT NULL, cantidad	REAL NOT NULL, precio	REAL NOT NULL, '
+                        'PRIMARY KEY(codven AUTOINCREMENT), FOREIGN KEY(codarticulo) REFERENCES articulos(codigo), '
+                        'FOREIGN KEY(codfac) REFERENCES facturas(codfac) on delete cascade)')
+            con.commit()
+            cur.execute('select count() from provincias')
+            numero = cur.fetchone()[0]
+            con.commit()
+            if int(numero) == 0:
+                with open ('provincias.csv', 'r', encoding="utf-8") as fin:
+                    dr = csv.DictReader(fin)
+                    to_db = [(i['id'], i['provincia']) for i in dr]
+                cur.executemany('insert into provincias (id, provincia) VALUES (?,?);', to_db)
+                con.commit()
+            con.close()
+
+            '''creación de directorios'''
+            if not os.path.exists('.\\informes'):
+                os.mkdir('.\\informes')
+            if not os.path.exists('.\\img'):
+                os.mkdir('.\\img')
+                # shutil.move('logo')
+            if not os.path.exists('C:\\copias'):
+                os.mkdir('C:\\copias')
+
+        except Exception as error:
+            msg = QtWidgets.QMessageBox()
+            msg.setWindowTitle('Aviso')
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText(str(error))
+            msg.exec()
+
     def db_connect(filename):
         try:
             db = QtSql.QSqlDatabase.addDatabase('QSQLITE')

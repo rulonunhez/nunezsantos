@@ -233,6 +233,38 @@ class Eventos():
         except Exception as error:
             print('Error al cargar datos del excel ', error)
 
+    def cargarExcelMunicipios(self):
+        try:
+            documento = xlrd.open_workbook("municipios.xls")
+            municipios = documento.sheet_by_index(0)
+            filas_municipios = municipios.nrows
+            columnas_municipios = municipios.ncols
+            print("Filas: " + str(filas_municipios) + ". Columnas: " + str(columnas_municipios))
+
+            dirpro = os.getcwd()
+            print(dirpro)
+            option = QtWidgets.QFileDialog.Options()
+            filename = var.dlgabrir.getOpenFileName(None, 'Cargar datos desde Excel', "", '*.xls;;All ',
+                                                    options=option)
+            if var.dlgabrir.Accepted and filename != "":
+
+                for i in range(municipios.nrows - 1):
+                    provinciaID = municipios.cell_value(i + 1, 0)
+                    municipioNombre = municipios.cell_value(i + 1, 1)
+                    municipioID = municipios.cell_value(i + 1, 2)
+
+                    query.prepare('insert into municipios (provincia_id, municipio, id) VALUES (:provincia_id, :municipio, :id)')
+                    query.bindValue(':provincia_id', provinciaID)
+                    query.bindValue(':municipio', municipioNombre)
+                    query.bindValue(':id', municipioID)
+                    query.exec()
+
+            conexion.Conexion.cargaTabCli()
+            Eventos.limpiaForm(self)
+
+        except Exception as error:
+            print('Error al cargar datos del excel ', error)
+
 
     def exportExcel(self):
         try:

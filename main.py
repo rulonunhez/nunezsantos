@@ -1,6 +1,6 @@
 # This is a sample Python script.
-import articulos
 import clients
+import articulos
 import conexion
 import events
 import facturas
@@ -46,6 +46,7 @@ class Main (QtWidgets.QMainWindow):
         var.ui.setupUi(self)
 
         # Base de datos
+        conexion.Conexion.create_db(var.filedb)
         conexion.Conexion.db_connect(var.filedb)
         conexion.Conexion.cargaTabCli()
         conexion.Conexion.cargaTabArt(self)

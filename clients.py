@@ -260,7 +260,7 @@ class Clientes():
         except Exception as error:
             print('Error en cargar spin', error)
 
-    def buscarDni(self):
+    def buscarDni():
         try:
             dni = str(var.ui.txtDni.text())
             datos = conexion.Conexion.consultaDni(dni)
