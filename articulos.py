@@ -3,11 +3,15 @@ from PyQt5 import QtWidgets
 import conexion
 import events
 import var
+import locale
+locale.setlocale( locale.LC_ALL, '' )
 
 class Articulos():
     def guardaArt(self):
         try:
-            newArt = [var.ui.txtNombreArt.text().title(), var.ui.txtPrecioArt.text()]
+            precio = var.ui.txtPrecioArt.text().replace(',', '.')
+            precio = locale.currency(float(precio))
+            newArt = [var.ui.txtNombreArt.text().title(), precio]
             conexion.Conexion.altaArt(newArt) # Graba el articulo en la bbdd
             conexion.Conexion.cargaTabArt(self) # Recarga la tabla
             events.Eventos.limpiaFormArt(self) # Limpia el formulario

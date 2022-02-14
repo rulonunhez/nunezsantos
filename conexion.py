@@ -5,6 +5,8 @@ import events
 import facturas
 import var
 import sqlite3, shutil, os, csv
+import locale
+locale.setlocale( locale.LC_ALL, '' )
 
 class Conexion():
     def create_db(filename):
@@ -286,16 +288,16 @@ class Conexion():
         try:
             index = 0
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT codigo, nombre, precio FROM articulos')
+            query.prepare('SELECT codigo, nombre, precio FROM articulos order by nombre')
             if query.exec_():
                 while query.next():
                     codigo = str(query.value(0))
                     nombre = str(query.value(1))
-                    precio = str(round(query.value(2), 2))
+                    precio = round(float(query.value(2)), 2)
                     var.ui.tabArts.setRowCount(index+1) #creamos la fila y luego cargamos datos
                     var.ui.tabArts.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
                     var.ui.tabArts.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
-                    var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
+                    var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio) + ' €'))
                     var.ui.tabArts.item(index, 2).setTextAlignment(QtCore.Qt.AlignRight)
                     var.ui.tabArts.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index += 1
@@ -327,9 +329,14 @@ class Conexion():
 
     def modifArticulo(articulo):
         try:
+            articulo[2] = articulo[2].replace('€', '')
+            print(articulo[2])
+            articulo[2] = articulo[2].replace(',', '.')
+            print(articulo[2])
+            articulo[2] = locale.currency(float(articulo[2]))
             query = QtSql.QSqlQuery()
             query.prepare('update articulos set nombre = :nombre, precio = :precio where codigo = :codigo')
-            query.bindValue(':codigo', str(articulo[0]))
+            query.bindValue(':codigo', articulo[0])
             query.bindValue(':nombre', str(articulo[1]))
             query.bindValue(':precio', str(articulo[2]))
 
