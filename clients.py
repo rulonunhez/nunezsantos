@@ -279,22 +279,28 @@ class Clientes():
 
             if 'Efectivo' in datos[7]:
                 var.ui.chkEfectivo.setChecked(True)
+            else:
+                var.ui.chkEfectivo.setChecked(False)
             if 'Transferencia' in datos[7]:
                 var.ui.chkTransfer.setChecked(True)
+            else:
+                var.ui.chkTransfer.setChecked(False)
             if 'Tarjeta' in datos[7]:
                 var.ui.chkTarjeta.setChecked(True)
+            else:
+                var.ui.chkTarjeta.setChecked(False)
             if 'Cargo cuenta' in datos[7]:
                 var.ui.chkCargoCuenta.setChecked(True)
+            else:
+                var.ui.chkCargoCuenta.setChecked(False)
 
-
-
-            if datos[8] == 0:
+            if int(datos[8]) == 0:
                 var.ui.spinEnvio.setValue(0)
-            elif datos[8] == 1:
+            elif int(datos[8]) == 1:
                 var.ui.spinEnvio.setValue(1)
-            elif datos[8] == 2:
+            elif int(datos[8]) == 2:
                 var.ui.spinEnvio.setValue(2)
-            elif datos[8] == 3:
+            elif int(datos[8]) == 3:
                 var.ui.spinEnvio.setValue(3)
 
         except Exception as error:

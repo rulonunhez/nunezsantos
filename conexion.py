@@ -245,13 +245,15 @@ class Conexion():
     def consultaDni(dni):
         try:
             query = QtSql.QSqlQuery()
-            query.prepare('SELECT alta, nombre, apellidos, direccion, provincia, municipio, sexo, pago, envio'
-                          ' FROM clientes where dni = :dni')
+            print(dni)
+            query.prepare('SELECT alta, nombre, apellidos, direccion, provincia, municipio, sexo, pago, envio FROM clientes where dni = :dni')
             datos = []
-            query.bindValue(':dni', dni)
+            query.bindValue(':dni', str(dni))
             if query.exec_():
-                for i in range(9):
-                    datos.append(str(query.value(i)))
+                while query.next():
+                    for i in range(9):
+                        print(query.value(i))
+                        datos.append(str(query.value(i)))
             return datos
 
         except Exception as error:

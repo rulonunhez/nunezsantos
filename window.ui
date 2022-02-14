@@ -1267,14 +1267,24 @@ color: rgb(170, 0, 0);
       <widget class="QPushButton" name="btnFacturar">
        <property name="geometry">
         <rect>
-         <x>380</x>
+         <x>360</x>
          <y>60</y>
-         <width>81</width>
+         <width>51</width>
          <height>31</height>
         </rect>
        </property>
        <property name="text">
-        <string>Facturar</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/ojo.qrc">
+         <normaloff>:/newPrefix/ojo.png</normaloff>:/newPrefix/ojo.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>45</width>
+         <height>25</height>
+        </size>
        </property>
       </widget>
       <widget class="QWidget" name="horizontalLayoutWidget_12">
@@ -1324,40 +1334,70 @@ color: rgb(170, 0, 0);
       <widget class="QPushButton" name="btnPDFFac">
        <property name="geometry">
         <rect>
-         <x>470</x>
+         <x>420</x>
          <y>60</y>
-         <width>81</width>
+         <width>51</width>
          <height>31</height>
         </rect>
        </property>
        <property name="text">
-        <string>Imprimir</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/impresora.qrc">
+         <normaloff>:/newPrefix/impresora.png</normaloff>:/newPrefix/impresora.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>38</width>
+         <height>28</height>
+        </size>
        </property>
       </widget>
       <widget class="QPushButton" name="btnBorraVenta">
        <property name="geometry">
         <rect>
-         <x>834</x>
-         <y>62</y>
-         <width>81</width>
+         <x>860</x>
+         <y>60</y>
+         <width>51</width>
          <height>31</height>
         </rect>
        </property>
        <property name="text">
-        <string>Borrar venta</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/papelera.qrc">
+         <normaloff>:/newPrefix/papelera.png</normaloff>:/newPrefix/papelera.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>23</width>
+         <height>23</height>
+        </size>
        </property>
       </widget>
       <widget class="QPushButton" name="btnLimpiarFac">
        <property name="geometry">
         <rect>
-         <x>750</x>
+         <x>800</x>
          <y>60</y>
-         <width>71</width>
+         <width>51</width>
          <height>31</height>
         </rect>
        </property>
        <property name="text">
-        <string>Limpiar</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="img/Recarga.qrc">
+         <normaloff>:/newPrefix/Recarga.png</normaloff>:/newPrefix/Recarga.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>27</width>
+         <height>24</height>
+        </size>
        </property>
       </widget>
      </widget>
@@ -2078,6 +2118,7 @@ color: rgb(170, 0, 0);
   <include location="img/calendar.qrc"/>
   <include location="img/ojo.qrc"/>
   <include location="img/impresora.qrc"/>
+  <include location="img/papelera.qrc"/>
  </resources>
  <connections/>
  <buttongroups>
