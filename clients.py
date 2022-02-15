@@ -1,13 +1,14 @@
-import conexion
-import events
+import conexion, var, events
 from window import *
-import var
 from PyQt5 import QtSql
 
-
 class Clientes():
-
     def validarDni():
+        """
+
+        :return:
+        :rtype:
+        """
         try:
             dni = var.ui.txtDni.text()
             dnivalido = False
