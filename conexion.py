@@ -12,12 +12,13 @@ class Conexion():
     def create_db(filename):
         """
 
-        Recibe el nombre de la base de datos
+        Recibe el nombre de la base de datos.
         Módulo que se ejecuta al principio del programa.
-        Crea las tablas y carga municipios y provincias
-        Crea los directorios necesarios
+        Crea las tablas y carga municipios y provincias.
+        Crea los directorios necesarios.
 
-        :type:
+        :type: String
+        :param: Nombre de la bbdd
         :rtype: Object
 
         """
@@ -77,6 +78,8 @@ class Conexion():
 
         Realiza la conexión con la base de datos
 
+        :param: Nombre de la bbdd
+        :type: String
         :return: True si se conecta correctamente, False en caso contrario
         :rtype: Boolean
 
@@ -103,6 +106,9 @@ class Conexion():
         """
 
         Módulo que recibe datos de un cliente y los carga en la bbdd
+
+        :param: Datos de un cliente
+        :type: Lista
 
         """
         try:
@@ -139,7 +145,7 @@ class Conexion():
     def cargaTabCli():
         """
 
-
+        Módulo que carga la tabla del panel de Clientes
 
         """
         try:
@@ -166,9 +172,11 @@ class Conexion():
     def cargaCli2(dni):
         """
 
-        Módulo que devuelve selecciona un cliente por su DNI y devuelve algunos de sus campos a la función cargaCli
+        Módulo que selecciona un cliente por su DNI y devuelve algunos de sus campos a la función cargaCli
         del fichero clients.py
 
+        :param: DNI del cliente
+        :type: String
         :return: Lista con los datos del cliente (direccion, provincia, municipio, sexo y envio)
         :rtype: Lista
 
@@ -191,6 +199,9 @@ class Conexion():
         """
 
         Módulo que recibe el DNI del cliente y elimina a ese cliente de la bbdd
+
+        :param: DNI de un cliente
+        :type: String
 
         """
         try:
@@ -220,8 +231,8 @@ class Conexion():
 
         Módulo que carga las provincias en el comboBox de la interfaz gráfica del panel de Clientes
 
-        :return:
-        :rtype:
+        :return: Diccionario con clave Id de provincia y valor nombre de la provincia
+        :rtype: Diccionario
 
         """
         try:
@@ -249,8 +260,8 @@ class Conexion():
         Módulo que carga los municipios según la provincia seleccionada en el comboBox de la interfaz gráfica del panel
          de Clientes
 
-        :return:
-        :rtype:
+        :return: Lista con los nombres de los municipios
+        :rtype: Lista
 
         """
         try:
@@ -279,6 +290,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos del cliente para modificarlo y lo actualiza en la bbdd
+
+        :param: Datos de los campos de un cliente
+        :type: Lista
 
         """
         try:
@@ -318,8 +332,11 @@ class Conexion():
 
         Módulo que dado el DNI busca los datos del cliente para cargarlas en el panel de gestión de clientes
 
-        :return:
-        :rtype:
+        :param: DNI de un cliente
+        :type: String
+        :return: Datos de un cliente
+        :rtype: Lista
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -341,6 +358,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos de un producto y lo almacena en la bbdd
+
+        :param: Valores de los campos de un producto (nombre y precio)
+        :type: Lista
 
         """
         try:
@@ -395,6 +415,9 @@ class Conexion():
 
         Módulo que da de baja un producto en la bbdd según el codigo del producto recibido
 
+        :param: Código de un producto
+        :type: String
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -422,6 +445,9 @@ class Conexion():
         """
 
         Módulo que recibe datos de un producto para modificar y lo actualiza en la bbdd
+
+        :param: Datos de los campos de un producto
+        :type: Lista
 
         """
         try:
@@ -453,6 +479,14 @@ class Conexion():
             print('Error en modificar articulo en conexión', error)
 
     def buscarArticulo(articulo):
+        """
+
+        Módulo que recoge los datos de un producto según su nombre
+
+        :param: Nombre del producto
+        :type: String
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare('select codigo, nombre, precio from articulos where nombre = :nombre')
@@ -479,6 +513,8 @@ class Conexion():
 
         Módulo que busca los datos de un cliente sobre el que se va a hacer una factura según el DNI recibido
 
+        :param: DNI del cliente
+        :type: String
         :return: Datos del cliente
         :rtype: Lista
 
@@ -501,6 +537,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos de una factura y la almacena en la bbdd
+
+        :param: Datos de la factura
+        :type: Lista
 
         """
         try:
@@ -547,8 +586,11 @@ class Conexion():
 
         Módulo que recoge los datos del cliente referenciado en una factura según el código de la factura recibido
 
+        :param: Código de la factura
+        :type: String
         :return: Datos del cliente
         :rtype: Lista
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -661,6 +703,8 @@ class Conexion():
 
         Módulo que recibe el nombre de un producto y busca en la bbdd su código y su precio
 
+        :param: Nombre del producto
+        :type: String
         :return: Datos de código y precio del producto
         :rtype: Lista
 
@@ -682,6 +726,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos de una venta y la almacena en la bbdd
+
+        :param: Datos de una venta
+        :type: Lista
 
         """
         try:
@@ -723,6 +770,9 @@ class Conexion():
         """
 
         Módulo que recibe el código de una factura y carga todas las ventas con ese código referenciado
+
+        :param: Código de una factura
+        :type: String
 
         """
         try:
@@ -767,6 +817,8 @@ class Conexion():
 
         Módulo que recibe el codigo de un producto y busca su nombre en la bbdd
 
+        :param: Código de un producto
+        :type: String
         :return: Nombre del artículo
         :rtype: String
 
@@ -810,6 +862,9 @@ class Conexion():
         """
 
         Módulo que recibe el código de una factura que se va a eliminar y borra todas sus ventas asociadas
+
+        :param: Código de una factura
+        :type: String
 
         """
         try:
