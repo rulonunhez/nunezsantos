@@ -58,6 +58,11 @@
 
 <div class="viewcode-block" id="Eventos"><a class="viewcode-back" href="../source/events.html#events.Eventos">[docs]</a><span class="k">class</span> <span class="nc">Eventos</span><span class="p">():</span>
 <div class="viewcode-block" id="Eventos.Salir"><a class="viewcode-back" href="../source/events.html#events.Eventos.Salir">[docs]</a>    <span class="k">def</span> <span class="nf">Salir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que muestra un aviso al intentar cerrar el programa, te permite cerrarlo o seguir con la ejecución</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlgaviso</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">dlgaviso</span><span class="o">.</span><span class="n">exec</span><span class="p">():</span>
@@ -68,12 +73,22 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo &quot;Salir&quot;&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.abrircal"><a class="viewcode-back" href="../source/events.html#events.Eventos.abrircal">[docs]</a>    <span class="k">def</span> <span class="nf">abrircal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que abre el calendario</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlgcalendar</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error al abrir el calendario, &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.resizeTablaCli"><a class="viewcode-back" href="../source/events.html#events.Eventos.resizeTablaCli">[docs]</a>    <span class="k">def</span> <span class="nf">resizeTablaCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que redimensiona la tabla de clientes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabClientes</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -85,6 +100,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eror en módulo redimensionar tabla clientes&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.resizeTabArts"><a class="viewcode-back" href="../source/events.html#events.Eventos.resizeTabArts">[docs]</a>    <span class="k">def</span> <span class="nf">resizeTabArts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que redimensiona la tabla de productos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabArts</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -96,6 +116,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eror en módulo redimensionar tabla clientes&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.resizeTabFacturas"><a class="viewcode-back" href="../source/events.html#events.Eventos.resizeTabFacturas">[docs]</a>    <span class="k">def</span> <span class="nf">resizeTabFacturas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que redimensiona la tabla de facturas</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabFacturas</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -105,6 +130,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eror en módulo redimensionar tabla clientes&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.resizeTabVentas"><a class="viewcode-back" href="../source/events.html#events.Eventos.resizeTabVentas">[docs]</a>    <span class="k">def</span> <span class="nf">resizeTabVentas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que redimensiona la tabla de ventas</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">header</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabVentas</span><span class="o">.</span><span class="n">horizontalHeader</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -116,6 +146,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eror en módulo redimensionar tabla ventas&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.limpiaForm"><a class="viewcode-back" href="../source/events.html#events.Eventos.limpiaForm">[docs]</a>    <span class="k">def</span> <span class="nf">limpiaForm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que limpia el formulario de clientes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">cajas</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtApel</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDir</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNome</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtFechaAlta</span><span class="p">]</span>
@@ -138,6 +173,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo limpiar el formulario,&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.limpiaFormArt"><a class="viewcode-back" href="../source/events.html#events.Eventos.limpiaFormArt">[docs]</a>    <span class="k">def</span> <span class="nf">limpiaFormArt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que limpia el formulario de articulos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">cajas</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblResulCodigo</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNombreArt</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtPrecioArt</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cajas</span><span class="p">:</span>
@@ -147,6 +187,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo limpiar el formulario,&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.limpiaFormFac"><a class="viewcode-back" href="../source/events.html#events.Eventos.limpiaFormFac">[docs]</a>    <span class="k">def</span> <span class="nf">limpiaFormFac</span><span class="p">(</span><span class="bp">self</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que limpia el formulario de facturas</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">cajas</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDniFac</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtClienteFac</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtCodFac</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtFechaFac</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cajas</span><span class="p">:</span>
@@ -157,12 +202,22 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo limpiar el formulario,&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.Abrir"><a class="viewcode-back" href="../source/events.html#events.Eventos.Abrir">[docs]</a>    <span class="k">def</span> <span class="nf">Abrir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que se ejecuta al pulsar la opción de abrir directorio</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">dlgabrir</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error al abrir ciadro dialogo,&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.crearBackup"><a class="viewcode-back" href="../source/events.html#events.Eventos.crearBackup">[docs]</a>    <span class="k">def</span> <span class="nf">crearBackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que crea una copia de la bbdd en un fichero .zip</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y,%m,</span><span class="si">%d</span><span class="s1">,%H,%M,%S&#39;</span><span class="p">)</span>
             <span class="n">var</span><span class="o">.</span><span class="n">copia</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fecha</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_backup.zip&#39;</span><span class="p">)</span>
@@ -179,6 +234,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en crear backup&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.recuperarBackup"><a class="viewcode-back" href="../source/events.html#events.Eventos.recuperarBackup">[docs]</a>    <span class="k">def</span> <span class="nf">recuperarBackup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge una copia de la bbdd en .zip y lo extrae para importar la copia</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">option</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QFileDialog</span><span class="o">.</span><span class="n">Options</span><span class="p">()</span>
             <span class="n">filename</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">dlgabrir</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Restaurar Copia&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;*.zip;;ALL&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">option</span><span class="p">)</span>
@@ -201,6 +261,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en crear backup&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.imprimir"><a class="viewcode-back" href="../source/events.html#events.Eventos.imprimir">[docs]</a>    <span class="k">def</span> <span class="nf">imprimir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que permite abrir las opciones de impresión para un informe...</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">printDialog</span> <span class="o">=</span> <span class="n">QtPrintSupport</span><span class="o">.</span><span class="n">QPrintDialog</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">printDialog</span><span class="o">.</span><span class="n">exec</span><span class="p">():</span>
@@ -209,6 +274,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en impresión&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.cargarExcel"><a class="viewcode-back" href="../source/events.html#events.Eventos.cargarExcel">[docs]</a>    <span class="k">def</span> <span class="nf">cargarExcel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que carga desde un fichero excel los datos de los clientes y los almacena en la bbdd</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">documento</span> <span class="o">=</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="s2">&quot;DATOSCLIENTES.xls&quot;</span><span class="p">)</span>
             <span class="n">clientes</span> <span class="o">=</span> <span class="n">documento</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -267,6 +337,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error al cargar datos del excel &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.cargarExcelMunicipios"><a class="viewcode-back" href="../source/events.html#events.Eventos.cargarExcelMunicipios">[docs]</a>    <span class="k">def</span> <span class="nf">cargarExcelMunicipios</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que carga desde un fichero excel los datos de los municipios y los almacena en la bbdd</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">documento</span> <span class="o">=</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="s2">&quot;municipios.xls&quot;</span><span class="p">)</span>
             <span class="n">municipios</span> <span class="o">=</span> <span class="n">documento</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -300,6 +375,11 @@
 
 
 <div class="viewcode-block" id="Eventos.exportExcel"><a class="viewcode-back" href="../source/events.html#events.Eventos.exportExcel">[docs]</a>    <span class="k">def</span> <span class="nf">exportExcel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge los clientes almacenados en la bbdd y los exporta a un fichero excel</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y.%m.</span><span class="si">%d</span><span class="s1">.%H.%M.%S&#39;</span><span class="p">)</span>
@@ -337,6 +417,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en conexion para exportar excel &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Eventos.cambiaGestion"><a class="viewcode-back" href="../source/events.html#events.Eventos.cambiaGestion">[docs]</a>    <span class="k">def</span> <span class="nf">cambiaGestion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que cambia el texto de una label según la pestaña seleccionada</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabPrograma</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblClientes</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;XESTIÓN CLIENTES&quot;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabPrograma</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>

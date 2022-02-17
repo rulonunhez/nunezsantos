@@ -40,6 +40,11 @@
 
 <div class="viewcode-block" id="Facturas"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas">[docs]</a><span class="k">class</span> <span class="nc">Facturas</span><span class="p">():</span>
 <div class="viewcode-block" id="Facturas.buscaCli"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas.buscaCli">[docs]</a>    <span class="k">def</span> <span class="nf">buscaCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que busca los datos de un cliente por su DNI y los imprime en la sección superior de la pestaña Facturación</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtCodFac</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtFechaFac</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -67,6 +72,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en buscar cliente en facturas&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Facturas.altaFac"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas.altaFac">[docs]</a>    <span class="k">def</span> <span class="nf">altaFac</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge los datos de una factura y llama a un método del ficher conexion.py para darla de alta</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">registro</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDniFac</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtFechaFac</span><span class="o">.</span><span class="n">text</span><span class="p">()]</span>
             <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">facturar</span><span class="p">(</span><span class="n">registro</span><span class="p">)</span>
@@ -77,6 +87,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en facturar&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Facturas.cargaFac"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas.cargaFac">[docs]</a>    <span class="k">def</span> <span class="nf">cargaFac</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que imprime los datos de una factura al seleccionarla en la tabla</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># events.Eventos.limpiaFormArt(self)</span>
             <span class="n">fila</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabFacturas</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
@@ -98,6 +113,14 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo cargar factura&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Facturas.cargarLineaVenta"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas.cargarLineaVenta">[docs]</a>    <span class="k">def</span> <span class="nf">cargarLineaVenta</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que carga en la tabla de ventas la línea para introducir una venta nueva</span>
+
+<span class="sd">        :param index: Indíce de la fila de la tabla</span>
+<span class="sd">        :type index: Int</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cmbProducto</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QComboBox</span><span class="p">()</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cmbProducto</span><span class="o">.</span><span class="n">setFixedSize</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
@@ -115,6 +138,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en cargar linea venta&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Facturas.procesoVenta"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas.procesoVenta">[docs]</a>    <span class="k">def</span> <span class="nf">procesoVenta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge el nombre y el precio de un articulo para la carga de una línea de venta</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">row</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabVentas</span><span class="o">.</span><span class="n">currentRow</span><span class="p">()</span>
             <span class="n">articulo</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">cmbProducto</span><span class="o">.</span><span class="n">currentText</span><span class="p">()</span>
@@ -127,6 +155,12 @@
             <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Error en proceso venta &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Facturas.totalLineaVenta"><a class="viewcode-back" href="../source/facturas.html#facturas.Facturas.totalLineaVenta">[docs]</a>    <span class="k">def</span> <span class="nf">totalLineaVenta</span><span class="p">(</span><span class="bp">self</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que calcula el total de la línea de venta y recoge todos los datos de esa venta para llamar a un método</span>
+<span class="sd">        del fichero conexion.py que dará de alta esa venta</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">venta</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">producto</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">cmbProducto</span><span class="o">.</span><span class="n">currentText</span><span class="p">()</span>

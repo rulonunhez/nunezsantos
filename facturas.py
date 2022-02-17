@@ -7,6 +7,11 @@ import var
 
 class Facturas():
     def buscaCli(self):
+        """
+
+        Módulo que busca los datos de un cliente por su DNI y los imprime en la sección superior de la pestaña Facturación
+
+        """
         try:
             var.ui.txtCodFac.setText('')
             var.ui.txtFechaFac.setText('')
@@ -34,6 +39,11 @@ class Facturas():
             print('Error en buscar cliente en facturas')
 
     def altaFac(self):
+        """
+
+        Módulo que recoge los datos de una factura y llama a un método del ficher conexion.py para darla de alta
+
+        """
         try:
             registro = [var.ui.txtDniFac.text(), var.ui.txtFechaFac.text()]
             conexion.Conexion.facturar(registro)
@@ -44,6 +54,11 @@ class Facturas():
             print('Error en facturar', error)
 
     def cargaFac(self):
+        """
+
+        Módulo que imprime los datos de una factura al seleccionarla en la tabla
+
+        """
         try:
             # events.Eventos.limpiaFormArt(self)
             fila = var.ui.tabFacturas.selectedItems()
@@ -65,6 +80,14 @@ class Facturas():
             print('Error en módulo cargar factura', error)
 
     def cargarLineaVenta(index):
+        """
+
+        Módulo que carga en la tabla de ventas la línea para introducir una venta nueva
+
+        :param index: Indíce de la fila de la tabla
+        :type index: Int
+
+        """
         try:
             var.cmbProducto = QtWidgets.QComboBox()
             var.cmbProducto.setFixedSize(100,25)
@@ -82,6 +105,11 @@ class Facturas():
             print('Error en cargar linea venta', error)
 
     def procesoVenta(self):
+        """
+
+        Módulo que recoge el nombre y el precio de un articulo para la carga de una línea de venta
+
+        """
         try:
             row = var.ui.tabVentas.currentRow()
             articulo = var.cmbProducto.currentText()
@@ -94,6 +122,12 @@ class Facturas():
             print ('Error en proceso venta ', error)
 
     def totalLineaVenta(self = None):
+        """
+
+        Módulo que calcula el total de la línea de venta y recoge todos los datos de esa venta para llamar a un método
+        del fichero conexion.py que dará de alta esa venta
+
+        """
         try:
             venta = []
             producto = var.cmbProducto.currentText()

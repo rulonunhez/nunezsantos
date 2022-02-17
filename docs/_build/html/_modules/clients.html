@@ -109,18 +109,15 @@
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eror en módulo cargaMun, &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Clientes.selFechaAlta"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.selFechaAlta">[docs]</a>    <span class="k">def</span> <span class="nf">selFechaAlta</span><span class="p">(</span><span class="n">fecha</span><span class="p">):</span>
+<div class="viewcode-block" id="Clientes.cargarFecha"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.cargarFecha">[docs]</a>    <span class="k">def</span> <span class="nf">cargarFecha</span><span class="p">(</span><span class="n">qDate</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="sd">        Módulo que carga la fecha seleccionada en el calendario en formato String en la caja de texto</span>
 
+<span class="sd">        :param qDate: Fecha seleccionada</span>
+<span class="sd">        :type qDate: qDate</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;La fecha seleccionada es&#39;</span><span class="p">,</span> <span class="n">fecha</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo selFechaAlta&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Clientes.cargarFecha"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.cargarFecha">[docs]</a>    <span class="k">def</span> <span class="nf">cargarFecha</span><span class="p">(</span><span class="n">qDate</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">qDate</span><span class="o">.</span><span class="n">day</span><span class="p">())</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">qDate</span><span class="o">.</span><span class="n">month</span><span class="p">())</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">qDate</span><span class="o">.</span><span class="n">year</span><span class="p">()))</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabPrograma</span><span class="o">.</span><span class="n">currentIndex</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -133,6 +130,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo cargarFecha &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Clientes.cambiarAMayuscula"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.cambiarAMayuscula">[docs]</a>    <span class="k">def</span> <span class="nf">cambiarAMayuscula</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que formatea el nombre, los apellidos y la dirección para que se vean con la primera letra en mayúscula</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">texto</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNome</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNome</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">texto</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
         <span class="n">texto</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtApel</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
@@ -141,6 +143,12 @@
         <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDir</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">texto</span><span class="o">.</span><span class="n">title</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="Clientes.guardaCli"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.guardaCli">[docs]</a>    <span class="k">def</span> <span class="nf">guardaCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge los datos que se van a guardar para un cliente desde la tabla y los envía a un método en el</span>
+<span class="sd">        fichero conexion.py que dará de alta un cliente con esos datos en la bbdd</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Preparamos el registro</span>
             <span class="n">dniValido</span> <span class="o">=</span> <span class="n">Clientes</span><span class="o">.</span><span class="n">validarDni</span><span class="p">()</span>
@@ -204,6 +212,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo guardar clientes&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Clientes.cargaCli"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.cargaCli">[docs]</a>    <span class="k">def</span> <span class="nf">cargaCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que carga los datos de un cliente seleccionado desde la tabla en los elementos superiores</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">events</span><span class="o">.</span><span class="n">Eventos</span><span class="o">.</span><span class="n">limpiaForm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">fila</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabClientes</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
@@ -249,6 +262,14 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo cargar cliente &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Clientes.modifCli"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.modifCli">[docs]</a>    <span class="k">def</span> <span class="nf">modifCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge los datos de un cliente para modificarlo y llama a un método en el fichero conexion.py que</span>
+<span class="sd">        actualizará los datos de dicho cliente.</span>
+<span class="sd">        Módulo que recoge el DNI de un cliente y lo envía a un método en el fichero conexion.py para darlo de baja.</span>
+
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">modcliente</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">cliente</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtFechaAlta</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtApel</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNome</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDir</span><span class="p">]</span>
@@ -289,6 +310,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en modificación de cliente&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Clientes.bajaCli"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.bajaCli">[docs]</a>    <span class="k">def</span> <span class="nf">bajaCli</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge el DNI de un cliente y lo envía a un método en el fichero conexion.py para darlo de baja.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">dni</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
             <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">bajaCli</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span>
@@ -298,6 +324,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en baja cliente&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Clientes.cargarSpin"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.cargarSpin">[docs]</a>    <span class="k">def</span> <span class="nf">cargarSpin</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que carga los posibles valores del spinBox</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">spinEnvio</span><span class="o">.</span><span class="n">setMinimum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">spinEnvio</span><span class="o">.</span><span class="n">setMaximum</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -314,6 +345,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en cargar spin&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Clientes.buscarDni"><a class="viewcode-back" href="../source/clients.html#clients.Clientes.buscarDni">[docs]</a>    <span class="k">def</span> <span class="nf">buscarDni</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que busca los datos de un cliente por su DNI y los imprime en los elementos de la pestaña Clientes.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">dni</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
             <span class="n">datos</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">consultaDni</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span>

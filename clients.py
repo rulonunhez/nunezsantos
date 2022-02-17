@@ -81,8 +81,8 @@ class Clientes():
 
         Módulo que carga la fecha seleccionada en el calendario en formato String en la caja de texto
 
-        :param: Fecha seleccionada
-        :type: qDate
+        :param qDate: Fecha seleccionada
+        :type qDate: qDate
 
         """
         try:

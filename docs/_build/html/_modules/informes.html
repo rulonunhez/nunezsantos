@@ -42,6 +42,11 @@
 
 <div class="viewcode-block" id="Informes"><a class="viewcode-back" href="../source/informes.html#informes.Informes">[docs]</a><span class="k">class</span> <span class="nc">Informes</span><span class="p">:</span>
 <div class="viewcode-block" id="Informes.listadoClientes"><a class="viewcode-back" href="../source/informes.html#informes.Informes.listadoClientes">[docs]</a>    <span class="k">def</span> <span class="nf">listadoClientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que crea el informe con los datos de los clientes</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cv</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="s1">&#39;informes/listadoClientes.pdf&#39;</span><span class="p">)</span>
             <span class="n">Informes</span><span class="o">.</span><span class="n">cabecera</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -105,6 +110,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en informe clientes&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Informes.cabecera"><a class="viewcode-back" href="../source/informes.html#informes.Informes.cabecera">[docs]</a>    <span class="k">def</span> <span class="nf">cabecera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que establece la cabecera de las páginas</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">logo</span> <span class="o">=</span> <span class="s1">&#39;.</span><span class="se">\\</span><span class="s1">img</span><span class="se">\\</span><span class="s1">logoEmpresa.jpg&#39;</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">530</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
@@ -121,6 +131,14 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en la cabecera&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Informes.pie"><a class="viewcode-back" href="../source/informes.html#informes.Informes.pie">[docs]</a>    <span class="k">def</span> <span class="nf">pie</span><span class="p">(</span><span class="n">texto</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que establece el pié de pagina con el texto recibido</span>
+
+<span class="sd">        :param texto: Datos para mostrar en el pié de página</span>
+<span class="sd">        :type texto: String</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">530</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y %H.%M.%S&#39;</span><span class="p">)</span>
@@ -133,6 +151,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en el pie del informe clientes&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Informes.listadoArticulos"><a class="viewcode-back" href="../source/informes.html#informes.Informes.listadoArticulos">[docs]</a>    <span class="k">def</span> <span class="nf">listadoArticulos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que crea el informe con los datos de los productos</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cv</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="s1">&#39;informes/listadoArticulos.pdf&#39;</span><span class="p">)</span>
             <span class="n">Informes</span><span class="o">.</span><span class="n">cabecera</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -189,6 +212,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en listado de articulos para informe&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Informes.listadoFacturas"><a class="viewcode-back" href="../source/informes.html#informes.Informes.listadoFacturas">[docs]</a>    <span class="k">def</span> <span class="nf">listadoFacturas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que crea el informe con los datos de las facturas</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cv</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="s1">&#39;informes/listadoFacturas.pdf&#39;</span><span class="p">)</span>
             <span class="n">var</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="s1">&#39;Factura&#39;</span><span class="p">)</span>

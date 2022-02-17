@@ -13,6 +13,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        """
+
+        Código obtenido a partir del fichero xml generado por QtDesigner para la interfaz grafica general del programa
+
+        :param MainWindow: Interfaz gráfica
+        :type MainWindow: Object
+
+        """
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1024, 899)
         font = QtGui.QFont()

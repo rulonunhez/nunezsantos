@@ -41,6 +41,11 @@
 
 <div class="viewcode-block" id="Articulos"><a class="viewcode-back" href="../source/articulos.html#articulos.Articulos">[docs]</a><span class="k">class</span> <span class="nc">Articulos</span><span class="p">():</span>
 <div class="viewcode-block" id="Articulos.guardaArt"><a class="viewcode-back" href="../source/articulos.html#articulos.Articulos.guardaArt">[docs]</a>    <span class="k">def</span> <span class="nf">guardaArt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge los datos de un producto y se los envía al fichero conexion.py para darlos de alta en la bbdd</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">precio</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtPrecioArt</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
             <span class="n">precio</span> <span class="o">=</span> <span class="n">locale</span><span class="o">.</span><span class="n">currency</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">precio</span><span class="p">))</span>
@@ -52,6 +57,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo guardar articulo&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Articulos.cargaArticulo"><a class="viewcode-back" href="../source/articulos.html#articulos.Articulos.cargaArticulo">[docs]</a>    <span class="k">def</span> <span class="nf">cargaArticulo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que carga los productos en la tabla</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">events</span><span class="o">.</span><span class="n">Eventos</span><span class="o">.</span><span class="n">limpiaFormArt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">fila</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabArts</span><span class="o">.</span><span class="n">selectedItems</span><span class="p">()</span>
@@ -67,6 +77,12 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en módulo cargar articulo&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Articulos.bajaArt"><a class="viewcode-back" href="../source/articulos.html#articulos.Articulos.bajaArt">[docs]</a>    <span class="k">def</span> <span class="nf">bajaArt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge el código de un producto y llama a un método del fichero conexion.py para darlo de baja</span>
+<span class="sd">        en la bbdd</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">codigo</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblResulCodigo</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
             <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">bajaArticulo</span><span class="p">(</span><span class="n">codigo</span><span class="p">)</span>
@@ -76,6 +92,12 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en baja articulo&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Articulos.modifArt"><a class="viewcode-back" href="../source/articulos.html#articulos.Articulos.modifArt">[docs]</a>    <span class="k">def</span> <span class="nf">modifArt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que recoge los datos de un producto a modificar y llama a un método del fichero conexion.py para</span>
+<span class="sd">        actualizarlo en la bbdd</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">articulo</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblResulCodigo</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNombreArt</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtPrecioArt</span><span class="o">.</span><span class="n">text</span><span class="p">()]</span>
 
@@ -87,6 +109,11 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error en modificación de articulo&#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Articulos.buscarArt"><a class="viewcode-back" href="../source/articulos.html#articulos.Articulos.buscarArt">[docs]</a>    <span class="k">def</span> <span class="nf">buscarArt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Módulo que busca un producto por su nombre e imprime los datos en la tabla</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">nombre</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNombreArt</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
             <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtPrecioArt</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>

@@ -42,11 +42,8 @@
 <span class="sig-name descname"><span class="pre">altaArt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.altaArt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.altaArt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe los datos de un producto y lo almacena en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Valores de los campos de un producto (nombre y precio)</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newArt</strong> (<em>Lista</em>) – Valores de los campos de un producto (nombre y precio)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -56,11 +53,8 @@
 <span class="sig-name descname"><span class="pre">altaCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.altaCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.altaCli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe datos de un cliente y los carga en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Datos de un cliente</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>newCli</strong> (<em>Lista</em>) – Datos de un cliente</p>
 </dd>
 </dl>
 </dd></dl>
@@ -70,11 +64,8 @@
 <span class="sig-name descname"><span class="pre">bajaArticulo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.bajaArticulo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.bajaArticulo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que da de baja un producto en la bbdd según el codigo del producto recibido</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Código de un producto</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>codigo</strong> (<em>String</em>) – Código de un producto</p>
 </dd>
 </dl>
 </dd></dl>
@@ -84,11 +75,8 @@
 <span class="sig-name descname"><span class="pre">bajaCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.bajaCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.bajaCli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe el DNI del cliente y elimina a ese cliente de la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>DNI de un cliente</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dni</strong> (<em>String</em>) – DNI de un cliente</p>
 </dd>
 </dl>
 </dd></dl>
@@ -110,11 +98,8 @@
 <span class="sig-name descname"><span class="pre">borrarVentasFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.borrarVentasFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.borrarVentasFac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe el código de una factura que se va a eliminar y borra todas sus ventas asociadas</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Código de una factura</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>codfac</strong> (<em>String</em>) – Código de una factura</p>
 </dd>
 </dl>
 </dd></dl>
@@ -124,17 +109,14 @@
 <span class="sig-name descname"><span class="pre">buscaCliFac</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.buscaCliFac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.buscaCliFac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que busca los datos de un cliente sobre el que se va a hacer una factura según el DNI recibido</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>DNI del cliente</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dni</strong> (<em>String</em>) – DNI del cliente</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Datos del cliente</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Datos del cliente</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Lista</p>
 </dd>
 </dl>
 </dd></dl>
@@ -158,11 +140,8 @@
 <span class="sig-name descname"><span class="pre">buscarArticulo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.buscarArticulo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.buscarArticulo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recoge los datos de un producto según su nombre</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Nombre del producto</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>articulo</strong> (<em>String</em>) – Nombre del producto</p>
 </dd>
 </dl>
 </dd></dl>
@@ -173,17 +152,14 @@
 <dd><p>Módulo que selecciona un cliente por su DNI y devuelve algunos de sus campos a la función cargaCli
 del fichero clients.py</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>DNI del cliente</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dni</strong> (<em>String</em>) – DNI del cliente</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Lista con los datos del cliente (direccion, provincia, municipio, sexo y envio)</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Lista con los datos del cliente (direccion, provincia, municipio, sexo y envio)</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Lista</p>
 </dd>
 </dl>
 </dd></dl>
@@ -193,17 +169,14 @@ del fichero clients.py</p>
 <span class="sig-name descname"><span class="pre">cargaFactura</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargaFactura"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargaFactura" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recoge los datos del cliente referenciado en una factura según el código de la factura recibido</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Código de la factura</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>codigo</strong> (<em>String</em>) – Código de la factura</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Datos del cliente</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Datos del cliente</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Lista</p>
 </dd>
 </dl>
 </dd></dl>
@@ -237,11 +210,8 @@ del fichero clients.py</p>
 <span class="sig-name descname"><span class="pre">cargarLineasVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarLineasVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarLineasVenta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe el código de una factura y carga todas las ventas con ese código referenciado</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Código de una factura</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>codfac</strong> (<em>String</em>) – Código de una factura</p>
 </dd>
 </dl>
 </dd></dl>
@@ -282,11 +252,8 @@ del fichero clients.py</p>
 <span class="sig-name descname"><span class="pre">cargarVenta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.cargarVenta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.cargarVenta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe los datos de una venta y la almacena en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Datos de una venta</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>venta</strong> (<em>Lista</em>) – Datos de una venta</p>
 </dd>
 </dl>
 </dd></dl>
@@ -296,17 +263,14 @@ del fichero clients.py</p>
 <span class="sig-name descname"><span class="pre">consultaDni</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.consultaDni"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.consultaDni" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que dado el DNI busca los datos del cliente para cargarlas en el panel de gestión de clientes</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>DNI de un cliente</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dni</strong> (<em>String</em>) – DNI de un cliente</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Datos de un cliente</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Datos de un cliente</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Lista</p>
 </dd>
 </dl>
 </dd></dl>
@@ -316,17 +280,14 @@ del fichero clients.py</p>
 <span class="sig-name descname"><span class="pre">consultarArticulo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.consultarArticulo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.consultarArticulo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe el codigo de un producto y busca su nombre en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Código de un producto</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>articulo</strong> (<em>String</em>) – Código de un producto</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Nombre del artículo</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Nombre del artículo</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>String</p>
 </dd>
 </dl>
 </dd></dl>
@@ -339,14 +300,11 @@ Módulo que se ejecuta al principio del programa.
 Crea las tablas y carga municipios y provincias.
 Crea los directorios necesarios.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>String</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>String</em>) – Nombre de la bbdd</p>
 </dd>
-<dt class="field-even">Param</dt>
-<dd class="field-even"><p>Nombre de la bbdd</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Object</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Object</p>
 </dd>
 </dl>
 </dd></dl>
@@ -356,17 +314,14 @@ Crea los directorios necesarios.</p>
 <span class="sig-name descname"><span class="pre">db_connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.db_connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.db_connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Realiza la conexión con la base de datos</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Nombre de la bbdd</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>String</em>) – Nombre de la bbdd</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True si se conecta correctamente, False en caso contrario</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>True si se conecta correctamente, False en caso contrario</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Boolean</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Boolean</p>
 </dd>
 </dl>
 </dd></dl>
@@ -376,11 +331,8 @@ Crea los directorios necesarios.</p>
 <span class="sig-name descname"><span class="pre">facturar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.facturar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.facturar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe los datos de una factura y la almacena en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Datos de la factura</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>registro</strong> (<em>Lista</em>) – Datos de la factura</p>
 </dd>
 </dl>
 </dd></dl>
@@ -390,11 +342,8 @@ Crea los directorios necesarios.</p>
 <span class="sig-name descname"><span class="pre">modifArticulo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.modifArticulo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.modifArticulo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe datos de un producto para modificar y lo actualiza en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Datos de los campos de un producto</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>articulo</strong> (<em>Lista</em>) – Datos de los campos de un producto</p>
 </dd>
 </dl>
 </dd></dl>
@@ -404,11 +353,8 @@ Crea los directorios necesarios.</p>
 <span class="sig-name descname"><span class="pre">modifCli</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.modifCli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.modifCli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe los datos del cliente para modificarlo y lo actualiza en la bbdd</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Datos de los campos de un cliente</p>
-</dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>modCliente</strong> (<em>Lista</em>) – Datos de los campos de un cliente</p>
 </dd>
 </dl>
 </dd></dl>
@@ -418,17 +364,14 @@ Crea los directorios necesarios.</p>
 <span class="sig-name descname"><span class="pre">obtenerCodPrecio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/conexion.html#Conexion.obtenerCodPrecio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#conexion.Conexion.obtenerCodPrecio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Módulo que recibe el nombre de un producto y busca en la bbdd su código y su precio</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
-<dd class="field-odd"><p>Nombre del producto</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>articulo</strong> (<em>String</em>) – Nombre del producto</p>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>String</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Datos de código y precio del producto</p>
 </dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Datos de código y precio del producto</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Lista</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Lista</p>
 </dd>
 </dl>
 </dd></dl>

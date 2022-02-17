@@ -9,6 +9,11 @@ from reportlab.pdfgen import canvas
 
 class Informes:
     def listadoClientes(self):
+        """
+
+        Módulo que crea el informe con los datos de los clientes
+
+        """
         try:
             var.cv = canvas.Canvas('informes/listadoClientes.pdf')
             Informes.cabecera(self)
@@ -72,6 +77,11 @@ class Informes:
             print('Error en informe clientes', error)
 
     def cabecera(self):
+        """
+
+        Módulo que establece la cabecera de las páginas
+
+        """
         try:
             logo = '.\\img\\logoEmpresa.jpg'
             var.cv.line(40, 800, 530, 800)
@@ -88,6 +98,14 @@ class Informes:
             print('Error en la cabecera', error)
 
     def pie(texto):
+        """
+
+        Módulo que establece el pié de pagina con el texto recibido
+
+        :param texto: Datos para mostrar en el pié de página
+        :type texto: String
+
+        """
         try:
             var.cv.line(50, 50, 530, 50)
             fecha = datetime.today().strftime('%d/%m/%Y %H.%M.%S')
@@ -100,6 +118,11 @@ class Informes:
             print('Error en el pie del informe clientes', error)
 
     def listadoArticulos(self):
+        """
+
+        Módulo que crea el informe con los datos de los productos
+
+        """
         try:
             var.cv = canvas.Canvas('informes/listadoArticulos.pdf')
             Informes.cabecera(self)
@@ -156,6 +179,11 @@ class Informes:
             print('Error en listado de articulos para informe', error)
 
     def listadoFacturas(self):
+        """
+
+        Módulo que crea el informe con los datos de las facturas
+
+        """
         try:
             var.cv = canvas.Canvas('informes/listadoFacturas.pdf')
             var.cv.setTitle('Factura')

@@ -50,8 +50,8 @@
 <span class="sd">        Crea las tablas y carga municipios y provincias.</span>
 <span class="sd">        Crea los directorios necesarios.</span>
 
-<span class="sd">        :type: String</span>
-<span class="sd">        :param: Nombre de la bbdd</span>
+<span class="sd">        :param filename: Nombre de la bbdd</span>
+<span class="sd">        :type filename: String</span>
 <span class="sd">        :rtype: Object</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -111,8 +111,8 @@
 
 <span class="sd">        Realiza la conexión con la base de datos</span>
 
-<span class="sd">        :param: Nombre de la bbdd</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param filename: Nombre de la bbdd</span>
+<span class="sd">        :type filename: String</span>
 <span class="sd">        :return: True si se conecta correctamente, False en caso contrario</span>
 <span class="sd">        :rtype: Boolean</span>
 
@@ -140,8 +140,8 @@
 
 <span class="sd">        Módulo que recibe datos de un cliente y los carga en la bbdd</span>
 
-<span class="sd">        :param: Datos de un cliente</span>
-<span class="sd">        :type: Lista</span>
+<span class="sd">        :param newCli: Datos de un cliente</span>
+<span class="sd">        :type newCli: Lista</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -208,8 +208,8 @@
 <span class="sd">        Módulo que selecciona un cliente por su DNI y devuelve algunos de sus campos a la función cargaCli</span>
 <span class="sd">        del fichero clients.py</span>
 
-<span class="sd">        :param: DNI del cliente</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param dni: DNI del cliente</span>
+<span class="sd">        :type dni: String</span>
 <span class="sd">        :return: Lista con los datos del cliente (direccion, provincia, municipio, sexo y envio)</span>
 <span class="sd">        :rtype: Lista</span>
 
@@ -233,8 +233,8 @@
 
 <span class="sd">        Módulo que recibe el DNI del cliente y elimina a ese cliente de la bbdd</span>
 
-<span class="sd">        :param: DNI de un cliente</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param dni: DNI de un cliente</span>
+<span class="sd">        :type dni: String</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -324,8 +324,8 @@
 
 <span class="sd">        Módulo que recibe los datos del cliente para modificarlo y lo actualiza en la bbdd</span>
 
-<span class="sd">        :param: Datos de los campos de un cliente</span>
-<span class="sd">        :type: Lista</span>
+<span class="sd">        :param modCliente: Datos de los campos de un cliente</span>
+<span class="sd">        :type modCliente: Lista</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -365,8 +365,8 @@
 
 <span class="sd">        Módulo que dado el DNI busca los datos del cliente para cargarlas en el panel de gestión de clientes</span>
 
-<span class="sd">        :param: DNI de un cliente</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param dni: DNI de un cliente</span>
+<span class="sd">        :type dni: String</span>
 <span class="sd">        :return: Datos de un cliente</span>
 <span class="sd">        :rtype: Lista</span>
 
@@ -392,8 +392,8 @@
 
 <span class="sd">        Módulo que recibe los datos de un producto y lo almacena en la bbdd</span>
 
-<span class="sd">        :param: Valores de los campos de un producto (nombre y precio)</span>
-<span class="sd">        :type: Lista</span>
+<span class="sd">        :param newArt: Valores de los campos de un producto (nombre y precio)</span>
+<span class="sd">        :type newArt: Lista</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -448,8 +448,8 @@
 
 <span class="sd">        Módulo que da de baja un producto en la bbdd según el codigo del producto recibido</span>
 
-<span class="sd">        :param: Código de un producto</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param codigo: Código de un producto</span>
+<span class="sd">        :type codigo: String</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -479,8 +479,8 @@
 
 <span class="sd">        Módulo que recibe datos de un producto para modificar y lo actualiza en la bbdd</span>
 
-<span class="sd">        :param: Datos de los campos de un producto</span>
-<span class="sd">        :type: Lista</span>
+<span class="sd">        :param articulo: Datos de los campos de un producto</span>
+<span class="sd">        :type articulo: Lista</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -516,8 +516,8 @@
 
 <span class="sd">        Módulo que recoge los datos de un producto según su nombre</span>
 
-<span class="sd">        :param: Nombre del producto</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param articulo: Nombre del producto</span>
+<span class="sd">        :type articulo: String</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -546,8 +546,8 @@
 
 <span class="sd">        Módulo que busca los datos de un cliente sobre el que se va a hacer una factura según el DNI recibido</span>
 
-<span class="sd">        :param: DNI del cliente</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param dni: DNI del cliente</span>
+<span class="sd">        :type dni: String</span>
 <span class="sd">        :return: Datos del cliente</span>
 <span class="sd">        :rtype: Lista</span>
 
@@ -571,8 +571,8 @@
 
 <span class="sd">        Módulo que recibe los datos de una factura y la almacena en la bbdd</span>
 
-<span class="sd">        :param: Datos de la factura</span>
-<span class="sd">        :type: Lista</span>
+<span class="sd">        :param registro: Datos de la factura</span>
+<span class="sd">        :type registro: Lista</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -619,8 +619,8 @@
 
 <span class="sd">        Módulo que recoge los datos del cliente referenciado en una factura según el código de la factura recibido</span>
 
-<span class="sd">        :param: Código de la factura</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param codigo: Código de la factura</span>
+<span class="sd">        :type codigo: String</span>
 <span class="sd">        :return: Datos del cliente</span>
 <span class="sd">        :rtype: Lista</span>
 
@@ -736,8 +736,8 @@
 
 <span class="sd">        Módulo que recibe el nombre de un producto y busca en la bbdd su código y su precio</span>
 
-<span class="sd">        :param: Nombre del producto</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param articulo: Nombre del producto</span>
+<span class="sd">        :type articulo: String</span>
 <span class="sd">        :return: Datos de código y precio del producto</span>
 <span class="sd">        :rtype: Lista</span>
 
@@ -760,8 +760,8 @@
 
 <span class="sd">        Módulo que recibe los datos de una venta y la almacena en la bbdd</span>
 
-<span class="sd">        :param: Datos de una venta</span>
-<span class="sd">        :type: Lista</span>
+<span class="sd">        :param venta: Datos de una venta</span>
+<span class="sd">        :type venta: Lista</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -804,8 +804,8 @@
 
 <span class="sd">        Módulo que recibe el código de una factura y carga todas las ventas con ese código referenciado</span>
 
-<span class="sd">        :param: Código de una factura</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param codfac: Código de una factura</span>
+<span class="sd">        :type codfac: String</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -850,8 +850,8 @@
 
 <span class="sd">        Módulo que recibe el codigo de un producto y busca su nombre en la bbdd</span>
 
-<span class="sd">        :param: Código de un producto</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param articulo: Código de un producto</span>
+<span class="sd">        :type articulo: String</span>
 <span class="sd">        :return: Nombre del artículo</span>
 <span class="sd">        :rtype: String</span>
 
@@ -896,8 +896,8 @@
 
 <span class="sd">        Módulo que recibe el código de una factura que se va a eliminar y borra todas sus ventas asociadas</span>
 
-<span class="sd">        :param: Código de una factura</span>
-<span class="sd">        :type: String</span>
+<span class="sd">        :param codfac: Código de una factura</span>
+<span class="sd">        :type codfac: String</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
