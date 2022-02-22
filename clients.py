@@ -3,7 +3,7 @@ from window import *
 from PyQt5 import QtSql
 
 class Clientes():
-    def validarDni():
+    def validarDni(dni):
         """
 
         Módulo que hace la validación de un DNI
@@ -12,9 +12,9 @@ class Clientes():
         :rtype: Boolean
         """
         try:
-            dni = var.ui.txtDni.text()
+            # dni = var.ui.txtDni.text()
             dnivalido = False
-            var.ui.txtDni.setText(dni.upper())
+            # var.ui.txtDni.setText(dni.upper())
             table = 'TRWAGMYFPDXBNJZSQVHLCKE'
             dig_ext = 'XYZ'
             reemp_dig_ext = {'X': '0', 'Y': '1', 'Z': '2'}
@@ -26,19 +26,19 @@ class Clientes():
                 if dni[0] in dig_ext:
                     dni = dni.replace(dni[0], reemp_dig_ext[dni[0]])
                 if len(dni) == len([n for n in dni if n in numeros]) and table[int(dni) % 23] == dig_control:
-                    var.ui.lblValidoDNI.setStyleSheet('QLabel {color: green;}')
-                    var.ui.lblValidoDNI.setText('V')
-                    var.ui.txtDni.setStyleSheet('background-color: lime;')
+            #         var.ui.lblValidoDNI.setStyleSheet('QLabel {color: green;}')
+            #         var.ui.lblValidoDNI.setText('V')
+            #         var.ui.txtDni.setStyleSheet('background-color: lime;')
                     dnivalido = True
-
-                else:
-                    var.ui.lblValidoDNI.setStyleSheet('QLabel {color: red;}')
-                    var.ui.lblValidoDNI.setText('F')
-                    var.ui.txtDni.setStyleSheet('background-color: pink;')
-            else:
-                var.ui.lblValidoDNI.setStyleSheet('QLabel {color: red;}')
-                var.ui.lblValidoDNI.setText('F')
-                var.ui.txtDni.setStyleSheet('background-color: pink;')
+            #
+            #     else:
+            #         var.ui.lblValidoDNI.setStyleSheet('QLabel {color: red;}')
+            #         var.ui.lblValidoDNI.setText('F')
+            #         var.ui.txtDni.setStyleSheet('background-color: pink;')
+            # else:
+            #     var.ui.lblValidoDNI.setStyleSheet('QLabel {color: red;}')
+            #     var.ui.lblValidoDNI.setText('F')
+            #     var.ui.txtDni.setStyleSheet('background-color: pink;')
 
             return dnivalido
         except Exception as error:

@@ -14,5 +14,7 @@ global cv
 global cf
 global btnfacdel
 global cmbproducto
+global fac
+global iva
 
 filedb = 'bbdd.sqlite'

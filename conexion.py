@@ -55,6 +55,16 @@ class Conexion():
                     to_db = [(i['id'], i['provincia']) for i in dr]
                 cur.executemany('insert into provincias (id, provincia) VALUES (?,?);', to_db)
                 con.commit()
+
+            cur.execute('select count() from municipios')
+            numeroM = cur.fetchone()[0]
+            con.commit()
+            if int(numeroM) == 0:
+                with open ('municipios.csv', 'r', encoding="utf-8") as fin:
+                    dr = csv.DictReader(fin)
+                    to_db = [(i['provincia_id'], i['municipio'], i['id']) for i in dr]
+                cur.executemany('insert into municipios (provincia_id, municipio, id) VALUES (?,?,?);', to_db)
+                con.commit()
             con.close()
 
             '''creación de directorios'''
