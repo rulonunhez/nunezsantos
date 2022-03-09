@@ -629,7 +629,7 @@ class Conexion():
 
         """
         try:
-            var.ui.tabFacturas.clear()
+            var.ui.tabFacturas.clearContents()
             index = 0
             query = QtSql.QSqlQuery()
             query.prepare('select codfac, fechafac from facturas')
