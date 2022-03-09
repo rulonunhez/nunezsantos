@@ -13,14 +13,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        """
-
-        Código obtenido a partir del fichero xml generado por QtDesigner para la interfaz grafica general del programa
-
-        :param MainWindow: Interfaz gráfica
-        :type MainWindow: Object
-
-        """
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1024, 899)
         font = QtGui.QFont()
@@ -77,9 +69,6 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ToolTipText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(170, 0, 0, 128))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
         brush = QtGui.QBrush(QtGui.QColor(170, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
@@ -125,9 +114,6 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ToolTipText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(170, 0, 0, 128))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.PlaceholderText, brush)
         brush = QtGui.QBrush(QtGui.QColor(170, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
@@ -173,13 +159,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ToolTipText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(170, 0, 0, 128))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
         self.lblClientes.setPalette(palette)
         self.lblClientes.setStyleSheet("font: 22pt \"Palatino Linotype\";\n"
-                                       "color: rgb(170, 0, 0);\n"
-                                       "")
+"color: rgb(170, 0, 0);\n"
+"")
         self.lblClientes.setObjectName("lblClientes")
         self.tabPrograma = QtWidgets.QTabWidget(self.centralwidget)
         self.tabPrograma.setGeometry(QtCore.QRect(10, 20, 1001, 801))
@@ -195,7 +178,7 @@ class Ui_MainWindow(object):
         self.lblFormaPago = QtWidgets.QLabel(self.horizontalLayoutWidget_5)
         self.lblFormaPago.setEnabled(True)
         self.lblFormaPago.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                        "")
+"")
         self.lblFormaPago.setObjectName("lblFormaPago")
         self.horizontalLayout_5.addWidget(self.lblFormaPago)
         self.chkEfectivo = QtWidgets.QCheckBox(self.horizontalLayoutWidget_5)
@@ -240,7 +223,7 @@ class Ui_MainWindow(object):
         self.lblDir = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
         self.lblDir.setEnabled(True)
         self.lblDir.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                  "")
+"")
         self.lblDir.setObjectName("lblDir")
         self.horizontalLayout_3.addWidget(self.lblDir)
         self.txtDir = QtWidgets.QLineEdit(self.horizontalLayoutWidget_3)
@@ -261,7 +244,7 @@ class Ui_MainWindow(object):
         self.lblApellidos = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
         self.lblApellidos.setEnabled(True)
         self.lblApellidos.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                        "")
+"")
         self.lblApellidos.setObjectName("lblApellidos")
         self.horizontalLayout_2.addWidget(self.lblApellidos)
         self.txtApel = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
@@ -306,7 +289,7 @@ class Ui_MainWindow(object):
         self.line.setObjectName("line")
         self.txtFechaAlta = QtWidgets.QLineEdit(self.tabClientes_2)
         self.txtFechaAlta.setGeometry(QtCore.QRect(650, 30, 151, 20))
-        self.txtFechaAlta.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.txtFechaAlta.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.txtFechaAlta.setObjectName("txtFechaAlta")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.tabClientes_2)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(100, 30, 261, 22))
@@ -316,7 +299,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.lblDNI = QtWidgets.QLabel(self.horizontalLayoutWidget)
         self.lblDNI.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                  "")
+"")
         self.lblDNI.setObjectName("lblDNI")
         self.horizontalLayout.addWidget(self.lblDNI)
         self.txtDni = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
@@ -347,7 +330,7 @@ class Ui_MainWindow(object):
         self.lblProv.setEnabled(True)
         self.lblProv.setMaximumSize(QtCore.QSize(69, 16777215))
         self.lblProv.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                   "")
+"")
         self.lblProv.setObjectName("lblProv")
         self.horizontalLayout_6.addWidget(self.lblProv)
         self.cmbProv = QtWidgets.QComboBox(self.horizontalLayoutWidget_6)
@@ -364,7 +347,7 @@ class Ui_MainWindow(object):
         self.lblMuni.setEnabled(True)
         self.lblMuni.setMaximumSize(QtCore.QSize(69, 16777215))
         self.lblMuni.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                   "")
+"")
         self.lblMuni.setObjectName("lblMuni")
         self.horizontalLayout_6.addWidget(self.lblMuni)
         self.cmbMun = QtWidgets.QComboBox(self.horizontalLayoutWidget_6)
@@ -414,25 +397,25 @@ class Ui_MainWindow(object):
         self.lblFechaAlta.setEnabled(True)
         self.lblFechaAlta.setGeometry(QtCore.QRect(580, 30, 69, 20))
         self.lblFechaAlta.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                        "")
+"")
         self.lblFechaAlta.setObjectName("lblFechaAlta")
         self.lblSexo = QtWidgets.QLabel(self.tabClientes_2)
         self.lblSexo.setEnabled(True)
         self.lblSexo.setGeometry(QtCore.QRect(100, 180, 69, 20))
         self.lblSexo.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                   "")
+"")
         self.lblSexo.setObjectName("lblSexo")
         self.lblApellidos_2 = QtWidgets.QLabel(self.tabClientes_2)
         self.lblApellidos_2.setEnabled(True)
         self.lblApellidos_2.setGeometry(QtCore.QRect(340, 180, 81, 20))
         self.lblApellidos_2.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                          "")
+"")
         self.lblApellidos_2.setObjectName("lblApellidos_2")
         self.lblApellidos_3 = QtWidgets.QLabel(self.tabClientes_2)
         self.lblApellidos_3.setEnabled(True)
         self.lblApellidos_3.setGeometry(QtCore.QRect(730, 720, 91, 20))
         self.lblApellidos_3.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                          "")
+"")
         self.lblApellidos_3.setObjectName("lblApellidos_3")
         self.tabPrograma.addTab(self.tabClientes_2, "")
         self.tabFacturacion = QtWidgets.QWidget()
@@ -510,8 +493,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.addWidget(self.txtClienteFac)
         self.btnFacturar = QtWidgets.QPushButton(self.frame)
         self.btnFacturar.setGeometry(QtCore.QRect(360, 60, 51, 31))
-        self.btnFacturar.setText("")
-        self.btnFacturar.setIcon(icon3)
         self.btnFacturar.setIconSize(QtCore.QSize(45, 25))
         self.btnFacturar.setObjectName("btnFacturar")
         self.horizontalLayoutWidget_12 = QtWidgets.QWidget(self.frame)
@@ -682,7 +663,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.lblNombreArt = QtWidgets.QLabel(self.horizontalLayoutWidget_7)
         self.lblNombreArt.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                        "")
+"")
         self.lblNombreArt.setObjectName("lblNombreArt")
         self.horizontalLayout_7.addWidget(self.lblNombreArt)
         self.txtNombreArt = QtWidgets.QLineEdit(self.horizontalLayoutWidget_7)
@@ -698,7 +679,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addItem(spacerItem3)
         self.lblPrecioArt = QtWidgets.QLabel(self.horizontalLayoutWidget_7)
         self.lblPrecioArt.setStyleSheet("font: 8pt \"MS Shell Dlg 2\";\n"
-                                        "")
+"")
         self.lblPrecioArt.setObjectName("lblPrecioArt")
         self.horizontalLayout_7.addWidget(self.lblPrecioArt)
         self.txtPrecioArt = QtWidgets.QLineEdit(self.horizontalLayoutWidget_7)
@@ -879,6 +860,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "DNI:"))
         self.label_5.setText(_translate("MainWindow", "FECHA FACTURA:"))
         self.cliente.setText(_translate("MainWindow", "CLIENTE:"))
+        self.btnFacturar.setText(_translate("MainWindow", "Facturar"))
         self.cliente_2.setText(_translate("MainWindow", "CODIGO FACTURA:"))
         item = self.tabFacturas.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Código"))
@@ -898,8 +880,7 @@ class Ui_MainWindow(object):
         self.lbl1.setText(_translate("MainWindow", "Subtotal:"))
         self.lbl2.setText(_translate("MainWindow", "IVA:"))
         self.lbl3.setText(_translate("MainWindow", "Total:"))
-        self.tabPrograma.setTabText(self.tabPrograma.indexOf(self.tabFacturacion),
-                                    _translate("MainWindow", "Facturación"))
+        self.tabPrograma.setTabText(self.tabPrograma.indexOf(self.tabFacturacion), _translate("MainWindow", "Facturación"))
         self.label_2.setText(_translate("MainWindow", "ARTICULOS"))
         item = self.tabArts.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Código"))
@@ -937,15 +918,4 @@ class Ui_MainWindow(object):
         self.actionImportar_Datos.setText(_translate("MainWindow", "Importar Datos"))
         self.actionExportar_Datos.setText(_translate("MainWindow", "Exportar Datos"))
         self.actionListado_Clientes.setText(_translate("MainWindow", "Listado Clientes"))
-
-
-import img.Recarga
-import img.abrir_directorio
-import img.buscar
-import img.calendar
-import img.crear
-import img.crearbackup
-import img.impresora
-import img.ojo
-import img.papelera
-import img.salir
+import var

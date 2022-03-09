@@ -143,9 +143,9 @@ class Conexion():
 
             else:
                 msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText(query.lastError().text())
+                msg.setWindowTitle('Error')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText('Imposible dar de alta un cliente con esos datos, error: \n' + query.lastError().text())
                 msg.exec()
 
 
@@ -638,7 +638,9 @@ class Conexion():
                     codigo = query.value(0)
                     fechafac = query.value(1)
                     var.btnfacdel = QtWidgets.QPushButton()
-                    icopapelera = QtGui.QPixmap("img/papelera.png")
+                    # icopapelera = QtGui.QPixmap("img/papelera.png")
+                    icopapelera = QtGui.QIcon()
+                    icopapelera.addPixmap(QtGui.QPixmap(":/newPrefix/papelera.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                     var.btnfacdel.setFixedSize(24, 24)
                     var.btnfacdel.setIcon(QtGui.QIcon(icopapelera))
                     var.ui.tabFacturas.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
@@ -646,9 +648,10 @@ class Conexion():
                     var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
                     cell_widget = QtWidgets.QWidget()
                     lay_out = QtWidgets.QHBoxLayout(cell_widget)
+                    lay_out.setContentsMargins(0, 0, 0, 0)
                     lay_out.addWidget(var.btnfacdel)
                     var.btnfacdel.clicked.connect(Conexion.bajaFac)
-                    lay_out.setAlignment(QtCore.Qt.AlignVCenter)
+                    # lay_out.setAlignment(QtCore.Qt.AlignVCenter)
                     var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
                     var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)

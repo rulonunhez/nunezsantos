@@ -134,6 +134,7 @@ class Eventos():
             var.ui.chkCargoCuenta.setChecked(False)
             var.ui.chkTransfer.setChecked(False)
             var.ui.spinEnvio.setValue(0)
+            var.ui.lblValidoDNI.setText("")
             var.ui.txtDni.setStyleSheet('QLabel {color: white;}')
 
         except Exception as error:
