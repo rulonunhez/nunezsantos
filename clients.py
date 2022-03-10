@@ -6,8 +6,10 @@ class Clientes():
     def validarDni():
         """
 
-        :return:
-        :rtype:
+        Módulo que hace la validación de un DNI
+
+        :return: True si es el DNI es válido, False en caso contrario
+        :rtype: Boolean
         """
         try:
             dni = var.ui.txtDni.text()
@@ -40,9 +42,15 @@ class Clientes():
 
             return dnivalido
         except Exception as error:
-            print('Error en módulo validarDni')
+            print('Error en módulo validarDni', e)
 
     def cargaProv(self):
+        """
+
+        Módulo que carga el array de provincias llamando a un método del fichero conexion.py y llena el comboBox
+        con este array.
+
+        """
         try:
             provincias = conexion.Conexion.cargarProv(self)
             nombres = provincias.values()
@@ -54,6 +62,12 @@ class Clientes():
             print('Eror en módulo cargaProv, ', error)
 
     def cargaMun(self):
+        """
+
+        Módulo que carga el array de municipios llamando a un método del fichero conexion.py y llena el comboBox
+        con este array.
+
+        """
         try:
             mun = conexion.Conexion.cargarMun(self)
             var.ui.cmbMun.clear()
@@ -62,13 +76,15 @@ class Clientes():
         except Exception as error:
             print('Eror en módulo cargaMun, ', error)
 
-    def selFechaAlta(fecha):
-        try:
-            print('La fecha seleccionada es', fecha)
-        except Exception as error:
-            print('Error en módulo selFechaAlta', error)
-
     def cargarFecha(qDate):
+        """
+
+        Módulo que carga la fecha seleccionada en el calendario en formato String en la caja de texto
+
+        :param qDate: Fecha seleccionada
+        :type qDate: qDate
+
+        """
         try:
             data = (str(qDate.day()).zfill(2) + '/' + str(qDate.month()).zfill(2) + '/' + str(qDate.year()))
             if var.ui.tabPrograma.currentIndex() == 0:
@@ -81,6 +97,11 @@ class Clientes():
             print('Error en módulo cargarFecha ', error)
 
     def cambiarAMayuscula():
+        """
+
+        Módulo que formatea el nombre, los apellidos y la dirección para que se vean con la primera letra en mayúscula
+
+        """
         texto = var.ui.txtNome.text()
         var.ui.txtNome.setText(texto.title())
         texto = var.ui.txtApel.text()
@@ -89,6 +110,12 @@ class Clientes():
         var.ui.txtDir.setText(texto.title())
 
     def guardaCli(self):
+        """
+
+        Módulo que recoge los datos que se van a guardar para un cliente desde la tabla y los envía a un método en el
+        fichero conexion.py que dará de alta un cliente con esos datos en la bbdd
+
+        """
         try:
             # Preparamos el registro
             dniValido = Clientes.validarDni()
@@ -152,6 +179,11 @@ class Clientes():
             print('Error en módulo guardar clientes', error)
 
     def cargaCli(self):
+        """
+
+        Módulo que carga los datos de un cliente seleccionado desde la tabla en los elementos superiores
+
+        """
         try:
             events.Eventos.limpiaForm(self)
             fila = var.ui.tabClientes.selectedItems()
@@ -197,6 +229,14 @@ class Clientes():
             print('Error en módulo cargar cliente ', error)
 
     def modifCli(self):
+        """
+
+        Módulo que recoge los datos de un cliente para modificarlo y llama a un método en el fichero conexion.py que
+        actualizará los datos de dicho cliente.
+        Módulo que recoge el DNI de un cliente y lo envía a un método en el fichero conexion.py para darlo de baja.
+
+
+        """
         try:
             modcliente = []
             cliente = [var.ui.txtDni, var.ui.txtFechaAlta, var.ui.txtApel, var.ui.txtNome, var.ui.txtDir]
@@ -237,6 +277,11 @@ class Clientes():
             print('Error en modificación de cliente', error)
 
     def bajaCli(self):
+        """
+
+        Módulo que recoge el DNI de un cliente y lo envía a un método en el fichero conexion.py para darlo de baja.
+
+        """
         try:
             dni = var.ui.txtDni.text()
             conexion.Conexion.bajaCli(dni)
@@ -246,6 +291,11 @@ class Clientes():
             print('Error en baja cliente', error)
 
     def cargarSpin(self):
+        """
+
+        Módulo que carga los posibles valores del spinBox
+
+        """
         try:
             var.ui.spinEnvio.setMinimum(0)
             var.ui.spinEnvio.setMaximum(3)
@@ -262,6 +312,11 @@ class Clientes():
             print('Error en cargar spin', error)
 
     def buscarDni():
+        """
+
+        Módulo que busca los datos de un cliente por su DNI y los imprime en los elementos de la pestaña Clientes.
+
+        """
         try:
             dni = str(var.ui.txtDni.text())
             datos = conexion.Conexion.consultaDni(dni)

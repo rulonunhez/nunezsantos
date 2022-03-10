@@ -12,12 +12,13 @@ class Conexion():
     def create_db(filename):
         """
 
-        Recibe el nombre de la base de datos
+        Recibe el nombre de la base de datos.
         Módulo que se ejecuta al principio del programa.
-        Crea las tablas y carga municipios y provincias
-        Crea los directorios necesarios
+        Crea las tablas y carga municipios y provincias.
+        Crea los directorios necesarios.
 
-        :type:
+        :param filename: Nombre de la bbdd
+        :type filename: String
         :rtype: Object
 
         """
@@ -54,6 +55,16 @@ class Conexion():
                     to_db = [(i['id'], i['provincia']) for i in dr]
                 cur.executemany('insert into provincias (id, provincia) VALUES (?,?);', to_db)
                 con.commit()
+
+            cur.execute('select count() from municipios')
+            numeroM = cur.fetchone()[0]
+            con.commit()
+            if int(numeroM) == 0:
+                with open ('municipios.csv', 'r', encoding="utf-8") as fin:
+                    dr = csv.DictReader(fin)
+                    to_db = [(i['provincia_id'], i['municipio'], i['id']) for i in dr]
+                cur.executemany('insert into municipios (provincia_id, municipio, id) VALUES (?,?,?);', to_db)
+                con.commit()
             con.close()
 
             '''creación de directorios'''
@@ -77,6 +88,8 @@ class Conexion():
 
         Realiza la conexión con la base de datos
 
+        :param filename: Nombre de la bbdd
+        :type filename: String
         :return: True si se conecta correctamente, False en caso contrario
         :rtype: Boolean
 
@@ -104,6 +117,9 @@ class Conexion():
 
         Módulo que recibe datos de un cliente y los carga en la bbdd
 
+        :param newCli: Datos de un cliente
+        :type newCli: Lista
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -127,9 +143,9 @@ class Conexion():
 
             else:
                 msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText(query.lastError().text())
+                msg.setWindowTitle('Error')
+                msg.setIcon(QtWidgets.QMessageBox.Warning)
+                msg.setText('Imposible dar de alta un cliente con esos datos, error: \n' + query.lastError().text())
                 msg.exec()
 
 
@@ -139,7 +155,7 @@ class Conexion():
     def cargaTabCli():
         """
 
-
+        Módulo que carga la tabla del panel de Clientes
 
         """
         try:
@@ -166,9 +182,11 @@ class Conexion():
     def cargaCli2(dni):
         """
 
-        Módulo que devuelve selecciona un cliente por su DNI y devuelve algunos de sus campos a la función cargaCli
+        Módulo que selecciona un cliente por su DNI y devuelve algunos de sus campos a la función cargaCli
         del fichero clients.py
 
+        :param dni: DNI del cliente
+        :type dni: String
         :return: Lista con los datos del cliente (direccion, provincia, municipio, sexo y envio)
         :rtype: Lista
 
@@ -191,6 +209,9 @@ class Conexion():
         """
 
         Módulo que recibe el DNI del cliente y elimina a ese cliente de la bbdd
+
+        :param dni: DNI de un cliente
+        :type dni: String
 
         """
         try:
@@ -220,8 +241,8 @@ class Conexion():
 
         Módulo que carga las provincias en el comboBox de la interfaz gráfica del panel de Clientes
 
-        :return:
-        :rtype:
+        :return: Diccionario con clave Id de provincia y valor nombre de la provincia
+        :rtype: Diccionario
 
         """
         try:
@@ -249,8 +270,8 @@ class Conexion():
         Módulo que carga los municipios según la provincia seleccionada en el comboBox de la interfaz gráfica del panel
          de Clientes
 
-        :return:
-        :rtype:
+        :return: Lista con los nombres de los municipios
+        :rtype: Lista
 
         """
         try:
@@ -279,6 +300,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos del cliente para modificarlo y lo actualiza en la bbdd
+
+        :param modCliente: Datos de los campos de un cliente
+        :type modCliente: Lista
 
         """
         try:
@@ -318,8 +342,11 @@ class Conexion():
 
         Módulo que dado el DNI busca los datos del cliente para cargarlas en el panel de gestión de clientes
 
-        :return:
-        :rtype:
+        :param dni: DNI de un cliente
+        :type dni: String
+        :return: Datos de un cliente
+        :rtype: Lista
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -341,6 +368,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos de un producto y lo almacena en la bbdd
+
+        :param newArt: Valores de los campos de un producto (nombre y precio)
+        :type newArt: Lista
 
         """
         try:
@@ -395,6 +425,9 @@ class Conexion():
 
         Módulo que da de baja un producto en la bbdd según el codigo del producto recibido
 
+        :param codigo: Código de un producto
+        :type codigo: String
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -422,6 +455,9 @@ class Conexion():
         """
 
         Módulo que recibe datos de un producto para modificar y lo actualiza en la bbdd
+
+        :param articulo: Datos de los campos de un producto
+        :type articulo: Lista
 
         """
         try:
@@ -453,6 +489,14 @@ class Conexion():
             print('Error en modificar articulo en conexión', error)
 
     def buscarArticulo(articulo):
+        """
+
+        Módulo que recoge los datos de un producto según su nombre
+
+        :param articulo: Nombre del producto
+        :type articulo: String
+
+        """
         try:
             query = QtSql.QSqlQuery()
             query.prepare('select codigo, nombre, precio from articulos where nombre = :nombre')
@@ -479,6 +523,8 @@ class Conexion():
 
         Módulo que busca los datos de un cliente sobre el que se va a hacer una factura según el DNI recibido
 
+        :param dni: DNI del cliente
+        :type dni: String
         :return: Datos del cliente
         :rtype: Lista
 
@@ -501,6 +547,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos de una factura y la almacena en la bbdd
+
+        :param registro: Datos de la factura
+        :type registro: Lista
 
         """
         try:
@@ -547,8 +596,11 @@ class Conexion():
 
         Módulo que recoge los datos del cliente referenciado en una factura según el código de la factura recibido
 
+        :param codigo: Código de la factura
+        :type codigo: String
         :return: Datos del cliente
         :rtype: Lista
+
         """
         try:
             query = QtSql.QSqlQuery()
@@ -577,7 +629,7 @@ class Conexion():
 
         """
         try:
-            var.ui.tabFacturas.clear()
+            var.ui.tabFacturas.clearContents()
             index = 0
             query = QtSql.QSqlQuery()
             query.prepare('select codfac, fechafac from facturas')
@@ -586,7 +638,9 @@ class Conexion():
                     codigo = query.value(0)
                     fechafac = query.value(1)
                     var.btnfacdel = QtWidgets.QPushButton()
-                    icopapelera = QtGui.QPixmap("img/papelera.png")
+                    # icopapelera = QtGui.QPixmap("img/papelera.png")
+                    icopapelera = QtGui.QIcon()
+                    icopapelera.addPixmap(QtGui.QPixmap(":/newPrefix/papelera.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                     var.btnfacdel.setFixedSize(24, 24)
                     var.btnfacdel.setIcon(QtGui.QIcon(icopapelera))
                     var.ui.tabFacturas.setRowCount(index + 1)  # creamos la fila y luego cargamos datos
@@ -594,9 +648,10 @@ class Conexion():
                     var.ui.tabFacturas.setItem(index, 1, QtWidgets.QTableWidgetItem(fechafac))
                     cell_widget = QtWidgets.QWidget()
                     lay_out = QtWidgets.QHBoxLayout(cell_widget)
+                    lay_out.setContentsMargins(0, 0, 0, 0)
                     lay_out.addWidget(var.btnfacdel)
                     var.btnfacdel.clicked.connect(Conexion.bajaFac)
-                    lay_out.setAlignment(QtCore.Qt.AlignVCenter)
+                    # lay_out.setAlignment(QtCore.Qt.AlignVCenter)
                     var.ui.tabFacturas.setCellWidget(index, 2, cell_widget)
                     var.ui.tabFacturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabFacturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignCenter)
@@ -661,6 +716,8 @@ class Conexion():
 
         Módulo que recibe el nombre de un producto y busca en la bbdd su código y su precio
 
+        :param articulo: Nombre del producto
+        :type articulo: String
         :return: Datos de código y precio del producto
         :rtype: Lista
 
@@ -682,6 +739,9 @@ class Conexion():
         """
 
         Módulo que recibe los datos de una venta y la almacena en la bbdd
+
+        :param venta: Datos de una venta
+        :type venta: Lista
 
         """
         try:
@@ -723,6 +783,9 @@ class Conexion():
         """
 
         Módulo que recibe el código de una factura y carga todas las ventas con ese código referenciado
+
+        :param codfac: Código de una factura
+        :type codfac: String
 
         """
         try:
@@ -767,6 +830,8 @@ class Conexion():
 
         Módulo que recibe el codigo de un producto y busca su nombre en la bbdd
 
+        :param articulo: Código de un producto
+        :type articulo: String
         :return: Nombre del artículo
         :rtype: String
 
@@ -810,6 +875,9 @@ class Conexion():
         """
 
         Módulo que recibe el código de una factura que se va a eliminar y borra todas sus ventas asociadas
+
+        :param codfac: Código de una factura
+        :type codfac: String
 
         """
         try:

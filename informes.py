@@ -9,6 +9,11 @@ from reportlab.pdfgen import canvas
 
 class Informes:
     def listadoClientes(self):
+        """
+
+        Módulo que crea el informe con los datos de los clientes
+
+        """
         try:
             var.cv = canvas.Canvas('informes/listadoClientes.pdf')
             Informes.cabecera(self)
@@ -72,6 +77,11 @@ class Informes:
             print('Error en informe clientes', error)
 
     def cabecera(self):
+        """
+
+        Módulo que establece la cabecera de las páginas
+
+        """
         try:
             logo = '.\\img\\logoEmpresa.jpg'
             var.cv.line(40, 800, 530, 800)
@@ -88,6 +98,14 @@ class Informes:
             print('Error en la cabecera', error)
 
     def pie(texto):
+        """
+
+        Módulo que establece el pié de pagina con el texto recibido
+
+        :param texto: Datos para mostrar en el pié de página
+        :type texto: String
+
+        """
         try:
             var.cv.line(50, 50, 530, 50)
             fecha = datetime.today().strftime('%d/%m/%Y %H.%M.%S')
@@ -100,6 +118,11 @@ class Informes:
             print('Error en el pie del informe clientes', error)
 
     def listadoArticulos(self):
+        """
+
+        Módulo que crea el informe con los datos de los productos
+
+        """
         try:
             var.cv = canvas.Canvas('informes/listadoArticulos.pdf')
             Informes.cabecera(self)
@@ -156,6 +179,11 @@ class Informes:
             print('Error en listado de articulos para informe', error)
 
     def listadoFacturas(self):
+        """
+
+        Módulo que crea el informe con los datos de las facturas
+
+        """
         try:
             var.cv = canvas.Canvas('informes/listadoFacturas.pdf')
             var.cv.setTitle('Factura')
@@ -166,8 +194,29 @@ class Informes:
             Informes.cabecera(self)
             Informes.pie(textotitulo)
             codfac = var.ui.txtCodFac.text()
-            var.cv.drawString(255, 690, textotitulo + ': ' + str(codfac))
+            var.cv.setFont('Helvetica-Bold', size=12)
+            var.cv.drawString(255, 695, textotitulo + ': ' + str(codfac))
             var.cv.line(40, 685, 530, 685)
+            query1 = QtSql.QSqlQuery()
+            query1.prepare('select direccion, provincia, municipio from clientes where dni = :dni')
+            query1.bindValue(':dni', str(var.ui.txtDniFac.text()))
+            if query1.exec_():
+                dir = []
+                while query1.next():
+                    dir.append(query1.value(0))
+                    dir.append(query1.value(1))
+                    dir.append(query1.value(2))
+            var.cv.setFont('Helvetica-Bold', size=9)
+            var.cv.drawString(250, 785, 'DATOS CLIENTE')
+            var.cv.setFont('Helvetica', size=9)
+            var.cv.drawString(230, 770, 'CIF: ' + var.ui.txtDniFac.text())
+            var.cv.drawString(230, 755, 'Cliente: ' + var.ui.txtClienteFac.text())
+            var.cv.drawString(230, 740, 'Direccion: ' + str(dir[0]))
+            print(str(dir[2]))
+            if (str(dir[2])) == '':
+                var.cv.drawString(230, 725, str(dir[1]))
+            else:
+                var.cv.drawString(230, 725, str(dir[1]) + ' (' + str(dir[2]) + ')')
             items = ['Venta', 'Artículo', 'Precio', 'Cantidad', 'Total']
             var.cv.drawString(60, 675, items[0])
             var.cv.drawString(150, 675, items[1])
@@ -189,7 +238,6 @@ class Informes:
                     articulo = conexion.Conexion.consultarArticulo(str(query.value(3)))
                     suma = suma + (round(query.value(1), 2) * round(query.value(2), 2))
                     total = str('{:.2f}'.format(round(query.value(1) * query.value(2), 2))).replace(',', '.') + ' €'
-                    var.cv.setFont('Helvetica', size=8)
                     var.cv.drawCentredString(i + 20, j, str(codventa))
                     var.cv.drawString(i + 100, j, str(articulo))
                     var.cv.drawString(i + 230, j, str(precio) + ' €/kg')

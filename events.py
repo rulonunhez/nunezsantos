@@ -25,6 +25,11 @@ import xlrd
 
 class Eventos():
     def Salir(self):
+        """
+
+        Módulo que muestra un aviso al intentar cerrar el programa, te permite cerrarlo o seguir con la ejecución
+
+        """
         try:
             var.dlgaviso.show()
             if var.dlgaviso.exec():
@@ -35,12 +40,22 @@ class Eventos():
             print('Error en módulo "Salir"', error)
 
     def abrircal(self):
+        """
+
+        Módulo que abre el calendario
+
+        """
         try:
             var.dlgcalendar.show()
         except Exception as error:
             print('Error al abrir el calendario, ', error)
 
     def resizeTablaCli(self):
+        """
+
+        Módulo que redimensiona la tabla de clientes
+
+        """
         try:
             header = var.ui.tabClientes.horizontalHeader()
             for i in range(5):
@@ -52,6 +67,11 @@ class Eventos():
             print('Eror en módulo redimensionar tabla clientes')
 
     def resizeTabArts(self):
+        """
+
+        Módulo que redimensiona la tabla de productos
+
+        """
         try:
             header = var.ui.tabArts.horizontalHeader()
             for i in range(3):
@@ -63,6 +83,11 @@ class Eventos():
             print('Eror en módulo redimensionar tabla clientes')
 
     def resizeTabFacturas(self):
+        """
+
+        Módulo que redimensiona la tabla de facturas
+
+        """
         try:
             header = var.ui.tabFacturas.horizontalHeader()
             for i in range(3):
@@ -72,6 +97,11 @@ class Eventos():
             print('Eror en módulo redimensionar tabla clientes')
 
     def resizeTabVentas(self):
+        """
+
+        Módulo que redimensiona la tabla de ventas
+
+        """
         try:
             header = var.ui.tabVentas.horizontalHeader()
             for i in range(5):
@@ -83,6 +113,11 @@ class Eventos():
             print('Eror en módulo redimensionar tabla ventas')
 
     def limpiaForm(self):
+        """
+
+        Módulo que limpia el formulario de clientes
+
+        """
         var.ui.txtDni
         try:
             cajas = [var.ui.txtDni, var.ui.txtApel, var.ui.txtDir, var.ui.txtNome, var.ui.txtFechaAlta]
@@ -99,12 +134,18 @@ class Eventos():
             var.ui.chkCargoCuenta.setChecked(False)
             var.ui.chkTransfer.setChecked(False)
             var.ui.spinEnvio.setValue(0)
+            var.ui.lblValidoDNI.setText("")
             var.ui.txtDni.setStyleSheet('QLabel {color: white;}')
 
         except Exception as error:
             print('Error en módulo limpiar el formulario,', error)
 
     def limpiaFormArt(self):
+        """
+
+        Módulo que limpia el formulario de articulos
+
+        """
         try:
             cajas = [var.ui.lblResulCodigo, var.ui.txtNombreArt, var.ui.txtPrecioArt]
             for i in cajas:
@@ -114,6 +155,11 @@ class Eventos():
             print('Error en módulo limpiar el formulario,', error)
 
     def limpiaFormFac(self = None):
+        """
+
+        Módulo que limpia el formulario de facturas
+
+        """
         try:
             cajas = [var.ui.txtDniFac, var.ui.txtClienteFac, var.ui.txtCodFac, var.ui.txtFechaFac]
             for i in cajas:
@@ -124,12 +170,22 @@ class Eventos():
             print('Error en módulo limpiar el formulario,', error)
 
     def Abrir(self):
+        """
+
+        Módulo que se ejecuta al pulsar la opción de abrir directorio
+
+        """
         try:
             var.dlgabrir.show()
         except Exception as error:
             print('Error al abrir ciadro dialogo,', error)
 
     def crearBackup(self):
+        """
+
+        Módulo que crea una copia de la bbdd en un fichero .zip
+
+        """
         try:
             fecha = datetime.today().strftime('%Y,%m,%d,%H,%M,%S')
             var.copia = (str(fecha) + '_backup.zip')
@@ -146,6 +202,11 @@ class Eventos():
             print('Error en crear backup', error)
 
     def recuperarBackup(self):
+        """
+
+        Módulo que recoge una copia de la bbdd en .zip y lo extrae para importar la copia
+
+        """
         try:
             option = QtWidgets.QFileDialog.Options()
             filename = var.dlgabrir.getOpenFileName(None, 'Restaurar Copia', '', '*.zip;;ALL', options=option)
@@ -168,6 +229,11 @@ class Eventos():
             print('Error en crear backup', error)
 
     def imprimir(self):
+        """
+
+        Módulo que permite abrir las opciones de impresión para un informe...
+
+        """
         try:
             printDialog = QtPrintSupport.QPrintDialog()
             if printDialog.exec():
@@ -176,6 +242,11 @@ class Eventos():
             print('Error en impresión', error)
 
     def cargarExcel(self):
+        """
+
+        Módulo que carga desde un fichero excel los datos de los clientes y los almacena en la bbdd
+
+        """
         try:
             documento = xlrd.open_workbook("DATOSCLIENTES.xls")
             clientes = documento.sheet_by_index(0)
@@ -234,6 +305,11 @@ class Eventos():
             print('Error al cargar datos del excel ', error)
 
     def cargarExcelMunicipios(self):
+        """
+
+        Módulo que carga desde un fichero excel los datos de los municipios y los almacena en la bbdd
+
+        """
         try:
             documento = xlrd.open_workbook("municipios.xls")
             municipios = documento.sheet_by_index(0)
@@ -267,6 +343,11 @@ class Eventos():
 
 
     def exportExcel(self):
+        """
+
+        Módulo que recoge los clientes almacenados en la bbdd y los exporta a un fichero excel
+
+        """
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y.%m.%d.%H.%M.%S')
@@ -304,6 +385,11 @@ class Eventos():
             print('Error en conexion para exportar excel ', error)
 
     def cambiaGestion(self):
+        """
+
+        Módulo que cambia el texto de una label según la pestaña seleccionada
+
+        """
         if var.ui.tabPrograma.currentIndex() == 0:
             var.ui.lblClientes.setText("XESTIÓN CLIENTES")
         elif var.ui.tabPrograma.currentIndex() == 1:

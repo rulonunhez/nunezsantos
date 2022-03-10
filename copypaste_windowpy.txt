@@ -1,0 +1,19 @@
+import img.Recarga
+import img.abrir_directorio
+import img.buscar
+import img.calendar
+import img.crear
+import img.crearbackup
+import img.impresora
+import img.ojo
+import img.papelera
+import img.salir
+
+"""
+
+                Código obtenido a partir del fichero xml generado por QtDesigner para la interfaz grafica general del programa
+
+                :param MainWindow: Interfaz gráfica
+                :type MainWindow: Object
+
+        """

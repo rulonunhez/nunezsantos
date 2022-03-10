@@ -172,15 +172,6 @@
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>170</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
       </active>
       <inactive>
        <colorrole role="WindowText">
@@ -313,15 +304,6 @@
         <brush brushstyle="SolidPattern">
          <color alpha="255">
           <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>170</red>
           <green>0</green>
           <blue>0</blue>
          </color>
@@ -464,15 +446,6 @@
          </color>
         </brush>
        </colorrole>
-       <colorrole role="PlaceholderText">
-        <brush brushstyle="NoBrush">
-         <color alpha="128">
-          <red>170</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </brush>
-       </colorrole>
       </disabled>
      </palette>
     </property>
@@ -513,6 +486,13 @@ color: rgb(170, 0, 0);
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <widget class="QLabel" name="lblFormaPago">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+         </property>
          <property name="text">
           <string>Forma de pago:</string>
          </property>
@@ -563,9 +543,9 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnGrabaCli">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>360</x>
         <y>240</y>
-        <width>81</width>
+        <width>75</width>
         <height>23</height>
        </rect>
       </property>
@@ -576,7 +556,7 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnCalendar">
       <property name="geometry">
        <rect>
-        <x>800</x>
+        <x>810</x>
         <y>30</y>
         <width>41</width>
         <height>23</height>
@@ -617,12 +597,15 @@ color: rgb(170, 0, 0);
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QLabel" name="lblDir">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="styleSheet">
           <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
 </string>
          </property>
          <property name="text">
-          <string>Dirección:        </string>
+          <string>Dirección:       </string>
          </property>
         </widget>
        </item>
@@ -652,9 +635,16 @@ color: rgb(170, 0, 0);
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="lblApel">
+        <widget class="QLabel" name="lblApellidos">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+         </property>
          <property name="text">
-          <string>Apellidos:</string>
+          <string>Apellidos:        </string>
          </property>
         </widget>
        </item>
@@ -688,19 +678,6 @@ color: rgb(170, 0, 0);
         <widget class="QLineEdit" name="txtNome"/>
        </item>
       </layout>
-     </widget>
-     <widget class="QLabel" name="lblRestablecer">
-      <property name="geometry">
-       <rect>
-        <x>690</x>
-        <y>710</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Restablecer datos:</string>
-      </property>
      </widget>
      <widget class="QTableWidget" name="tabClientes">
       <property name="geometry">
@@ -779,7 +756,7 @@ color: rgb(170, 0, 0);
      <widget class="QLineEdit" name="txtFechaAlta">
       <property name="geometry">
        <rect>
-        <x>640</x>
+        <x>650</x>
         <y>30</y>
         <width>151</width>
         <height>20</height>
@@ -822,23 +799,10 @@ color: rgb(170, 0, 0);
        </item>
       </layout>
      </widget>
-     <widget class="QLabel" name="lblFechaAlta">
-      <property name="geometry">
-       <rect>
-        <x>560</x>
-        <y>30</y>
-        <width>81</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Fecha alta:</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="btnModifCli">
       <property name="geometry">
        <rect>
-        <x>450</x>
+        <x>440</x>
         <y>240</y>
         <width>75</width>
         <height>23</height>
@@ -851,7 +815,7 @@ color: rgb(170, 0, 0);
      <widget class="QPushButton" name="btnBajaCli">
       <property name="geometry">
        <rect>
-        <x>530</x>
+        <x>520</x>
         <y>240</y>
         <width>75</width>
         <height>23</height>
@@ -882,18 +846,31 @@ color: rgb(170, 0, 0);
        <rect>
         <x>100</x>
         <y>120</y>
-        <width>541</width>
+        <width>751</width>
         <height>22</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QLabel" name="lblProv">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>2</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>69</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
          </property>
          <property name="text">
           <string>Provincia:</string>
@@ -903,7 +880,7 @@ color: rgb(170, 0, 0);
        <item>
         <widget class="QComboBox" name="cmbProv">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -927,7 +904,20 @@ color: rgb(170, 0, 0);
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="lblMun">
+        <widget class="QLabel" name="lblMuni">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>69</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+         </property>
          <property name="text">
           <string>Municipio:</string>
          </property>
@@ -941,9 +931,9 @@ color: rgb(170, 0, 0);
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>180</x>
         <y>180</y>
-        <width>160</width>
+        <width>81</width>
         <height>42</height>
        </rect>
       </property>
@@ -970,19 +960,6 @@ color: rgb(170, 0, 0);
        </item>
       </layout>
      </widget>
-     <widget class="QLabel" name="lblSexo">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>180</y>
-        <width>41</width>
-        <height>19</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sexo:</string>
-      </property>
-     </widget>
      <widget class="QSpinBox" name="spinEnvio">
       <property name="geometry">
        <rect>
@@ -996,26 +973,13 @@ color: rgb(170, 0, 0);
        <number>3</number>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>180</y>
-        <width>111</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Forma de envío:</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="lblEnvio">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>480</x>
         <y>180</y>
-        <width>341</width>
-        <height>16</height>
+        <width>81</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1069,6 +1033,86 @@ color: rgb(170, 0, 0);
         <width>59</width>
         <height>24</height>
        </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblFechaAlta">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>30</y>
+        <width>69</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Fecha alta:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblSexo">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>180</y>
+        <width>69</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Sexo:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblApellidos_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>180</y>
+        <width>81</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Forma de envío:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblApellidos_3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>720</y>
+        <width>91</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;
+</string>
+      </property>
+      <property name="text">
+       <string>Restablecer datos</string>
       </property>
      </widget>
     </widget>
@@ -1274,11 +1318,7 @@ color: rgb(170, 0, 0);
         </rect>
        </property>
        <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="img/ojo.qrc">
-         <normaloff>:/newPrefix/ojo.png</normaloff>:/newPrefix/ojo.png</iconset>
+        <string>Facturar</string>
        </property>
        <property name="iconSize">
         <size>
@@ -2122,11 +2162,11 @@ color: rgb(170, 0, 0);
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="rbtGroupSex"/>
   <buttongroup name="chkGroupPago">
    <property name="exclusive">
     <bool>false</bool>
    </property>
   </buttongroup>
+  <buttongroup name="rbtGroupSex"/>
  </buttongroups>
 </ui>
