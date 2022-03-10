@@ -821,8 +821,3 @@ class Conexion():
 
         except Exception as error:
             print('Error en dar de baja las ventas', error)
-
-
-
-
-
