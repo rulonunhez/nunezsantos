@@ -14,8 +14,8 @@ class Articulos():
 
         """
         try:
-            precio = var.ui.txtPrecioArt.text().replace(',', '.')
-            precio = locale.currency(float(precio))
+            precio = var.ui.txtPrecioArt.text().replace(',', '.').replace('€', '')
+            precio = locale.currency(round(float(precio), 2))
             newArt = [var.ui.txtNombreArt.text().title(), precio]
             conexion.Conexion.altaArt(newArt) # Graba el articulo en la bbdd
             conexion.Conexion.cargaTabArt(self) # Recarga la tabla

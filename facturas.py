@@ -1,8 +1,12 @@
+import locale
+
 from PyQt5 import QtWidgets, QtCore
 
 import conexion
 import events
 import var
+
+locale.setlocale( locale.LC_ALL, '' )
 
 
 class Facturas():
@@ -114,12 +118,12 @@ class Facturas():
             row = var.ui.tabVentas.currentRow()
             articulo = var.cmbProducto.currentText()
             dato = conexion.Conexion.obtenerCodPrecio(articulo)
-            precio = round(dato[1], 2)
-            var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(str(precio)))
+            # precio = dato[1]
+            var.ui.tabVentas.setItem(row, 2, QtWidgets.QTableWidgetItem(dato[1]))
             var.ui.tabVentas.item(row, 2).setTextAlignment(QtCore.Qt.AlignCenter)
 
         except Exception as error:
-            print ('Error en proceso venta ', error)
+            print('Error en proceso venta ', error)
 
     def totalLineaVenta(self = None):
         """
@@ -132,9 +136,10 @@ class Facturas():
             venta = []
             producto = var.cmbProducto.currentText()
             row = var.ui.tabVentas.currentRow()
-            precio = var.ui.tabVentas.item(row, 2).text()
+            precio = var.ui.tabVentas.item(row, 2).text().replace(',', '.').replace('€', '')
             cantidad = round(float(var.txtCantidad.text().replace(',', '.')), 2)
             total = round(float(precio) * cantidad, 2)
+            total = locale.currency(float(total))
             var.ui.tabVentas.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total)))
             var.ui.tabVentas.item(row, 4).setTextAlignment(QtCore.Qt.AlignRight)
             codfac = var.ui.txtCodFac.text()

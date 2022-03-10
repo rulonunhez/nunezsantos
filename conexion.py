@@ -159,6 +159,7 @@ class Conexion():
 
         """
         try:
+            var.ui.tabClientes.clearContents()
             index = 0
             query = QtSql.QSqlQuery()
             query.prepare('SELECT dni, apellidos, nombre, alta, pago FROM clientes ORDER BY apellidos, nombre')
@@ -402,6 +403,7 @@ class Conexion():
 
         """
         try:
+            var.ui.tabArts.clearContents()
             index = 0
             query = QtSql.QSqlQuery()
             query.prepare('SELECT codigo, nombre, precio FROM articulos order by nombre')
@@ -409,12 +411,12 @@ class Conexion():
                 while query.next():
                     codigo = str(query.value(0))
                     nombre = str(query.value(1))
-                    precio = round(float(query.value(2)), 2)
+                    precio = str(query.value(2))
                     var.ui.tabArts.setRowCount(index+1) #creamos la fila y luego cargamos datos
                     var.ui.tabArts.setItem(index, 0, QtWidgets.QTableWidgetItem(codigo))
                     var.ui.tabArts.setItem(index, 1, QtWidgets.QTableWidgetItem(nombre))
-                    var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio) + ' €'))
-                    var.ui.tabArts.item(index, 2).setTextAlignment(QtCore.Qt.AlignRight)
+                    var.ui.tabArts.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
+                    var.ui.tabArts.item(index, 2).setTextAlignment(QtCore.Qt.AlignCenter)
                     var.ui.tabArts.item(index, 0).setTextAlignment(QtCore.Qt.AlignCenter)
                     index += 1
         except Exception as error:
@@ -745,11 +747,13 @@ class Conexion():
 
         """
         try:
+            precio = venta[3]
+            precio = locale.currency(float(precio))
             query = QtSql.QSqlQuery()
             query.prepare('insert into ventas (codfac, codarticulo, precio, cantidad) values (:codfac, :codarticulo, :precio, :cantidad)')
             query.bindValue(':codfac', int(venta[0]))
             query.bindValue(':codarticulo', int(venta[1]))
-            query.bindValue(':precio', float(venta[3]))
+            query.bindValue(':precio', precio)
             query.bindValue(':cantidad', float(venta[2]))
             query.exec()
 
@@ -799,15 +803,17 @@ class Conexion():
             if query.exec_():
                 while query.next():
                     codventa = query.value(0)
-                    precio = query.value(2)
+                    precio = str(query.value(2))
+                    var.ui.tabVentas.setRowCount(index + 1)
+                    var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(precio))
+                    precio = precio.replace('€', '').replace(',', '.')
                     cantidad = query.value(3)
                     codArticulo = query.value(1)
-                    total = round(cantidad * precio, 2)
+                    total = round(cantidad * float(precio), 2)
                     suma += total
+                    total = locale.currency(float(total))
                     articulo = Conexion.consultarArticulo(codArticulo)
-                    var.ui.tabVentas.setRowCount(index + 1)
                     var.ui.tabVentas.setItem(index,0, QtWidgets.QTableWidgetItem(str(codventa)))
-                    var.ui.tabVentas.setItem(index, 2, QtWidgets.QTableWidgetItem(str(precio)))
                     var.ui.tabVentas.setItem(index, 3, QtWidgets.QTableWidgetItem(str(cantidad)))
                     var.ui.tabVentas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(articulo)))
                     var.ui.tabVentas.setItem(index, 4, QtWidgets.QTableWidgetItem(str(total)))

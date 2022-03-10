@@ -91,7 +91,9 @@ class Eventos():
         try:
             header = var.ui.tabFacturas.horizontalHeader()
             for i in range(3):
-                header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
+                header.setSectionResizeMode(i, QtWidgets.QHeaderView.Stretch)
+                if i == 1:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeToContents)
 
         except Exception as error:
             print('Eror en módulo redimensionar tabla clientes')
