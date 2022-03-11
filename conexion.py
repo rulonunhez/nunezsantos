@@ -1,4 +1,5 @@
 from PyQt5 import QtSql, QtWidgets, QtGui, QtCore
+from PyQt5.QtWidgets import QMessageBox
 
 import clients
 import events
@@ -72,9 +73,8 @@ class Conexion():
                 os.mkdir('.\\informes')
             if not os.path.exists('.\\img'):
                 os.mkdir('.\\img')
-                # shutil.move('logo')
-            if not os.path.exists('C:\\copias'):
-                os.mkdir('C:\\copias')
+            if not os.path.exists('.\\copias'):
+                os.mkdir('.\\copias')
 
         except Exception as error:
             msg = QtWidgets.QMessageBox()
@@ -670,27 +670,42 @@ class Conexion():
 
         """
         try:
-            query = QtSql.QSqlQuery()
-            codigo = var.ui.txtCodFac.text()
-            Conexion.borrarVentasFac(codigo)
-            query.prepare('DELETE FROM facturas WHERE codfac = :codigo')
-            query.bindValue(':codigo', str(codigo))
+            msg = QtWidgets.QMessageBox()
+            msg.setWindowTitle('Aviso')
+            msg.setIcon(QtWidgets.QMessageBox.Question)
+            msg.setText('Va a eliminar la factura con código ' + str(var.ui.txtCodFac.text())
+                        + '\n¿Está seguro?')
+            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            msg.exec()
+            if msg.clickedButton() == msg.button(msg.StandardButton.Yes):
+                query = QtSql.QSqlQuery()
+                codigo = var.ui.txtCodFac.text()
+                Conexion.borrarVentasFac(codigo)
+                query.prepare('DELETE FROM facturas WHERE codfac = :codigo')
+                query.bindValue(':codigo', str(codigo))
 
-            if query.exec_():
+                if query.exec_():
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle('Aviso')
+                    msg.setIcon(QtWidgets.QMessageBox.Information)
+                    msg.setText('Factura dada de baja')
+                    msg.exec()
+
+                else:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setWindowTitle('Aviso')
+                    msg.setIcon(QtWidgets.QMessageBox.Warning)
+                    msg.setText('No se ha podido dar de baja la factura\n' + query.lastError().text())
+                    msg.exec()
+
+                Conexion.cargaTabFacturas(self)
+
+            elif msg.clickedButton() == msg.button(msg.StandardButton.No):
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
                 msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText('Factura dada de baja')
+                msg.setText('Factura NO eliminada')
                 msg.exec()
-
-            else:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setText(query.lastError().text())
-                msg.exec()
-
-            Conexion.cargaTabFacturas(self)
 
         except Exception as error:
             print('Error baja factura en conexion', error)
@@ -755,7 +770,12 @@ class Conexion():
             query.bindValue(':codarticulo', int(venta[1]))
             query.bindValue(':precio', precio)
             query.bindValue(':cantidad', float(venta[2]))
-            query.exec()
+            if query.exec_():
+                var.ui.lblVentaRealizada.setText('Venta realizada correctamente')
+                var.ui.lblVentaRealizada.setStyleSheet('QLabel {color: green;}')
+            else:
+                var.ui.lblVentaRealizada.setText('No se ha realizado la venta')
+                var.ui.lblVentaRealizada.setStyleSheet('QLabel {color: red;}')
 
             Conexion.cargarLineasVenta(int(venta[0]))
 

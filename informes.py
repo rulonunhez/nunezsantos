@@ -83,6 +83,8 @@ class Informes:
 
         """
         try:
+            # icon5 = QtGui.QIcon()
+            # icon5.addPixmap(QtGui.QPixmap(":/newPrefix/logoEmpresa.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             logo = '.\\img\\logoEmpresa.jpg'
             var.cv.line(40, 800, 530, 800)
             var.cv.setFont('Helvetica-Bold', 14)
@@ -128,7 +130,7 @@ class Informes:
             Informes.cabecera(self)
             rootPath = '.\\informes'
             var.cv.setTitle('Listado Articulos')
-            var.cv.setAuthor('Rulas')
+            var.cv.setAuthor('Raúl Núñez')
             textoTitulo = 'LISTADO ARTICULOS'
             Informes.pie(textoTitulo)
             var.cv.setFont('Helvetica-Bold', 9)
@@ -144,7 +146,7 @@ class Informes:
             query.prepare('select codigo, nombre, precio from articulos')
             if query.exec_():
                 i = 80
-                j = 660
+                j = 655
                 while query.next():
                     if j <= 40:
                         var.cv.drawString(440, 30, 'Página siguiente...')
@@ -165,7 +167,7 @@ class Informes:
                     var.cv.setFont('Helvetica', 8)
                     var.cv.drawString(i, j, str(query.value(0)))
                     var.cv.drawString(i + 120, j, str(query.value(1)))
-                    var.cv.drawString(i + 300, j, str(round(query.value(2), 2)))
+                    var.cv.drawString(i + 320, j, query.value(2))
                     j -= 20
 
             var.cv.save()
@@ -212,7 +214,6 @@ class Informes:
             var.cv.drawString(230, 770, 'CIF: ' + var.ui.txtDniFac.text())
             var.cv.drawString(230, 755, 'Cliente: ' + var.ui.txtClienteFac.text())
             var.cv.drawString(230, 740, 'Direccion: ' + str(dir[0]))
-            print(str(dir[2]))
             if (str(dir[2])) == '':
                 var.cv.drawString(230, 725, str(dir[1]))
             else:
@@ -233,11 +234,12 @@ class Informes:
                 j = 655
                 while query.next():
                     codventa = query.value(0)
-                    precio = str('{:.2f}'.format(round(query.value(1), 2))) + ' €'
+                    precio = query.value(1)
                     cantidad = str('{:.2f}'.format(round(query.value(2), 2)))
                     articulo = conexion.Conexion.consultarArticulo(str(query.value(3)))
-                    suma = suma + (round(query.value(1), 2) * round(query.value(2), 2))
-                    total = str('{:.2f}'.format(round(query.value(1) * query.value(2), 2))).replace(',', '.') + ' €'
+                    precio = precio.replace('€', '').replace(',','.')
+                    suma = suma + float(precio) * float(cantidad)
+                    total = str('{:.2f}'.format(round(float(precio) * query.value(2), 2))).replace(',', '.') + ' €'
                     var.cv.drawCentredString(i + 20, j, str(codventa))
                     var.cv.drawString(i + 100, j, str(articulo))
                     var.cv.drawString(i + 230, j, str(precio) + ' €/kg')
